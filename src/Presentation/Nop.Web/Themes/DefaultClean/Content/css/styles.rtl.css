@@ -1,11 +1,15 @@
+@import url('https://fonts.bunny.net/css?family=vazirmatn:300,400,500,600,700,800,900&display=swap');
+
 /*********** CSS RESET **********/
 :root {
-  --accent-blue-color: #4ab2f1;
-  --accent-blue-active-color: #248ece;
-  --gray-color: #6B6B6B;
-  --dark-gray-color: #444;
-  --error-red-color: #d51f28;
-  --success-green-color: #207d4c;
+  --accent-blue-color: #c7cbd0;
+  --accent-blue-active-color: #9aa0a6;
+  --gray-color: #b6bac0;
+  --dark-gray-color: #eef0f2;
+  --error-red-color: #ff6b6b;
+  --success-green-color: #5cc98e;
+  --accent-button-color: #6e7378;
+  --accent-button-active-color: #565a5e;
 }
 
 * {
@@ -64,7 +68,7 @@ input[type="reset"] {
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: inset 0 0 0 1000px #fff;
+  -webkit-box-shadow: inset 0 0 0 1000px #1c1d1f;
 }
 
 script {
@@ -79,13 +83,18 @@ script {
 body {
   max-width: 100%;
   overflow-x: hidden;
-  background-color: #fff;
-  font: normal 14px Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(1400px 900px at 15% -10%, rgba(199, 203, 208, 0.16) 0%, rgba(199, 203, 208, 0) 60%),
+    radial-gradient(900px 700px at 90% 110%, rgba(199, 203, 208, 0.08) 0%, rgba(199, 203, 208, 0) 55%),
+    linear-gradient(160deg, #202124 0%, #131415 45%, #08090a 100%);
+  font: normal 14px 'Vazirmatn', sans-serif;
   color: var(--gray-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--dark-gray-color);
+  font-weight: 600;
+  letter-spacing: 0.2px;
 }
 
 a {
@@ -108,7 +117,7 @@ input[type="tel"],
 input[type="password"],
 textarea, select {
   height: 36px; /*safari padding fix*/
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
   padding: 8px;
   vertical-align: middle;
   direction: rtl;
@@ -116,7 +125,7 @@ textarea, select {
 
 input, textarea, select, button {
   font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Vazirmatn', sans-serif;
   color: var(--gray-color);
 }
 
@@ -136,7 +145,7 @@ input[type="tel"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border-color: #ccc;
+  border-color: #494c50;
   color: var(--dark-gray-color);
   position: relative;
   z-index: 1;
@@ -152,6 +161,7 @@ input[type="radio"] + * {
 input[type="button"], input[type="submit"],
 button, .button-1, .button-2 {
   cursor: pointer;
+  border-radius: 4px;
 }
 
 label, label + * {
@@ -161,7 +171,7 @@ label, label + * {
 .master-wrapper-content {
   position: relative;
   z-index: 0;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -198,7 +208,7 @@ label, label + * {
 .page-title {
   min-height: 50px;
   margin: 0 0 25px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 6px 10px;
 }
 
@@ -332,7 +342,7 @@ label, label + * {
 .inputs select, .inputs textarea {
   width: 400px;
   max-width: 100%;
-  background-color: #fff;
+  background-color: #1c1d1f;
 }
 
 .inputs.custom-attributes {
@@ -348,8 +358,8 @@ label, label + * {
 .inputs .option-list li {
   display: inline-block;
   margin: 5px;
-  border: 1px solid #ddd;
-  background-color: #fff;
+  border: 1px solid #35373a;
+  background-color: #1c1d1f;
   padding: 8px 10px;
 }
 
@@ -443,8 +453,8 @@ label, label + * {
 .forum-table th {
   border-width: 1px 1px 0;
   border-style: solid;
-  border-color: #ddd;
-  background-color: #f6f6f6;
+  border-color: #35373a;
+  background-color: #202124;
   padding: 10px;
   white-space: nowrap;
   font-weight: normal;
@@ -475,8 +485,8 @@ label, label + * {
   min-width: 50px;
   border-width: 1px;
   border-style: solid;
-  border-color: transparent #ddd #ddd;
-  background-color: #fff;
+  border-color: transparent #35373a #35373a;
+  background-color: #1c1d1f;
   padding: 20px;
   color: var(--dark-gray-color);
 }
@@ -661,7 +671,7 @@ label, label + * {
   width: 32px;
   height: 32px;
   margin: 7px;
-  background: #fff url('../images/close.png') center no-repeat;
+  background: #1c1d1f url('../images/close.png') center no-repeat;
   cursor: pointer;
 }
 
@@ -711,14 +721,14 @@ label, label + * {
 
 .ui-dialog {
   max-width: 90%;
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
   box-shadow: 0 0 2px rgba(0,0,0,0.15);
   overflow: hidden;
-  background-color: #fff;
+  background-color: #1c1d1f;
   /*override jQuery UI styles, do not delete doubled properties*/
-  border-radius: 0;
+  border-radius: 6px;
   padding: 0;
-  font: normal 14px Arial, Helvetica, sans-serif;
+  font: normal 14px 'Vazirmatn', sans-serif;
 }
 
 .ui-dialog:before {
@@ -732,9 +742,9 @@ label, label + * {
 }
 
 .ui-dialog-titlebar {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   overflow: hidden;
-  background-color: #eee;
+  background-color: #17181a;
   padding: 10px 15px;
   /*override jQuery UI styles, do not delete doubled properties*/
   border-width: 0 0 1px;
@@ -785,7 +795,7 @@ label, label + * {
   padding: 15px;
   line-height: 20px;
   /*override jQuery UI styles, do not delete doubled properties*/
-  background-color: #fff !important;
+  background-color: #1c1d1f !important;
   padding: 15px 15px 20px 15px !important;
   color: var(--gray-color);
 }
@@ -816,7 +826,7 @@ label, label + * {
 
 .ui-dialog-content .back-in-stock-subscription-page .button-1 {
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 15px;
   font-size: 15px;
   color: #fff;
@@ -825,7 +835,7 @@ label, label + * {
 
 .ui-dialog-content .back-in-stock-subscription-page .button-1:hover,
 .ui-dialog-content .back-in-stock-subscription-page .button-1:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .eu-cookie-bar-notification {
@@ -836,9 +846,9 @@ label, label + * {
   width: 320px;
   height: auto;
   margin: -90px -160px 0 0;
-  border: 1px solid #ccc;
+  border: 1px solid #494c50;
   box-shadow: 0 0 2px rgba(0,0,0,0.15);
-  background-color: #fff;
+  background-color: #1c1d1f;
   padding: 20px;
   text-align: center;
 }
@@ -852,7 +862,7 @@ label, label + * {
   min-width: 60px;
   margin: 5px 0 10px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 8px 12px;
   font-size: 14px;
   color: #fff;
@@ -860,7 +870,7 @@ label, label + * {
 
 .eu-cookie-bar-notification button:hover,
 .eu-cookie-bar-notification button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .eu-cookie-bar-notification a {
@@ -881,7 +891,7 @@ label, label + * {
 .admin-header-links {
   background-color: var(--dark-gray-color);
   text-align: center;
-  color: #eee;
+  color: #17181a;
 }
 
 .admin-header-links * {
@@ -909,7 +919,7 @@ label, label + * {
 .header {
   position: relative;
   z-index: 10;
-  width: 95%;
+  width: 100%;
   margin: auto;
   text-align: center;
 }
@@ -917,11 +927,11 @@ label, label + * {
 .header-upper {
   position: relative;
   z-index: 1;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
 }
 
 .header-selectors-wrapper {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 10px 0;
 }
 
@@ -999,7 +1009,7 @@ label, label + * {
   width: 70%;
   max-width: 400px;
   margin: 10px auto 0;
-  background-color: #f6f6f6;
+  background-color: #202124;
   padding: 0 20px;
 }
 
@@ -1052,7 +1062,7 @@ label, label + * {
   min-width: 86px;
   height: 36px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 0 15px;
   text-align: center;
   color: #fff;
@@ -1061,7 +1071,7 @@ label, label + * {
 
 .search-box .search-box-button:hover,
 .search-box .search-box-button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .search-box .ui-autocomplete-loading {
@@ -1074,19 +1084,19 @@ label, label + * {
 
 .ui-autocomplete {
   width: 285px !important;
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
   border-top: none;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #1c1d1f;
   text-align: right;
   /*override jQuery UI styles, do not delete doubled properties*/
   border-radius: 0;
   padding: 0;
-  font: normal 14px Arial, Helvetica, sans-serif;
+  font: normal 14px 'Vazirmatn', sans-serif;
 }
 
 .ui-autocomplete li {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #35373a;
 }
 
 .ui-autocomplete li:first-child {
@@ -1110,7 +1120,7 @@ label, label + * {
 .ui-autocomplete a:hover,
 .ui-autocomplete a:focus,
 .ui-autocomplete a.ui-state-focus {
-  background-color: #f6f6f6 !important;
+  background-color: #202124 !important;
 }
 
 .ui-autocomplete img {
@@ -1126,20 +1136,21 @@ label, label + * {
 
 
 .footer {
-  background-color: #eee;
+  background-color: #17181a;
   text-align: center;
 }
 
 .footer-upper {
-  width: 95%;
+  width: 100%;
   margin-inline: auto;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   overflow: hidden;
   padding-block: 40px;
+  padding-inline: 20px;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  gap: 100px;
+  gap: 40px;
 }
 
 .footer-block .title {
@@ -1169,7 +1180,7 @@ label, label + * {
 
 .follow-us .social ul {
   margin: 0 0 30px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 0 0 30px;
   font-size: 0;
 }
@@ -1227,7 +1238,7 @@ label, label + * {
   float: right;
   height: 36px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 0 15px;
   text-align: center;
   color: #fff;
@@ -1236,7 +1247,7 @@ label, label + * {
 
 .newsletter-subscribe-button:hover,
 .newsletter-subscribe-button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .newsletter-email .options {
@@ -1255,7 +1266,7 @@ label, label + * {
 }*/
 
 .footer-lower {
-  width: 95%;
+  width: 100%;
   margin: auto;
   overflow: hidden;
   padding: 25px 0;
@@ -1308,8 +1319,7 @@ label, label + * {
 .header-menu {
   position: relative;
   z-index: 1;
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
   margin: 0 auto 40px;
 }
 
@@ -1333,12 +1343,12 @@ label, label + * {
   display: inline-block;
   margin-block: 1px;
   color: var(--dark-gray-color);
-  background-color: #fff;
+  background-color: #1c1d1f;
   border-right: none;
 }
 
 .menu > .menu__item {
-  background-color: #f6f6f6;
+  background-color: #202124;
 }
 
 .menu__item:not(.menu-dropdown) {
@@ -1368,7 +1378,7 @@ label, label + * {
 .menu__grid-view, .menu__list-view {
   position: relative;
   padding: 0;
-  background-color: #fff;
+  background-color: #1c1d1f;
   overflow: hidden;
 }
 
@@ -1429,7 +1439,7 @@ label, label + * {
   content: "";
   width: 5px;
   height: 5px;
-  background-color: #ddd;
+  background-color: #35373a;
 }
 
 /** Main menu END **/
@@ -1437,7 +1447,8 @@ label, label + * {
 /** Footer menu START **/
 
 .footer-navigation {
-  width: 85%;
+  width: 100%;
+  max-width: 700px;
 }
 
 .footer-menu {
@@ -1449,7 +1460,7 @@ label, label + * {
 
 .footer-menu__list {
   overflow: hidden;
-  background-color: #fff;
+  background-color: #1c1d1f;
 }
 
 .footer-menu__item {
@@ -1497,8 +1508,8 @@ label, label + * {
 .block .title {
   position: relative;
   margin: 0 0 10px;
-  border-bottom: 1px solid #ddd;
-  background: #f6f6f6 url('../images/toggle-gray.png') left 14px no-repeat;
+  border-bottom: 1px solid #35373a;
+  background: #202124 url('../images/toggle-gray.png') left 14px no-repeat;
   padding: 12px 10px 12px 30px;
   font-size: 20px;
   color: var(--dark-gray-color);
@@ -1507,7 +1518,7 @@ label, label + * {
 
 .block .listbox {
   display: none;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 10px 5px;
 }
 
@@ -1532,7 +1543,7 @@ label, label + * {
   right: -15px;
   width: 5px;
   height: 5px;
-  background-color: #ddd;
+  background-color: #35373a;
 }
 
 .block .list .active > a {
@@ -1614,7 +1625,7 @@ label, label + * {
 .poll strong {
   display: block;
   margin: 10px 0;
-  background-color: #f6f6f6;
+  background-color: #202124;
   padding: 10px 15px;
   font-size: 15px;
   font-weight: normal;
@@ -1677,7 +1688,7 @@ label, label + * {
 }
 
 .home-page-polls .title {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   color: var(--dark-gray-color);
   font-size: 30px;
   font-weight: normal;
@@ -1694,6 +1705,51 @@ label, label + * {
   margin: 10px;
 }
 
+.poll {
+  display: inline-block;
+  max-width: 500px;
+  width: 100%;
+  padding: 24px 28px;
+  background: linear-gradient(160deg, #202124 0%, #17181a 100%);
+  border: 1px solid rgba(199, 203, 208, 0.14);
+  border-radius: 6px;
+}
+
+.poll-display-text {
+  display: block;
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent-blue-color);
+}
+
+.poll-options {
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.poll-options li {
+  display: block;
+  margin: 0 0 10px;
+}
+
+.poll-options input[type="radio"] {
+  accent-color: var(--accent-blue-color);
+  margin-right: 8px;
+}
+
+.poll-options label {
+  color: var(--gray-color);
+  cursor: pointer;
+}
+
+.poll .buttons {
+  margin-top: 18px;
+}
+
 
 /********** CATEGORY PAGE **********/
 
@@ -1701,7 +1757,7 @@ label, label + * {
 
 .breadcrumb {
   margin: 0 0 50px;
-  background-color: #f6f6f6;
+  background-color: #202124;
   padding: 5px 10px;
 }
 
@@ -1741,7 +1797,7 @@ label, label + * {
 
 .contact-vendor .button-2 {
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 15px;
   font-size: 14px;
   color: #fff;
@@ -1750,13 +1806,13 @@ label, label + * {
 
 .contact-vendor .button-2:hover,
 .contact-vendor .button-2:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .product-selectors {
   margin: 0 0 20px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #35373a;
+  border-bottom: 1px solid #35373a;
   padding: 20px 0;
 }
 
@@ -1796,7 +1852,7 @@ label, label + * {
 
 .product-filter .filter-title {
   margin: 0 0 10px;
-  background-color: #f6f6f6;
+  background-color: #202124;
   padding: 10px;
   font-size: 17px;
   color: var(--dark-gray-color);
@@ -1883,14 +1939,27 @@ label, label + * {
   position: relative;
   width: 100%;
   float: right;
-  margin: 0 0 80px;
+  margin: 0 0 40px;
+  padding: 18px 18px 22px;
   text-align: right;
+  background: linear-gradient(160deg, #202124 0%, #17181a 100%);
+  border: 1px solid rgba(199, 203, 208, 0.14);
+  border-radius: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.item-box:hover {
+  transform: translateY(-4px);
+  border-color: rgba(199, 203, 208, 0.45);
+  box-shadow: 0 0 22px rgba(199, 203, 208, 0.25), 0 0 55px rgba(199, 203, 208, 0.12);
 }
 
 .item-box .picture {
   z-index: 1;
-  background-color: #fff;
-  margin: 0 0 20px;
+  background: linear-gradient(145deg, #f4f5f6 0%, #dfe1e3 60%, #cfd2d5 100%);
+  margin: 0 0 16px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .item-box .picture a {
@@ -1923,18 +1992,21 @@ label, label + * {
 }
 
 .item-box:hover .picture a img {
-  opacity: 0.85;
+  opacity: 0.92;
+  -webkit-transform: translateZ(0) scale(1.04);
+  transform: translateZ(0) scale(1.04);
 }
 
 .item-box .details {
-  padding: 0 10px;
+  padding: 0;
 }
 
 .item-box .product-title {
   margin: 0 0 10px;
   font-size: 17px;
-  line-height: 1.2;
-  font-weight: normal;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: 0.2px;
   color: var(--accent-blue-color);
 }
 
@@ -1962,6 +2034,9 @@ label, label + * {
   -ms-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+  /* رفع باگ: این فیلتر ستاره‌های امتیاز رو تقریباً محو و نامرئی
+     می‌کرد (باقی‌مانده‌ی تمی که برای زمینه‌ی تیره طراحی شده بود).
+     الان رنگ طبیعی و طلاییِ خودِ آیکون ستاره نمایش داده می‌شود. */
 }
 
 .item-box .rating div {
@@ -2004,8 +2079,10 @@ label, label + * {
 
 .item-box .actual-price {
   margin: 0 0 0 5px;
-  font-size: 16px;
-  color: var(--gray-color);
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  color: var(--accent-blue-color);
 }
 
 .item-box .tax-shipping-info a {
@@ -2031,7 +2108,7 @@ label, label + * {
 
 .item-box .product-box-add-to-cart-button {
   width: 60%;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   text-align: center;
   font-size: 15px;
   color: #fff;
@@ -2040,14 +2117,14 @@ label, label + * {
 
 .item-box .product-box-add-to-cart-button:hover,
 .item-box .product-box-add-to-cart-button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .item-box .add-to-compare-list-button,
 .item-box .add-to-wishlist-button {
   width: 20%;
-  border-right: 1px solid #fff !important;
-  background-color: #eaeaea;
+  border-right: 1px solid #c6c9cb !important;
+  background-color: #d9dbdd;
   background-position: center;
   background-repeat: no-repeat;
   font-size: 0;
@@ -2065,7 +2142,7 @@ label, label + * {
 .item-box .add-to-compare-list-button:focus,
 .item-box .add-to-wishlist-button:hover,
 .item-box .add-to-wishlist-button:focus {
-  background-color: #ddd;
+  background-color: #35373a;
 }
 
 .home-page-category-grid,
@@ -2120,7 +2197,7 @@ label, label + * {
 
 .product-grid .title {
   margin: 0 0 30px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 0 0 15px;
   font-size: 28px;
   font-weight: normal;
@@ -2139,7 +2216,7 @@ label, label + * {
 }
 
 .manufacturer-grid .picture {
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
 }
 
 .vendor-grid .title {
@@ -2154,7 +2231,7 @@ label, label + * {
 }
 
 .vendor-grid .picture {
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
 }
 
 .pager {
@@ -2177,8 +2254,8 @@ label, label + * {
   display: block;
   min-width: 35px;
   height: 35px;
-  border: 1px solid #ddd;
-  background-color: #eee;
+  border: 1px solid #35373a;
+  background-color: #17181a;
   padding: 8px;
   text-align: center;
   font-size: 14px; /*reset zeroing*/
@@ -2187,7 +2264,7 @@ label, label + * {
 
 .pager li span {
   border-color: transparent;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   color: #fff;
 }
 
@@ -2220,7 +2297,7 @@ label, label + * {
 .pager li a:hover,
 .pager li a:focus {
   border-color: transparent;
-  background-color: #ddd;
+  background-color: #35373a;
 }
 
 
@@ -2233,7 +2310,7 @@ label, label + * {
 
 .product-essential {
   margin: 0 0 40px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 0 0 10px;
 }
 
@@ -2320,7 +2397,7 @@ label, label + * {
 
 .overview .product-name {
   margin: 0 0 25px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 0 0 10px;
 }
 
@@ -2468,7 +2545,7 @@ label, label + * {
 .overview .button-2:focus,
 .variant-overview .button-2:hover,
 .variant-overview .button-2:focus {
-  background-color: #ddd;
+  background-color: #35373a;
 }
 
 .overview .add-to-compare-list-button {
@@ -2637,7 +2714,7 @@ label, label + * {
 }
 
 .tier-prices table td {
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
   padding: 10px;
   color: var(--dark-gray-color);
 }
@@ -2694,7 +2771,7 @@ label, label + * {
 .variant-overview .add-to-cart-button {
   height: 43px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 0 24px;
   font-size: 15px;
   color: #fff;
@@ -2705,7 +2782,7 @@ label, label + * {
 .overview .add-to-cart-button:focus,
 .variant-overview .add-to-cart-button:hover,
 .variant-overview .add-to-cart-button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .product-share-button {
@@ -2730,7 +2807,7 @@ label, label + * {
 
 .product-variant-line {
   margin: 0 0 30px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 0 0 20px;
 }
 
@@ -2779,7 +2856,7 @@ label, label + * {
 }
 
 .search-button-flv:disabled {
-  background-color: #cccccc !important;
+  background-color: #494c50ccc !important;
   cursor: not-allowed;
   opacity: 0.6;
 }
@@ -2791,7 +2868,7 @@ label, label + * {
 .product-filter-level-values-box .title {
   margin: 0 0 10px;
   font-size: 18px;
-  color: #444;
+  color: var(--dark-gray-color);
 }
 
 .product-filter-level-values-box .title strong {
@@ -2801,7 +2878,7 @@ label, label + * {
 .product-filter-level-values-box .sub-title {
   margin: 0 0 5px;
   font-size: 14px;
-  color: #444;
+  color: var(--dark-gray-color);
   font-weight: normal;
 }
 
@@ -2811,7 +2888,7 @@ label, label + * {
 
 .product-specs-box td,
 .product-filter-level-values-box td {
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
   padding: 10px;
 }
 
@@ -2946,20 +3023,20 @@ label, label + * {
 .ui-datepicker {
   width: 280px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-  background-color: #fff;
+  background-color: #1c1d1f;
   text-align: center;
   /*override jQuery UI styles, do not delete doubled properties*/
   border: none;
   border-radius: 0;
   padding: 0;
-  font: normal 14px Arial, Helvetica, sans-serif;
+  font: normal 14px 'Vazirmatn', sans-serif;
   color: var(--gray-color);
 }
 
 .ui-datepicker-header {
   position: relative;
   height: 32px;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   color: #fff;
   /*override jQuery UI styles, do not delete doubled properties*/
   border: none;
@@ -3018,13 +3095,13 @@ label, label + * {
 }
 
 .ui-datepicker-calendar th {
-  background-color: #eee;
+  background-color: #17181a;
 }
 
 .ui-datepicker-calendar th,
 .ui-datepicker-calendar td {
   width: 14.285%;
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
   /*override jQuery UI styles, do not delete doubled properties*/
   padding: 0;
 }
@@ -3087,7 +3164,7 @@ label, label + * {
 }
 
 .attribute-squares .selected-value .attribute-square-container {
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
 }
 
 .attribute-squares li input {
@@ -3103,7 +3180,7 @@ label, label + * {
   width: 200px;
   color: #000000;
   background: #FFFFFF;
-  border: 1px solid #eeeeee;
+  border: 1px solid #17181aeee;
   text-align: center;
   visibility: hidden;
   border-radius: 5px;
@@ -3117,7 +3194,7 @@ label, label + * {
   margin-right: -7px;
   width: 0;
   height: 0;
-  border-bottom: 7px solid #eeeeee;
+  border-bottom: 7px solid #17181aeee;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
 }
@@ -3288,7 +3365,7 @@ label, label + * {
 
 .write-review .button-1 {
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 25px;
   text-align: center;
   font-size: 15px;
@@ -3298,7 +3375,7 @@ label, label + * {
 
 .write-review .button-1:hover,
 .write-review .button-1:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .product-reviews .result,
@@ -3315,9 +3392,9 @@ label, label + * {
 }
 
 .product-review-item .review-item-head {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #35373a;
   overflow: hidden;
-  background-color: #f6f6f6;
+  background-color: #202124;
   padding: 10px;
 }
 
@@ -3347,7 +3424,7 @@ label, label + * {
 
 .product-review-item .reply {
   margin: 15px 0;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #35373a;
 }
 
 .product-review-item .reply-header {
@@ -3452,7 +3529,7 @@ label, label + * {
 
 .wishlist-content .update-wishlist-button,
 .wishlist-content .wishlist-add-to-cart-button {
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   text-transform: uppercase;
 }
 
@@ -3460,7 +3537,7 @@ label, label + * {
 .wishlist-content .update-wishlist-button:focus,
 .wishlist-content .wishlist-add-to-cart-button:hover,
 .wishlist-content .wishlist-add-to-cart-button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .wishlist-content .email-a-friend-wishlist-button {
@@ -3518,7 +3595,7 @@ label, label + * {
   width: auto;
   min-width: 64px;
   min-height: 36px;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   border: none;
   padding: 7px 23px 9px 25px;
   text-align: center;
@@ -3529,7 +3606,7 @@ label, label + * {
 
 .add-wishlist-content .wishlist-add-custom-button:hover,
 .add-wishlist-content .wishlist-add-custom-button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .button-row {
@@ -3586,7 +3663,7 @@ label, label + * {
 .compare-products-page .clear-list {
   display: inline-block;
   margin: 0 0 20px;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 15px;
   font-size: 12px;
   color: #fff;
@@ -3595,7 +3672,7 @@ label, label + * {
 
 .compare-products-page .clear-list:hover,
 .compare-products-page .clear-list:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .compare-products-page .table-wrapper {
@@ -3605,8 +3682,8 @@ label, label + * {
 
 .compare-products-table td {
   min-width: 150px;
-  border: 1px solid #ddd;
-  background-color: #fff;
+  border: 1px solid #35373a;
+  background-color: #1c1d1f;
   padding: 20px;
   text-align: right;
   vertical-align: top;
@@ -3698,7 +3775,7 @@ label, label + * {
 .topic-block-title {
   min-height: 50px;
   margin: 0 0 25px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 0 0 15px;
 }
 
@@ -3767,7 +3844,7 @@ label, label + * {
   min-width: 86px;
   height: 40px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 0 15px;
   color: #fff;
   text-transform: uppercase;
@@ -3775,7 +3852,7 @@ label, label + * {
 
 .enter-password-form button[type="submit"]:hover,
 .enter-password-form button[type="submit"]:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 
@@ -3803,7 +3880,7 @@ label, label + * {
 .apply-vendor-page .button-1 {
   min-width: 140px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 30px;
   text-align: center;
   font-size: 15px;
@@ -3817,7 +3894,7 @@ label, label + * {
 .email-a-friend-page .button-1:focus,
 .apply-vendor-page .button-1:hover,
 .apply-vendor-page .button-1:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .contact-page .topic-block,
@@ -3927,7 +4004,7 @@ label, label + * {
 .return-request-page .button-1 {
   min-width: 140px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 30px;
   text-align: center;
   font-size: 15px;
@@ -3947,7 +4024,7 @@ label, label + * {
 .account-page .button-1:focus,
 .return-request-page .button-1:hover,
 .return-request-page .button-1:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .return-request-page h1 a {
@@ -4059,7 +4136,7 @@ label, label + * {
 }
 
 .login-page .returning-wrapper .buttons {
-  background-color: #fff;
+  background-color: #1c1d1f;
   padding: 30px 0;
 }
 
@@ -4248,9 +4325,9 @@ label, label + * {
 }
 
 .order-filters__input {
-  background-color: #fff;
+  background-color: #1c1d1f;
   height: 36px;
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
   padding: 8px;
   vertical-align: middle;
 }
@@ -4375,7 +4452,7 @@ label, label + * {
 }
 
 .avatar-page .image img {
-  border: 1px solid #ccc;
+  border: 1px solid #494c50;
 }
 
 .avatar-page .button-1 {
@@ -4444,7 +4521,7 @@ label, label + * {
 
 .order-progress {
   margin: 0 0 50px;
-  background-color: #f6f6f6;
+  background-color: #202124;
   padding: 15px 0;
   text-align: center;
 }
@@ -4472,7 +4549,7 @@ label, label + * {
   height: 40px;
   margin: 0 auto 15px;
   border: 1px solid #bbb;
-  background: #fff url('../images/pointer.png') center no-repeat;
+  background: #1c1d1f url('../images/pointer.png') center no-repeat;
 }
 
 .order-progress li.active-step a {
@@ -4523,7 +4600,7 @@ label, label + * {
 
 .shopping-cart-page .common-buttons {
   margin: 0 0 60px;
-  background-color: #f6f6f6;
+  background-color: #202124;
   padding: 20px;
   font-size: 0;
 }
@@ -4533,7 +4610,7 @@ label, label + * {
   min-width: 180px;
   margin: 5px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 20px;
   font-size: 15px;
   color: #fff;
@@ -4541,16 +4618,16 @@ label, label + * {
 
 .shopping-cart-page .common-buttons button:hover,
 .shopping-cart-page .common-buttons button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .shopping-cart-page .common-buttons button:first-child {
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
 }
 
 .shopping-cart-page .common-buttons button:first-child:hover,
 .shopping-cart-page .common-buttons button:first-child:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .checkout-attributes {
@@ -4579,8 +4656,8 @@ label, label + * {
 .checkout-attributes .option-list>li {
   display: inline-block;
   margin: 5px;
-  border: 1px solid #ddd;
-  background-color: #fff;
+  border: 1px solid #35373a;
+  background-color: #1c1d1f;
   padding: 8px 10px;
   font-size: 14px; /*reset zeroing*/
 }
@@ -4609,7 +4686,7 @@ label, label + * {
 
 .cart-footer {
   margin: 0 0 50px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #35373a;
 }
 
 .cart-footer:after {
@@ -4629,7 +4706,7 @@ label, label + * {
 
 .cart-footer .total-info {
   margin: 0 0 20px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 5px 30px 15px;
 }
 
@@ -4703,7 +4780,7 @@ label, label + * {
   display: inline-block;
   min-width: 160px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 20px;
   font-size: 16px;
   color: #fff;
@@ -4712,7 +4789,7 @@ label, label + * {
 
 .cart-footer .checkout-button:hover,
 .cart-footer .checkout-button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .cart-footer .addon-buttons {
@@ -4735,7 +4812,7 @@ label, label + * {
 .cart-collaterals .button-2 {
   display: inline-block;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 15px;
   color: #fff;
   text-transform: uppercase;
@@ -4743,7 +4820,7 @@ label, label + * {
 
 .cart-collaterals .button-2:hover,
 .cart-collaterals .button-2:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .cart-collaterals .title {
@@ -4804,7 +4881,7 @@ label, label + * {
   width: 15px;
   height: 15px;
   border: 1px solid #999;
-  background: #fff url('../images/close.png') center no-repeat;
+  background: #1c1d1f url('../images/close.png') center no-repeat;
   cursor: pointer;
 }
 
@@ -4971,7 +5048,7 @@ label, label + * {
 }
 
 .estimate-shipping-radio:checked + label {
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   color: #99a1a7;
   border: 1px solid #adb8c0;
   border-color: var(--accent-blue-color);
@@ -4980,7 +5057,7 @@ label, label + * {
 .apply-shipping-button {
   border: none;
   padding: 8px 25px;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   color: #fff;
 }
 
@@ -4993,7 +5070,7 @@ label, label + * {
   top: 0;
   z-index: 1;
   position: sticky;
-  background-color: #fff;
+  background-color: #1c1d1f;
 }
 
 .shipping-options {
@@ -5050,7 +5127,7 @@ label, label + * {
   min-width: 180px;
   margin: 5px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 20px;
   font-size: 15px;
   text-align: center;
@@ -5059,7 +5136,7 @@ label, label + * {
 
 .shopping-cart-page .common-buttons .estimate-shipping-button:hover,
 .shopping-cart-page .common-buttons .estimate-shipping-button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 
@@ -5138,7 +5215,7 @@ label, label + * {
   display: inline-block;
   min-width: 140px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 30px;
   text-align: center;
   font-size: 15px;
@@ -5148,7 +5225,7 @@ label, label + * {
 
 .checkout-page .button-1:hover,
 .checkout-page .button-1:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .checkout-page .address-item {
@@ -5390,11 +5467,11 @@ label, label + * {
 .opc .step-title {
   margin: 0 0 1px;
   overflow: hidden;
-  background-color: #f6f6f6;
+  background-color: #202124;
 }
 
 .opc .allow .step-title {
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   cursor: pointer;
 }
 
@@ -5421,7 +5498,7 @@ label, label + * {
 }
 
 .opc .allow .step-title .number {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .opc .step {
@@ -5515,7 +5592,7 @@ label, label + * {
 
 .order-details-page .page-title h1 {
   margin: 0 0 30px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 0 0 10px;
 }
 
@@ -5537,12 +5614,12 @@ label, label + * {
 }
 
 .order-details-page .page-title a.print-order-button {
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
 }
 
 .order-details-page .page-title a.print-order-button:hover,
 .order-details-page .page-title a.print-order-button:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .order-details-page .page-title a.cancel-order-button {
@@ -5576,7 +5653,7 @@ label, label + * {
   display: inline-block;
   margin: 10px 0;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 15px;
   font-size: 12px;
   color: #fff;
@@ -5585,7 +5662,7 @@ label, label + * {
 
 .order-details-page .repost .button-2:hover,
 .order-details-page .repost .button-2:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .order-details-page .download a {
@@ -5607,7 +5684,7 @@ label, label + * {
 .user-agreement-page .button-1 {
   min-width: 140px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 30px;
   text-align: center;
   font-size: 15px;
@@ -5617,7 +5694,7 @@ label, label + * {
 
 .user-agreement-page .button-1:hover,
 .user-agreement-page .button-1:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .order-details-page .tax-shipping-info {
@@ -5656,12 +5733,12 @@ label, label + * {
 }
 
 .order-details-page .actions button:first-child {
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
 }
 
 .order-details-page .actions button:first-child:hover,
 .order-details-page .actions button:first-child:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .order-details-page .totals.section {
@@ -5719,7 +5796,7 @@ label, label + * {
 .search-input .button-1 {
   min-width: 140px;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 30px;
   text-align: center;
   font-size: 15px;
@@ -5729,7 +5806,7 @@ label, label + * {
 
 .search-input .button-1:hover,
 .search-input .button-1:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .search-results {
@@ -5789,7 +5866,7 @@ label, label + * {
   right: 0;
   width: 5px;
   height: 5px;
-  background-color: #ddd;
+  background-color: #35373a;
 }
 
 .sitemap-page .entity a {
@@ -5860,7 +5937,7 @@ label, label + * {
 .news-date {
   display: block;
   margin: 0 0 15px;
-  background-color: #f6f6f6;
+  background-color: #202124;
   padding: 10px;
   font-style: italic;
   color: var(--dark-gray-color);
@@ -5942,7 +6019,7 @@ label, label + * {
 .news-items .buttons .read-more {
   display: inline-block;
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 20px;
   font-size: 12px;
   color: #fff;
@@ -5953,7 +6030,7 @@ label, label + * {
 .blog-posts .buttons .read-more:focus,
 .news-items .buttons .read-more:hover,
 .news-items .buttons .read-more:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .new-comment {
@@ -5974,7 +6051,7 @@ label, label + * {
 
 .new-comment .button-1 {
   border: none;
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 30px;
   text-align: center;
   font-size: 15px;
@@ -5984,7 +6061,7 @@ label, label + * {
 
 .new-comment .button-1:hover,
 .new-comment .button-1:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .comment-list {
@@ -6004,7 +6081,7 @@ label, label + * {
 
 .comment-list .comment {
   margin: 0 0 40px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #35373a;
 }
 
 .comment-list .comment:after {
@@ -6021,8 +6098,8 @@ label, label + * {
 .comment-info .username {
   display: block;
   margin: 0 0 -1px;
-  border: 1px solid #ddd;
-  background-color: #f6f6f6;
+  border: 1px solid #35373a;
+  background-color: #202124;
   padding: 11px 0;
   font-weight: bold;
   color: var(--dark-gray-color);
@@ -6037,7 +6114,7 @@ label, label + * {
   position: relative;
   width: 150px;
   height: 150px;
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
   overflow: hidden;
 }
 
@@ -6080,7 +6157,7 @@ label, label + * {
 
 .news-list-homepage .title {
   margin: 0 0 -1px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 0 0 15px;
   font-size: 30px;
   font-weight: normal;
@@ -6266,7 +6343,7 @@ label, label + * {
 }
 
 .forums-table-section .view-all a {
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
   padding: 10px 15px;
   font-size: 12px;
   color: #fff;
@@ -6275,7 +6352,7 @@ label, label + * {
 
 .forums-table-section .view-all a:hover,
 .forums-table-section .view-all a:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 /* forum-page, topic page */
@@ -6287,7 +6364,7 @@ label, label + * {
 .forum-page .forum-name,
 .forum-topic-page .topic-name {
   margin: 0 0 25px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 0 10px 10px;
 }
 
@@ -6312,12 +6389,12 @@ label, label + * {
 }
 
 .forum-actions .actions .new-topic {
-  background: #eee url('../images/new.png') right center no-repeat;
+  background: #17181a url('../images/new.png') right center no-repeat;
 }
 
 .forum-actions .actions .watch-forum,
 .topic-actions .actions .watch-forum {
-  background: #eee url('../images/watch.png') right center no-repeat;
+  background: #17181a url('../images/watch.png') right center no-repeat;
 }
 
 .forum-actions .actions a:hover,
@@ -6334,23 +6411,23 @@ label, label + * {
 }
 
 .topic-actions .reply-topic-button {
-  background: #eee url('../images/reply.png') right center no-repeat;
+  background: #17181a url('../images/reply.png') right center no-repeat;
 }
 
 .topic-actions .watch-topic-button {
-  background: #eee url('../images/watch.png') right center no-repeat;
+  background: #17181a url('../images/watch.png') right center no-repeat;
 }
 
 .topic-actions .move-topic-button {
-  background: #eee url('../images/move.png') right center no-repeat;
+  background: #17181a url('../images/move.png') right center no-repeat;
 }
 
 .topic-actions .edit-topic-button {
-  background: #eee url('../images/edit_.png') right center no-repeat;
+  background: #17181a url('../images/edit_.png') right center no-repeat;
 }
 
 .topic-actions .delete-topic-button {
-  background: #eee url('../images/remove_.png') right center no-repeat;
+  background: #17181a url('../images/remove_.png') right center no-repeat;
 }
 
 .topic-actions.lower .actions {
@@ -6359,7 +6436,7 @@ label, label + * {
 
 .active-discussions-page .forums-table-section-title {
   margin: 0 0 25px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   padding: 0 10px 10px;
 }
 
@@ -6376,11 +6453,11 @@ label, label + * {
 
 .topic-post {
   margin: 0 0 30px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #35373a;
 }
 
 .topic-post:last-child {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
 }
 
 .topic-post:after {
@@ -6401,8 +6478,8 @@ label, label + * {
 .topic-post .username {
   display: block;
   margin: 0 0 -1px;
-  border: 1px solid #ddd;
-  background-color: #f6f6f6;
+  border: 1px solid #35373a;
+  background-color: #202124;
   padding: 11px 0;
   font-weight: bold;
   color: var(--dark-gray-color);
@@ -6418,7 +6495,7 @@ label, label + * {
   position: relative;
   width: 150px;
   height: 150px;
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
   overflow: hidden;
 }
 
@@ -6475,7 +6552,7 @@ label, label + * {
 
 .topic-post .post-time {
   margin: 0 0 15px;
-  background-color: #f6f6f6;
+  background-color: #202124;
   padding: 10px 15px;
   font-size: 13px;
   font-weight: bold;
@@ -6567,14 +6644,14 @@ label, label + * {
 .topic-post .quote,
 .latest-posts .quote {
   margin: 10px 0;
-  border: 1px dashed #ccc;
+  border: 1px dashed #494c50;
   background-color: #f9f9f9;
   padding: 10px;
   color: var(--gray-color);
 }
 
 .topic-post .signature {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #35373a;
   padding: 20px;
   font-size: 13px;
   font-style: italic;
@@ -6653,7 +6730,7 @@ label, label + * {
 .private-message-send-page .bb-code-editor-wrapper {
   max-width: 400px;
   margin: 20px auto;
-  background-color: #ddd;
+  background-color: #35373a;
   padding: 10px;
 }
 
@@ -6702,7 +6779,7 @@ label, label + * {
 .forum-edit-page .buttons .button-1,
 .move-topic-page .buttons .button-1,
 .private-messages .buttons .button-1 {
-  background-color: var(--accent-blue-color);
+  background: var(--accent-button-color);
 }
 
 .forum-edit-page .buttons .button-1:hover,
@@ -6711,7 +6788,7 @@ label, label + * {
 .move-topic-page .buttons .button-1:focus,
 .private-messages .buttons .button-1:hover,
 .private-messages .buttons .button-1:focus {
-  background-color: var(--accent-blue-active-color);
+  background: var(--accent-button-active-color);
 }
 
 .private-message-send-page a {
@@ -6731,7 +6808,7 @@ label, label + * {
   border-radius: 0;
   background: none;
   padding: 0;
-  font: normal 14px Arial, Helvetica, sans-serif;
+  font: normal 14px 'Vazirmatn', sans-serif;
   color: var(--gray-color);
 }
 
@@ -6741,7 +6818,7 @@ label, label + * {
 
 .ui-tabs-nav {
   margin: 0 0 30px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #35373a;
   overflow: hidden;
   font-size: 0;
   /*override jQuery UI styles, do not delete doubled properties*/
@@ -6768,7 +6845,7 @@ label, label + * {
 
 .ui-tabs-nav li a {
   display: block;
-  border: 1px solid #ddd;
+  border: 1px solid #35373a;
   padding: 12px 24px;
   text-align: center;
   font-size: 18px;
@@ -6779,7 +6856,7 @@ label, label + * {
 }
 
 .ui-tabs-nav li.ui-state-active a {
-  background-color: #eee;
+  background-color: #17181a;
   color: var(--accent-blue-color);
 }
 
@@ -6851,7 +6928,7 @@ label, label + * {
 }
 
 .private-message-view-page .message-body {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #35373a;
   background-color: #f9f9f9;
   padding: 30px 20px;
   line-height: 22px;
@@ -6869,7 +6946,7 @@ label, label + * {
   /*override jQuery UI styles, do not delete doubled properties*/
   line-height: normal;
   font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Vazirmatn', sans-serif;
   color: var(--gray-color);
 }
 
@@ -6895,7 +6972,7 @@ label, label + * {
   /*override jQuery UI styles, do not delete doubled properties*/
   line-height: normal;
   font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Vazirmatn', sans-serif;
   color: var(--gray-color);
 }
 
@@ -6905,8 +6982,8 @@ label, label + * {
 
 .latest-posts .topic-title {
   margin: 0 0 20px;
-  border-top: 1px solid #ddd;
-  background: #f6f6f6;
+  border-top: 1px solid #35373a;
+  background: #202124;
   padding: 10px;
   font-size: 16px;
 }
@@ -6934,11 +7011,11 @@ label, label + * {
 
 .csharpcode {
   margin: 10px 0;
-  border: 1px dashed #ccc;
-  background-color: #fff;
+  border: 1px dashed #494c50;
+  background-color: #1c1d1f;
   padding: 10px;
   font-family: "Courier New", Courier, monospace;
-  color: #000;
+  color: var(--dark-gray-color);
 
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -6979,7 +7056,7 @@ label, label + * {
 .csharpcode .alt {
   width: 100%;
   margin: 0;
-  background-color: #f6f6f6;
+  background-color: #202124;
 }
 
 .csharpcode .lnum {
@@ -7053,7 +7130,7 @@ label, label + * {
     float: right;
     width: 100%;
     margin: 40px 0 0;
-    border: 1px solid #ddd;
+    border: 1px solid #35373a;
   }
 
   .cart td {
@@ -7064,19 +7141,19 @@ label, label + * {
 
   .cart td.remove-from-cart {
     margin: 0 0 15px;
-    border-bottom: 1px solid #ddd;
-    background-color: #eee;
+    border-bottom: 1px solid #35373a;
+    background-color: #17181a;
     padding: 10px;
   }
 
   .cart td.product-picture {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #35373a;
     padding: 15px 10px 5px;
   }
 
   .cart td.product {
     min-width: 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #35373a;
     padding: 5px 10px 15px;
     text-align: center;
   }
@@ -7117,7 +7194,7 @@ label, label + * {
     float: right;
     width: 100%;
     margin: 40px 0 0;
-    border: 1px solid #ddd;
+    border: 1px solid #35373a;
   }
 
   .order-details-page .data-table td {
@@ -7129,7 +7206,7 @@ label, label + * {
   .order-details-page .data-table td.product,
   .order-details-page .data-table td.tracking-number {
     min-width: 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #35373a;
     padding: 5px 10px 15px;
     text-align: center;
   }
@@ -7145,19 +7222,18 @@ label, label + * {
   .header-menu {
     position: relative;
     z-index: 1;
-    width: 90%;
-    max-width: 600px;
+    width: 100%;
     margin: 0 auto 40px;
   }
 
 
 
   .sublist .sublist li {
-    background-color: #f6f6f6;
+    background-color: #202124;
   }
 
   .sublist .sublist .sublist li {
-    background-color: #fff;
+    background-color: #1c1d1f;
   }
 
   .block-category-navigation {
@@ -7202,7 +7278,7 @@ label, label + * {
 
   .master-wrapper-content,
   .header-menu {
-    width: 92.5%;
+    width: 100%;
   }
 
 
@@ -7411,7 +7487,7 @@ label, label + * {
 
 
   .master-wrapper-content {
-    width: 94%;
+    width: 100%;
   }
 
   .home-page-polls li {
@@ -7746,13 +7822,13 @@ label, label + * {
   }
 
   .shipping-method .method-name {
-    background-color: #f6f6f6;
+    background-color: #202124;
     padding: 10px;
   }
 
   .payment-method .payment-logo {
     display: block;
-    background-color: #f6f6f6;
+    background-color: #202124;
     padding: 10px;
   }
 
@@ -7838,7 +7914,7 @@ label, label + * {
   }
 
   .comment-list .comment:last-child {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #35373a;
   }
 
   .comment-info {
@@ -7867,7 +7943,7 @@ label, label + * {
   .comment-content {
     display: table-cell;
     width: 85%;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #35373a;
     vertical-align: top;
     text-align: right;
   }
@@ -7875,7 +7951,7 @@ label, label + * {
   .comment-time {
     min-height: 40px;
     margin: 0;
-    background-color: #f6f6f6;
+    background-color: #202124;
     padding: 10px 15px;
     font-size: 14px;
     font-weight: normal;
@@ -7979,7 +8055,7 @@ label, label + * {
   .topic-post .post-content {
     display: table-cell;
     width: 85%;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #35373a;
     vertical-align: top;
     text-align: right;
   }
@@ -7987,7 +8063,7 @@ label, label + * {
   .topic-post .post-head {
     min-height: 40px;
     overflow: hidden;
-    background-color: #f6f6f6;
+    background-color: #202124;
   }
 
   .topic-post .post-time {
@@ -8016,7 +8092,7 @@ label, label + * {
 
   .topic-post .post-actions a.post-link-button {
     margin: 0 10px 0 0;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #35373a;
     text-align: center;
   }
 
@@ -8098,7 +8174,7 @@ label, label + * {
   }
 
   .post-text blockquote {
-    border-left: 4px solid #ccc;
+    border-left: 4px solid #494c50;
     padding: 0.5em 10px;
     color: var(--gray-color);
     margin: 0 0 1em 0;
@@ -8274,7 +8350,7 @@ label, label + * {
     z-index: 100;
     width: 300px;
     box-shadow: 0 0 2px rgba(0,0,0,0.25);
-    background-color: #fff;
+    background-color: #1c1d1f;
   }
 
   .flyout-cart.active {
@@ -8299,8 +8375,8 @@ label, label + * {
   }
 
   .mini-shopping-cart .items {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #35373a;
+    border-bottom: 1px solid #35373a;
     margin: 0 0 20px;
   }
 
@@ -8377,7 +8453,7 @@ label, label + * {
   .mini-shopping-cart button[type="button"] {
     display: inline-block;
     border: none;
-    background-color: var(--accent-blue-color);
+    background: var(--accent-button-color);
     padding: 10px 20px;
     font-size: 12px;
     color: #fff;
@@ -8386,7 +8462,7 @@ label, label + * {
 
   .mini-shopping-cart button[type="button"]:hover,
   .mini-shopping-cart button[type="button"]:focus {
-    background-color: var(--accent-blue-active-color);
+    background: var(--accent-button-active-color);
   }
 
   .header-lower {
@@ -8420,10 +8496,10 @@ label, label + * {
   .header-menu {
     position: relative;
     z-index: 5;
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto 30px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #35373a;
+    border-bottom: 1px solid #35373a;
     padding: 0;
     text-align: center;
   }
@@ -8458,12 +8534,12 @@ label, label + * {
   .menu > .menu__item {
     padding-inline: 20px;
     padding-block: 0px;
-    background-color: #fff;
+    background-color: #1c1d1f;
   }
 
 
   .menu > .menu__item:not(:first-child) {
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #35373a;
   }
 
   .menu__item {
@@ -8493,16 +8569,15 @@ label, label + * {
   .menu__grid-view {
     position: absolute;
     left: 0;
-    background-color: #fff;
+    background-color: #1c1d1f;
     padding: 20px;
     box-shadow: 0 0 2px rgba(0, 0, 0, .2);
     width: 100%;
-    max-width: 1200px;
     z-index: 1000;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    border-radius: 2px;
+    border-radius: 4px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
@@ -8519,7 +8594,7 @@ label, label + * {
     visibility: hidden;
     transform: translateX(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    background-color: #fff;
+    background-color: #1c1d1f;
     box-shadow: 0 0 2px rgba(0, 0, 0, .2);
     padding: 10px 0;
     border-radius: 2px;
@@ -8605,14 +8680,14 @@ label, label + * {
   }
 
   .menu__list-view .menu__link:hover {
-    background-color: #f6f6f6;
+    background-color: #202124;
   }
 
   .menu__item .menu__item .menu__link::before, .menu__group .menu__link::before {
     content: "";
     width: 5px;
     height: 5px;
-    background-color: #ddd;
+    background-color: #35373a;
   }
 
   .menu__item:hover > .menu__item-toggle,
@@ -8738,7 +8813,7 @@ label, label + * {
 
   .block .title {
     margin: 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #35373a;
     background: none;
     cursor: auto;
   }
@@ -9191,7 +9266,7 @@ label, label + * {
 
 
   .master-wrapper-content {
-    width: 1200px;
+    width: 100%;
   }
 
   .inputs label {
@@ -9211,7 +9286,7 @@ label, label + * {
 
 
   .header {
-    width: 1200px;
+    width: 100%;
   }
 
 
@@ -9219,7 +9294,7 @@ label, label + * {
 
 
   .header-menu {
-    width: 1200px;
+    width: 100%;
   }
 
 
@@ -9227,7 +9302,7 @@ label, label + * {
 
 
   .footer-upper {
-    width: 1200px;
+    width: 100%;
     padding: 35px 30px;
   }
 
@@ -9236,7 +9311,7 @@ label, label + * {
   }
 
   .footer-lower {
-    width: 1200px;
+    width: 100%;
     padding: 25px 20px;
   }
 
@@ -9366,3 +9441,2804 @@ a.skip:hover {
   width: 100%;
   font-size: 16px;
 }
+
+.swiper-pagination-bullet {
+  background: #6b6e72;
+  opacity: 1;
+}
+
+/* رفع باگ بزرگ: این بخش «تم لوکس تیره‌ی قبلی» بود که هیچ‌وقت به تم
+   روشنِ بازطراحی منتقل نشده بود؛ نتیجه‌اش این بود که تقریباً همه‌ی
+   اینپوت‌های سایت (فرم ورود، ثبت‌نام، حساب کاربری، تسویه‌حساب، نظرات،
+   خبرنامه، جستجوی فیلترها و...) پس‌زمینه‌ی تقریباً مشکی داشتند. */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  background-color: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong);
+  color: var(--rd-text);
+  border-radius: 8px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--rd-jade);
+}
+
+/* پرشدن خودکار مرورگر (autofill رمز/ایمیل ذخیره‌شده) هم همین پس‌زمینه‌ی
+   مشکی را داشت؛ اینجا هم به رنگ روشن برمی‌گردد. */
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 1000px var(--rd-surface);
+  -webkit-text-fill-color: var(--rd-text);
+}
+
+/* یک قانون قدیمی و اختصاصی‌تر («.inputs input[type=...]») هم مستقل از
+   بالا پس‌زمینه‌ی مشکی داشت (و چون اختصاصی‌تر است، حتی با قوانین بالا
+   هم بازنویسی نمی‌شد)؛ این کلاس دور تک‌تک ردیف‌های اکثر فرم‌های سایت
+   (ورود، ثبت‌نام، حساب کاربری، تسویه‌حساب) پیچیده شده، پس اهمیت بالایی
+   دارد. */
+.inputs input[type="text"],
+.inputs input[type="email"],
+.inputs input[type="tel"],
+.inputs input[type="password"],
+.inputs select,
+.inputs textarea {
+  background-color: var(--rd-surface);
+}
+
+.inputs .option-list li {
+  border-color: var(--rd-stroke-strong);
+  background-color: var(--rd-surface);
+}
+
+
+/* =========================================================================
+   REDESIGN OVERRIDE — «فروشگاه شما» بوتیک لباس (تم روشن)
+   این بخش در انتهای فایل اضافه شده و رنگ‌ها، تایپوگرافی و چیدمان صفحه‌ی
+   اصلی را با حفظ کامل HTML/JS موجود تغییر می‌دهد. تمام قوانین با
+   ویژگی‌های منطقی (logical properties) نوشته شده‌اند تا هم در حالت RTL و
+   هم LTR درست کار کنند.
+   پالت رنگ: کرم روشن (paper) + سبز جنگلی تیره (forest) + طلایی کم‌رنگ (amber)
+   دلیل تغییر از تم تیره‌ی قبلی: روی پس‌زمینه‌ی تیره، محصولات با رنگ روشن/
+   سفید کنتراست نامناسبی داشتند؛ پس‌زمینه‌ی روشن این مشکل را برطرف می‌کند.
+   ========================================================================= */
+
+:root {
+  /* رنگ‌های پایه‌ی تم قبلی به پالت جدید نگاشت می‌شوند */
+  --accent-blue-color: #B9862F;        /* عنوان محصول، قیمت */
+  --accent-blue-active-color: #96691E; /* هاور */
+  --gray-color: #5B6355;               /* متن بدنه */
+  --dark-gray-color: #1F2A20;          /* عنوان‌ها */
+  --accent-button-color: #3B6B54;      /* دکمه‌های عمومی (سبز جنگلی) */
+  --accent-button-active-color: #2B4F3E;
+  --error-red-color: #B3412A;
+  --success-green-color: #3B6B54;
+
+  /* توکن‌های جدید طراحی — تم روشن */
+  --rd-bg: #FBF9F4;                    /* کرم کاغذی: پس‌زمینه‌ی صفحه */
+  --rd-bg-soft: #1F3A2E;               /* سبز جنگلی تیره: هدر بالا/فوتر/نوار دسته‌ها */
+  --rd-surface: #FFFFFF;               /* کارت‌ها و ورودی‌ها روی پس‌زمینه‌ی کرم */
+  --rd-surface-2: #F1F5EF;             /* سبز خیلی کم‌رنگ: پس‌زمینه‌ی عکس محصول
+                                           (مهم‌ترین تغییر برای کنتراست لباس سفید) */
+  --rd-stroke: rgba(31, 58, 46, 0.10);
+  --rd-stroke-strong: rgba(31, 58, 46, 0.18);
+  --rd-text: #1F2A20;                  /* متن اصلی روی زمینه‌ی روشن */
+  --rd-text-dim: #4B5546;
+  --rd-text-faint: #7C8577;
+  --rd-gold: #B9862F;                  /* طلایی/کهربایی: لهجه، نه دکمه‌ی اصلی */
+  --rd-gold-soft: #96691E;
+  --rd-jade: #3B6B54;                  /* سبز جنگلی: رنگ اصلی دکمه‌ها */
+  --rd-jade-soft: #2B4F3E;
+  --rd-rust: #B3412A;
+  --rd-radius: 16px;
+
+  /* متن روی پنل‌های تیره (هدر بالا، فوتر، نوار دسته‌ها) */
+  --rd-onpanel: rgba(255, 255, 255, 0.88);
+  --rd-onpanel-strong: #FFFFFF;
+  --rd-onpanel-faint: rgba(255, 255, 255, 0.6);
+  --rd-onpanel-stroke: rgba(255, 255, 255, 0.16);
+}
+
+/* ---------- پس‌زمینه و تایپوگرافی پایه ---------- */
+
+body {
+  background: var(--rd-bg);
+  color: var(--rd-text-dim);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: var(--rd-text);
+}
+
+a { transition: color .15s ease; }
+
+:focus-visible {
+  outline: 2px solid var(--rd-jade);
+  outline-offset: 2px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  background-color: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong);
+  color: var(--rd-text);
+  border-radius: 8px;
+}
+
+/* ---------- دکمه‌های عمومی ---------- */
+/* در بوتیک، سبز جنگلی رنگ اصلیِ اکشن است؛ طلایی فقط برای لهجه/نشان است. */
+
+.button-1, .button-2 {
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  transition: background .15s ease, transform .15s ease, border-color .15s ease;
+}
+
+.button-1 { background: var(--rd-jade); color: #FFFFFF; }
+.button-1:hover, .button-1:focus { background: var(--rd-jade-soft); }
+
+.button-2 { background: var(--rd-jade); color: #FFFFFF; }
+.button-2:hover, .button-2:focus { background: var(--rd-jade-soft); }
+
+/* ---------- هدر بالایی (ارز/زبان/ثبت‌نام/سبد) ---------- */
+/* طبق درخواست کاربر، الان همان پس‌زمینه‌ی روشن و متن تیره‌ی حالت
+   دسکتاپ است (نه پنل سبز تیره)، تا هدر در همه‌ی سایزها یک‌دست باشد. */
+
+.header-upper {
+  background: var(--rd-surface);
+  border-color: var(--rd-stroke);
+}
+
+.header-selectors-wrapper {
+  border-color: var(--rd-stroke);
+}
+
+.header-selectors-wrapper select {
+  background: transparent;
+  border: none;
+  color: var(--rd-text-faint);
+}
+
+.header-links span,
+.header-links a {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  color: var(--rd-text-dim);
+}
+
+.header-links a:hover,
+.header-links a:focus {
+  color: var(--rd-jade);
+}
+
+/* داخل .header-links a که خودش flex است، بدون align-self این بج کشیده
+   می‌شد و ارتفاعش با کل لینک (۴۰px+) برابر می‌شد؛ الان یک دایره‌ی
+   کوچک و ثابت است، مستقل از ارتفاع لینک اطرافش. */
+.wishlist-qty,
+.cart-qty {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px !important;
+  min-width: 18px;
+  min-height: 18px !important;
+  margin-inline-start: 4px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--rd-gold);
+  color: #2A1E08;
+  font-size: 10.5px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* ارتفاع هم‌اندازه‌ی نوار جستجو (۴۰px) در همه‌ی حالت‌ها */
+#topcartlink {
+  display: inline-flex !important;
+  align-items: center;
+  height: 40px;
+  background: var(--rd-surface-2);
+  border: 1px solid var(--rd-stroke-strong);
+  border-radius: 999px;
+}
+
+#topcartlink a {
+  display: flex;
+  align-items: center;
+  background-image: none;
+  padding: 0;
+  line-height: 1;
+}
+
+.header-links span,
+.header-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+}
+
+/* ---------- هدر پایینی: لوگو + جستجو ---------- */
+/* این بخش روی پس‌زمینه‌ی کرمِ صفحه است (نه پنل تیره)، پس متن تیره است. */
+
+.header-lower {
+  background: var(--rd-surface);
+}
+
+.header-logo a img {
+  max-height: 40px;
+  width: auto;
+}
+
+.search-box input.search-box-text {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong);
+  border-inline-end: none;
+  color: var(--rd-text);
+  border-start-start-radius: 999px;
+  border-end-start-radius: 999px;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+  padding-inline-start: 16px;
+}
+
+.search-box .search-box-button {
+  background: var(--rd-jade);
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: none;
+  border-start-end-radius: 999px;
+  border-end-end-radius: 999px;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+.search-box .search-box-button:hover,
+.search-box .search-box-button:focus {
+  background: var(--rd-jade-soft);
+}
+
+/* ---------- هدر دسکتاپ: همه در یک ردیف ---------- */
+/* به‌جای دو ردیف جدا (نوار بالا + لوگو/سرچ)، هر دو بخش با display:contents
+   از حالت جعبه‌ای خارج می‌شوند و فرزندانشان مستقیماً آیتم‌های فلکس هدر
+   می‌شوند؛ با order چیدمان دلخواه (لوگو، سرچ، لینک‌ها، انتخاب‌گرها)
+   بدون نیاز به تغییر HTML به‌دست می‌آید. */
+
+@media all and (min-width: 1001px) {
+  .header {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 24px;
+    padding-inline: 40px;
+    padding-block: 16px;
+    text-align: start;
+    background: var(--rd-surface);
+    border-bottom: 1px solid var(--rd-stroke);
+  }
+
+  .header-upper,
+  .header-lower {
+    display: contents;
+  }
+
+  /* روی دسکتاپ لوگو/سرچ/لینک‌ها همه روی زمینه‌ی روشنِ هدر می‌نشینند،
+     پس لینک‌های ثبت‌نام/ورود/سبد اینجا باید تیره باشند، نه روشن. */
+  .header-links span,
+  .header-links a {
+    color: var(--rd-text-dim);
+  }
+
+  .header-links a:hover,
+  .header-links a:focus {
+    color: var(--rd-jade);
+  }
+
+  #topcartlink {
+    background: var(--rd-surface-2);
+    border: 1px solid var(--rd-stroke-strong);
+  }
+
+  .header-selectors-wrapper select {
+    color: var(--rd-text-faint);
+  }
+
+  .header-logo {
+    order: 1;
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .header-logo a img {
+    max-height: 38px;
+  }
+
+  .search-box.store-search-box {
+    order: 2;
+    flex: 0 1 340px;
+    max-width: 340px;
+    margin-inline-end: auto;
+  }
+
+  .search-box form {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .search-box input.search-box-text {
+    flex: 1 1 auto;
+    width: auto;
+  }
+
+  .header-links-wrapper {
+    order: 3;
+    flex: 0 0 auto;
+    padding: 0;
+  }
+
+  .header-links ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-links li {
+    margin-inline: 8px;
+  }
+
+  .header-selectors-wrapper {
+    order: 4;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    padding: 0;
+    margin-inline-start: 8px;
+    padding-inline-start: 16px;
+    border-inline-start: 1px solid var(--rd-stroke);
+  }
+
+  .header-selectors-wrapper > div {
+    display: block;
+    width: auto;
+    margin: 0;
+  }
+
+  .header-selectors-wrapper select {
+    width: auto;
+    font-size: 12px;
+  }
+
+  #topcartlink {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 6px 16px;
+  }
+}
+
+/* ---------- هدر موبایل: جمع‌وجور و حرفه‌ای ---------- */
+
+@media all and (max-width: 1000px) {
+  .header {
+    text-align: start;
+    padding-inline: 14px;
+  }
+
+  .header-upper {
+    display: flex;
+    flex-direction: column;
+    border-bottom: none;
+  }
+
+  /* لینک‌های مهم‌تر (سبد خرید/علاقه‌مندی) قبل از ارز/زبان قرار می‌گیرند */
+  .header-links-wrapper {
+    order: 1;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rd-stroke);
+  }
+
+  .header-selectors-wrapper {
+    order: 2;
+  }
+
+  .header-links ul {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    font-size: 0;
+  }
+
+  .header-links ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-links li {
+    margin: 0;
+    flex: 0 0 auto;
+  }
+
+  /* دو گروه جدا، هرکدام یک طرف: سبد خرید/علاقه‌مندی (مهم‌ترند) یک طرف؛
+     حساب کاربری (ثبت‌نام+ورود، یا بعد از ورود: حساب+خروج) طرف دیگر.
+     چون این دو مورد همیشه اولین دو <li> هستند (چه ثبت‌نام/ورود باشند
+     چه حساب‌کاربری/خروج)، nth-child مستقل از وضعیت لاگین کار می‌کند. */
+  .header-links li:nth-child(1) {
+    order: 3;
+    margin-inline-start: auto;
+  }
+
+  .header-links li:nth-child(2) { order: 4; }
+  .header-links li:nth-child(3) { order: 1; } /* علاقه‌مندی */
+  #topcartlink { order: 2; } /* سبد خرید */
+
+  /* هدر روشن است (هم‌رنگ نسخه‌ی دسکتاپ)؛ متن تیره، بدون کادر یا
+     پس‌زمینه‌ی جداگانه. هر لینک یک آیکون کوچک (SVG داخلِ همین فایل
+     CSS، بدون لینک به هیچ CDN‌ای) دارد. برای کاهش اسکرول افقی، دیگر
+     متن کنار آیکون‌ها نشان داده نمی‌شود — فقط آیکون معنادار. خود متن
+     («ثبت نام»، «ورود»، «علاقه‌مندی‌ها»، «سبد خرید»، نام حساب کاربری،
+     «خروج») در کد صفحه باقی می‌ماند (برای صفحه‌خوان‌ها/سئو) و فقط از
+     دید کاربر با تکنیک sr-only پنهان است؛ نه display:none، چون آن
+     روش از دسترسی‌پذیری هم حذفش می‌کند. */
+  .header-links a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--rd-surface-2);
+    border: 1px solid var(--rd-stroke);
+    color: var(--rd-text-dim);
+    font-size: 0;
+  }
+
+  .header-links a::before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    flex: 0 0 auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  /* این دو (متن ثبت‌نام/ورود/نام‌کاربری/خروج، و متن علاقه‌مندی/سبد) از
+     نوع فرزندِ داخل لینک‌اند؛ چون خودِ ".header-links a" دیگر با یک
+     قانون span-محور کنترل نمی‌شود (سلکتور بالا اختصاصی‌تر شده)، اینجا
+     دیگر نیازی به !important یا زیادکردنِ اختصاصیت نیست. */
+  .wishlist-label,
+  .cart-label {
+    position: absolute !important;
+    display: block !important;
+    width: 1px !important;
+    height: 1px !important;
+    min-height: 0 !important;
+    line-height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  /* عدد سبد/علاقه‌مندی روی گوشه‌ی دایره سوار می‌شود (مثل اپ‌ها)، به‌جای
+     اینکه عرض اضافه بگیرد. */
+  .wishlist-qty,
+  .cart-qty {
+    position: absolute !important;
+    top: -3px;
+    inset-inline-end: -3px;
+    margin: 0 !important;
+    font-size: 10.5px;
+  }
+
+  /* آیکون‌های حساب کاربری: هرکدام متناسب با موضوعش، از الگوهای رایج
+     وب (نه یک آدمک تکراری برای همه). */
+
+  /* ثبت‌نام: آدمک + علامت جمع (user-plus) */
+  .header-links a.ico-register::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M2 21c0-4 3.1-7 7-7s7 3 7 7'/%3E%3Cpath d='M19 8v6'/%3E%3Cpath d='M22 11h-6'/%3E%3C/svg%3E");
+  }
+
+  /* ورود: فلش رو به داخلِ یک درگاه (sign-in) */
+  .header-links a.ico-login::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4'/%3E%3Cpath d='M10 17l5-5-5-5'/%3E%3Cpath d='M15 12H3'/%3E%3C/svg%3E");
+  }
+
+  /* حساب کاربری (بعد از ورود): آدمک ساده */
+  .header-links a.ico-account::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 20c0-4 3.6-7 8-7s8 3 8 7'/%3E%3C/svg%3E");
+  }
+
+  /* خروج: فلش رو به بیرونِ یک درگاه (sign-out) */
+  .header-links a.ico-logout::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'/%3E%3Cpath d='M16 17l5-5-5-5'/%3E%3Cpath d='M21 12H9'/%3E%3C/svg%3E");
+  }
+
+  .header-links a.ico-wishlist::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-6.7-4.3-9.1-8.4C1.2 9.4 2.5 5.8 6 5.3c2-.3 3.7.8 6 2.8 2.3-2 4-3.1 6-2.8 3.5.5 4.8 4.1 3.1 7.3C18.7 16.7 12 21 12 21z'/%3E%3C/svg%3E");
+  }
+
+  .header-links a.ico-cart::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8h12l-1 12H7L6 8z'/%3E%3Cpath d='M9 8V6a3 3 0 0 1 6 0v2'/%3E%3C/svg%3E");
+  }
+
+  #topcartlink {
+    display: inline-flex;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+
+  #topcartlink a {
+    padding: 0;
+  }
+
+  /* ردیف دوم: ارز/زبان به‌صورت فشرده و کنار هم */
+  .header-selectors-wrapper {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--rd-stroke);
+    padding: 8px 0;
+  }
+
+  .header-selectors-wrapper > div {
+    display: block;
+    width: auto;
+    flex: 1 1 0;
+    margin: 0;
+  }
+
+  .header-selectors-wrapper select {
+    width: 100%;
+    height: 30px;
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+
+  /* ردیف سوم: لوگو و سرچ در یک ردیف، روی زمینه‌ی روشن */
+  .header-lower {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-block: 14px;
+  }
+
+  .header-logo {
+    flex: 0 0 auto;
+    margin: 0;
+    text-align: start;
+  }
+
+  .header-logo a img {
+    max-height: 30px;
+  }
+
+  .search-box.store-search-box {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* یه جای دیگه در تم پایه، فرم سرچ روی موبایل inline-block می‌شد و
+     دکمه به‌جای کنار ورودی، زیرش می‌افتاد؛ اینجا با انتخاب‌گر آیدی
+     (اولویت بالا) قطعی به flex برمی‌گردانیمش. */
+  #small-search-box-form,
+  .search-box form {
+    display: flex !important;
+    justify-content: stretch;
+    flex-wrap: nowrap !important;
+    gap: 0;
+  }
+
+  .search-box input.search-box-text {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+  }
+
+  .search-box .search-box-button {
+    flex: 0 0 auto;
+  }
+}
+
+/* ---------- منوی دسته‌بندی‌ها ---------- */
+/* برخلاف هدر بالا/فوتر، این نوار مثل رفرنس بوتیک سفید و کم‌ارتفاع است،
+   نه سبز تیره؛ رنگ سبز فقط برای هاور/فعال به‌کار می‌رود. تمام
+   پس‌زمینه‌های تیره‌ی قدیمیِ تم پایه با !important خنثی می‌شوند تا هیچ
+   رنگ سیاه/تیره‌ای از قوانین اصلی تم باقی نماند. */
+
+.header-menu {
+  background: var(--rd-surface) !important;
+  border-bottom: 1px solid var(--rd-stroke);
+  margin-block-end: 24px;
+}
+
+.menu__toggle {
+  background-color: var(--rd-gold) !important;
+  background-image: none !important;
+  color: #2A1E08 !important;
+  border-radius: 8px;
+}
+
+.menu__item-toggle,
+.menu__link {
+  color: var(--rd-text) !important;
+  font-weight: 600;
+}
+
+.menu__item:hover > .menu__item-toggle,
+.menu__link:hover {
+  color: var(--rd-jade) !important;
+}
+
+.menu__item,
+.menu > .menu__item,
+.menu__grid-view,
+.menu__list-view {
+  background-color: var(--rd-surface) !important;
+}
+
+.menu > .menu__item:not(:last-child) {
+  border-color: var(--rd-stroke);
+}
+
+.menu__list-view {
+  border: 1px solid var(--rd-stroke-strong);
+  border-radius: 10px;
+  box-shadow: 0 16px 34px -12px rgba(31, 58, 46, .28);
+}
+
+.menu__list-view .menu__item {
+  background-color: transparent !important;
+}
+
+.menu__list-view .menu__link,
+.menu__list-view .menu__item-toggle {
+  color: var(--rd-text-dim) !important;
+}
+
+.menu__list-view .menu__link:hover {
+  background-color: var(--rd-surface-2) !important;
+  color: var(--rd-jade) !important;
+}
+
+.menu__group-title {
+  color: var(--rd-gold-soft);
+}
+
+/* ---------- اسلایدر (Hero) ---------- */
+
+.swiper.nop-slider {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--rd-stroke);
+  margin-block-end: 32px;
+}
+
+/* عکس بنر به‌جای مرکزچین‌شدن با نوار سیاه اطرافش (چون نسبت ابعادش با
+   ارتفاع اسلایدر یکی نیست)، کل کادر را با کراپ ملایم پر می‌کند. */
+.swiper-slide {
+  overflow: hidden;
+  background: var(--rd-surface-2);
+}
+
+.swiper-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img,
+.swiper-slide .slider-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(31, 58, 46, .3);
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--rd-jade);
+}
+
+/* ---------- بلوک خوش‌آمدگویی ---------- */
+
+.home-page .topic-block {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-inline-start: 4px solid var(--rd-gold);
+  border-radius: var(--rd-radius);
+  padding: 28px 32px;
+  text-align: start;
+}
+
+.topic-block-title {
+  border-bottom: none;
+  margin-block-end: 10px;
+  padding: 0;
+  min-height: 0;
+}
+
+.topic-block-title h2 {
+  font-size: 20px;
+  color: var(--rd-text);
+}
+
+.topic-block-body {
+  text-align: start;
+  color: var(--rd-text-dim);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.topic-block a {
+  color: var(--rd-jade);
+  text-decoration: underline dotted;
+}
+
+/* ---------- دسته‌بندی‌های صفحه اصلی (کارت تصویری) ---------- */
+
+.home-page-category-grid .item-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+@media all and (min-width: 1001px) {
+  .home-page-category-grid .item-grid {
+    gap: 28px;
+  }
+}
+
+.home-page-category-grid .item-box {
+  position: relative;
+  width: auto;
+  float: none;
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 1 / 1;
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.home-page-category-grid .item-box:hover {
+  transform: translateY(-6px);
+  border-color: var(--rd-gold);
+}
+
+.home-page-category-grid .item-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, rgba(20, 35, 28, .92) 0%, rgba(20, 35, 28, .12) 55%, transparent 78%);
+  pointer-events: none;
+}
+
+.home-page-category-grid .item-box .picture {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+  z-index: 0;
+}
+
+.home-page-category-grid .item-box .picture a {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.home-page-category-grid .item-box .picture a:before {
+  padding-top: 0;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.home-page-category-grid .item-box .picture a img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  inset: 0;
+  margin: 0;
+}
+
+.home-page-category-grid .item-box:hover .picture a img {
+  transform: translateZ(0) scale(1.06);
+}
+
+.home-page-category-grid .item-box .title {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 22px;
+  text-align: start;
+  font-size: 20px;
+}
+
+.home-page-category-grid .item-box .title a {
+  display: block;
+  padding: 0;
+  color: #FFFFFF;
+}
+
+.home-page-category-grid .item-box .title a:hover {
+  color: var(--rd-gold);
+}
+
+/* ---------- محصولات ویژه (کارت‌های بوتیک) ---------- */
+
+.home-page-product-grid .title {
+  border-bottom: 1px dashed var(--rd-stroke-strong);
+  color: var(--rd-text);
+  font-size: 26px;
+}
+
+.home-page-product-grid .item-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+@media all and (min-width: 1001px) {
+  .home-page-product-grid .item-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+}
+
+.home-page-product-grid .item-box {
+  width: auto !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0;
+  text-align: start;
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+.home-page-product-grid .item-box:hover {
+  transform: translateY(-4px);
+  border-color: var(--rd-stroke-strong);
+  box-shadow: 0 18px 34px -22px rgba(31, 58, 46, .35);
+}
+
+/* پس‌زمینه‌ی سبز خیلی کم‌رنگِ پشت عکس محصول — نقطه‌ی اصلیِ رفع مشکل
+   کنتراست برای لباس‌های سفید/روشن؛ نه تیره است، نه کاملاً سفید. */
+.home-page-product-grid .item-box .picture {
+  background: var(--rd-surface-2);
+  margin: 0;
+  border-radius: 0;
+  padding: 18px;
+}
+
+.home-page-product-grid .item-box .details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px 18px 18px;
+}
+
+.home-page-product-grid .item-box .product-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rd-text);
+  margin-block-end: 4px;
+}
+
+.home-page-product-grid .item-box .product-title a:hover,
+.home-page-product-grid .item-box .product-title a:focus {
+  color: var(--rd-jade);
+}
+
+.home-page-product-grid .item-box .product-rating-box {
+  color: var(--rd-gold);
+}
+
+.home-page-product-grid .item-box .description {
+  color: var(--rd-text-faint);
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+
+.home-page-product-grid .item-box .add-info {
+  margin-block-start: auto;
+}
+
+.home-page-product-grid .item-box .actual-price {
+  color: var(--rd-text);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+/* خط‌چین جداکننده مثل برچسب پاره‌شونده‌ی قیمت روی لباس */
+.home-page-product-grid .item-box .buttons {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding-block-start: 14px;
+  border-block-start: 1.5px dashed var(--rd-stroke-strong);
+}
+
+/* ارتفاع دکمه‌ها هم‌اندازه‌ی نوار جستجو (۴۰px) — یکدست و جمع‌وجور */
+.home-page-product-grid .item-box button {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0 10px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.home-page-product-grid .item-box .product-box-add-to-cart-button {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  background: var(--rd-jade);
+  border: 1px solid var(--rd-jade);
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-page-product-grid .item-box .product-box-add-to-cart-button:hover,
+.home-page-product-grid .item-box .product-box-add-to-cart-button:focus {
+  background: var(--rd-jade-soft);
+  border-color: var(--rd-jade-soft);
+}
+
+.home-page-product-grid .item-box .add-to-compare-list-button,
+.home-page-product-grid .item-box .add-to-wishlist-button {
+  flex: 0 0 auto;
+  width: 40px;
+  padding: 0;
+  background-color: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong) !important;
+  border-radius: 999px;
+}
+
+.home-page-product-grid .item-box .add-to-compare-list-button:hover,
+.home-page-product-grid .item-box .add-to-wishlist-button:hover {
+  background-color: var(--rd-surface-2);
+  border-color: var(--rd-jade) !important;
+}
+
+/* ---------- فوتر ---------- */
+/* فوتر هم پنل سبز تیره است، مثل هدر بالا و نوار دسته‌ها. */
+
+.footer {
+  background: var(--rd-bg-soft);
+  border-block-start: none;
+}
+
+.footer-upper {
+  border-color: var(--rd-onpanel-stroke);
+}
+
+.footer-menu__title {
+  background: none;
+  background-image: none;
+  color: var(--rd-gold);
+}
+
+/* پیکان کوچک برای نشان‌دادن باز/بسته بودن هر بخش، به‌جای آیکون قدیمی
+   toggle-white.png که دیگر استفاده نمی‌شود؛ کاملاً با CSS ساخته شده.
+   فقط روی موبایل، چون فقط آن‌جا این بخش‌ها آکاردئونی و قابل‌کلیک‌اند؛
+   روی دسکتاپ عنوان‌ها ثابت و همیشه بازند. */
+@media all and (max-width: 1000px) {
+  .footer-menu__title {
+    position: relative;
+    padding-inline-end: 28px;
+  }
+
+  .footer-menu__title::after {
+    content: "";
+    position: absolute;
+    inset-inline-end: 6px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-inline-end: 2px solid var(--rd-gold);
+    border-block-end: 2px solid var(--rd-gold);
+    transform: translateY(-65%) rotate(45deg);
+    transition: transform .25s ease;
+  }
+
+  .footer-menu--active .footer-menu__title::after {
+    transform: translateY(-35%) rotate(225deg);
+  }
+}
+
+/* پس‌زمینه‌ی تیره‌ی قدیمی (#1c1d1f) این‌جا هیچ‌وقت به تم روشن جدید
+   منتقل نشده بود؛ الان با پنل سبز تیره‌ی فوتر یکی است. */
+.footer-menu__list {
+  background-color: transparent;
+}
+
+.footer-menu__link {
+  color: var(--rd-onpanel-faint);
+  font-size: 13px;
+}
+
+.footer-menu__link:hover,
+.footer-menu__link:focus {
+  color: var(--rd-onpanel-strong);
+}
+
+.follow-us .title,
+.newsletter .title {
+  color: var(--rd-gold);
+}
+
+.follow-us .social ul {
+  border-color: var(--rd-onpanel-stroke);
+}
+
+.follow-us .social a {
+  border-radius: 50%;
+  border: 1px solid var(--rd-onpanel-stroke);
+  color: var(--rd-onpanel);
+}
+
+.follow-us .social a:hover {
+  border-color: var(--rd-gold);
+  color: var(--rd-onpanel-strong);
+}
+
+.newsletter-email {
+  display: flex;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--rd-onpanel-stroke);
+}
+
+.newsletter-email input[type="email"] {
+  flex: 1;
+  border: none;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--rd-text);
+  border-radius: 0;
+}
+
+#newsletter-subscribe-block .newsletter-subscribe-button {
+  background: var(--rd-gold);
+  color: #2A1E08;
+  font-weight: 700;
+  text-transform: none;
+  border-radius: 0;
+}
+
+#newsletter-subscribe-block .newsletter-subscribe-button:hover,
+#newsletter-subscribe-block .newsletter-subscribe-button:focus {
+  background: #C99A45;
+}
+
+.footer-lower {
+  border-block-start: 1px solid var(--rd-onpanel-stroke);
+  color: var(--rd-onpanel-faint);
+}
+
+.footer-powered-by a,
+.footer-tax-shipping a {
+  color: var(--rd-gold);
+}
+
+/* ---------- فاصله از لبه‌ی صفحه ---------- */
+/* master-wrapper-content فقط محتوای اصلی (اسلایدر، دسته‌بندی‌ها،
+   محصولات) را در بر می‌گیرد، نه هدر/فوتر را — پس این padding فقط
+   محتوای وسط را از لبه‌ی صفحه فاصله می‌دهد. */
+
+.master-wrapper-content {
+  padding-inline: 16px;
+}
+
+@media all and (min-width: 641px) {
+  .master-wrapper-content {
+    padding-inline: 28px;
+  }
+}
+
+@media all and (min-width: 1001px) {
+  .master-wrapper-content {
+    padding-inline: 56px;
+  }
+}
+
+/* روی مانیتورهای خیلی عریض، به‌جای کش‌آمدن محتوا تا لبه‌ی صفحه، عرض
+   محتوا سقف می‌خورد و در وسط صفحه قرار می‌گیرد — هم فاصله‌ی بیشتری از
+   لبه ایجاد می‌شود، هم کارت‌ها به‌جای کش‌آمدن، کمی جمع‌وجورتر می‌مانند. */
+@media all and (min-width: 1600px) {
+  .master-wrapper-content {
+    max-width: 1520px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+}
+
+/* ---------- واکنش‌گرا ---------- */
+
+@media all and (min-width: 641px) and (max-width: 1000px) {
+  .home-page-category-grid .item-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home-page-product-grid .item-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* موبایل: به‌جای یک کارت تمام‌عرض، دو کارت در هر ردیف نشان داده می‌شود
+   تا کاربر بتواند چند محصول را همزمان ببیند و کارت‌ها غول‌پیکر نشوند. */
+
+@media all and (max-width: 640px) {
+  .master-wrapper-content {
+    padding-inline: 12px;
+  }
+
+  .home-page-category-grid .item-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .home-page-category-grid .item-box {
+    aspect-ratio: 1 / 1;
+  }
+
+  .home-page-category-grid .item-box .title {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .home-page-product-grid .title {
+    font-size: 20px;
+  }
+
+  .home-page-product-grid .item-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .home-page-product-grid .item-box .picture {
+    padding: 10px;
+  }
+
+  .home-page-product-grid .item-box .details {
+    padding: 10px 12px 12px;
+  }
+
+  .home-page-product-grid .item-box .product-title {
+    font-size: 12.5px;
+  }
+
+  .home-page-product-grid .item-box .description {
+    display: none;
+  }
+
+  .home-page-product-grid .item-box .actual-price {
+    font-size: 14px;
+  }
+
+  .home-page-product-grid .item-box .buttons {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-block-start: 10px;
+  }
+
+  .home-page-product-grid .item-box .product-box-add-to-cart-button {
+    flex: 1 1 100%;
+    width: 100%;
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+
+  /* روی موبایل این دو دکمه به‌صورت متن کامل رندر می‌شوند (نه آیکون) و
+     باعث می‌شدند کارت‌ها خیلی طولانی شوند؛ برای جمع‌وجورتر شدن کارت‌ها
+     در صفحه اصلی مخفی می‌شوند — در صفحه‌ی جزئیات محصول همچنان در دسترس‌اند. */
+  .home-page-product-grid .item-box .add-to-compare-list-button,
+  .home-page-product-grid .item-box .add-to-wishlist-button {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* =========================================================================
+   بسط طراحی بوتیک به سایر صفحات (دسته‌بندی، جستجو، محصول، سبد خرید...)
+   تا اینجا بیشتر قوانین روی صفحه‌ی اصلی متمرکز بودند. این بخش همان زبان
+   بصری (کارت سفید، پس‌زمینه‌ی ملایم سبز پشت عکس، دکمه‌های بیضی، لهجه‌ی
+   طلایی) را به عناصر مشترکِ سایر صفحات هم می‌رساند تا کل سایت یکدست شود.
+   ========================================================================= */
+
+/* ---------- عنوان صفحه و مسیر (breadcrumb) ---------- */
+
+.page-title {
+  border-bottom: 1px solid var(--rd-stroke);
+}
+
+.page-title h1 {
+  color: var(--rd-text);
+  font-weight: 800;
+}
+
+.breadcrumb {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: 10px;
+  padding: 8px 14px;
+}
+
+.breadcrumb a {
+  color: var(--rd-text-dim);
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+  color: var(--rd-jade);
+}
+
+.breadcrumb strong {
+  color: var(--rd-text);
+}
+
+/* به‌جای «/» ساده، یک فلش کوچک و شیک؛ چون متن راست‌به‌چپ است، فلش رو
+   به چپ یعنی «جلوتر/عمیق‌تر» را نشان می‌دهد. کمی بالاتر از وسطِ خط
+   نشسته چون فونت فارسی معمولاً پایین‌تر از عدد ۱۴px میانه می‌گیرد. */
+.breadcrumb .delimiter {
+  position: relative;
+  top: -2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin: 0 2px;
+  vertical-align: middle;
+  font-size: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237C8577' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 6l-6 6 6 6'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+/* ---------- کارت محصول در سایر صفحات (دسته‌بندی، جستجو، مرتبط) ---------- */
+/* همان سبک کارت‌های صفحه‌ی اصلی، این‌بار برای item-box عمومی که در
+   لیست دسته‌بندی‌ها، نتایج جستجو، محصولات مرتبط و... استفاده می‌شود. */
+
+.item-box {
+  background: var(--rd-surface) !important;
+  background-image: none !important;
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  box-shadow: none;
+}
+
+.item-box:hover {
+  border-color: var(--rd-stroke-strong);
+  box-shadow: 0 18px 34px -22px rgba(31, 58, 46, .3);
+  transform: translateY(-3px);
+}
+
+.item-box .picture {
+  background: var(--rd-surface-2);
+}
+
+.item-box .product-title {
+  color: var(--rd-text);
+  font-weight: 700;
+}
+
+.item-box .product-title a:hover,
+.item-box .product-title a:focus {
+  color: var(--rd-jade);
+}
+
+.item-box .actual-price {
+  color: var(--rd-text);
+}
+
+.item-box .tax-shipping-info a {
+  color: var(--rd-gold);
+}
+
+.item-box .description {
+  color: var(--rd-text-faint);
+}
+
+.item-box .buttons {
+  display: flex;
+  gap: 8px;
+  padding-block-start: 14px;
+  margin-block-start: 10px;
+  border-block-start: 1.5px dashed var(--rd-stroke-strong);
+}
+
+.item-box button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  line-height: 1;
+  border-radius: 999px;
+}
+
+.item-box .product-box-add-to-cart-button {
+  width: auto;
+  min-width: 0;
+  flex: 1;
+  background: var(--rd-jade);
+  text-transform: none;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-inline: 10px;
+}
+
+.item-box .product-box-add-to-cart-button:hover,
+.item-box .product-box-add-to-cart-button:focus {
+  background: var(--rd-jade-soft);
+}
+
+.item-box .add-to-compare-list-button,
+.item-box .add-to-wishlist-button {
+  width: 40px;
+  flex: 0 0 auto;
+  border: 1px solid var(--rd-stroke-strong) !important;
+  background-color: var(--rd-surface);
+}
+
+.item-box .add-to-compare-list-button:hover,
+.item-box .add-to-wishlist-button:hover {
+  background-color: var(--rd-surface-2);
+  border-color: var(--rd-jade) !important;
+}
+
+/* عنوان بخش‌های لیست محصول/دسته‌بندی (خارج از صفحه‌ی اصلی) */
+.product-grid .title,
+.product-list .title {
+  color: var(--rd-text);
+  border-bottom: 1px dashed var(--rd-stroke-strong);
+}
+
+/* ---------- صفحه‌بندی (pager) ---------- */
+
+.pager li a,
+.pager li span {
+  border: 1px solid var(--rd-stroke-strong);
+  background-color: var(--rd-surface);
+  border-radius: 8px;
+  color: var(--rd-text-dim);
+}
+
+.pager li a:hover {
+  border-color: var(--rd-jade);
+  color: var(--rd-jade);
+}
+
+.pager li span {
+  border-color: var(--rd-jade);
+  background: var(--rd-jade);
+  color: #FFFFFF;
+}
+
+/* ---------- بلوک‌های سایدبار (دسته‌بندی‌ها، فیلترها، اطلاعات حساب) ---------- */
+
+.block {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  overflow: hidden;
+  margin-block-end: 20px;
+}
+
+.block .title {
+  background: var(--rd-bg-soft);
+  border: none;
+}
+
+.block .title strong {
+  color: var(--rd-onpanel-strong);
+  font-weight: 700;
+}
+
+.block .listbox {
+  background: transparent;
+}
+
+.block .list a,
+.block .list li {
+  color: var(--rd-text-dim);
+  border-color: var(--rd-stroke);
+}
+
+.block .list a:hover,
+.block .list a:focus {
+  color: var(--rd-jade);
+}
+
+.block .list .active a {
+  color: var(--rd-jade);
+  font-weight: 700;
+}
+
+/* ---------- جدول‌ها (سفارش‌ها، سبد خرید) ---------- */
+
+.data-table,
+.cart,
+.wishlist,
+table.order-list {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  overflow: hidden;
+}
+
+.data-table thead td,
+.data-table thead th,
+.cart thead td,
+.cart thead th {
+  background: var(--rd-surface-2);
+  color: var(--rd-text);
+  border-color: var(--rd-stroke);
+}
+
+.data-table tbody td,
+.cart tbody td {
+  background: var(--rd-surface);
+  border-color: var(--rd-stroke);
+  color: var(--rd-text-dim);
+}
+
+/* ---------- جعبه‌های اطلاع/هشدار ---------- */
+
+.bar-notification.success,
+.bar-notification.error {
+  border-radius: 10px;
+}
+
+/* ---------- کارت گزینه‌های حساب کاربری، کارت آدرس ---------- */
+
+.address-item,
+.order-item {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+}
+
+/* ---------- ورودی‌های عددی/چک‌باکس ---------- */
+
+.qty-input,
+.qty-dropdown {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong);
+  border-radius: 6px;
+}
+
+/* =========================================================================
+   رفع باقی‌مانده‌های تیره + کارت دسته‌بندی در صفحات دسته‌بندی/محصولات
+   ========================================================================= */
+
+/* ---------- پاپ‌آپ سبد خرید (flyout-cart) ---------- */
+/* این بخش هیچ‌وقت لمس نشده بود؛ پس‌زمینه‌ی تیره‌ی #1c1d1f کنار متن تیره‌ی
+   جدید (که برای زمینه‌ی روشن تعریف شده) عملاً یک کادر تقریباً سیاه با
+   نوشته‌ی به‌سختی خوانا می‌ساخت. */
+
+.flyout-cart {
+  background-color: var(--rd-surface) !important;
+  border: 1px solid var(--rd-stroke);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px -16px rgba(31, 58, 46, .35) !important;
+  overflow: hidden;
+}
+
+.mini-shopping-cart .count,
+.mini-shopping-cart .count a,
+.mini-shopping-cart .attributes,
+.mini-shopping-cart .totals,
+.mini-shopping-cart .totals strong {
+  color: var(--rd-text-dim);
+}
+
+.mini-shopping-cart .items {
+  border-color: var(--rd-stroke);
+}
+
+.mini-shopping-cart .picture {
+  background: var(--rd-surface-2);
+  border-radius: 8px;
+}
+
+.mini-shopping-cart .name a {
+  color: var(--rd-text);
+  font-weight: 600;
+}
+
+.mini-shopping-cart .name a:hover,
+.mini-shopping-cart .name a:focus {
+  color: var(--rd-jade);
+}
+
+.mini-shopping-cart button[type="button"] {
+  background: var(--rd-jade);
+  border-radius: 999px;
+  text-transform: none;
+  font-weight: 700;
+}
+
+.mini-shopping-cart button[type="button"]:hover,
+.mini-shopping-cart button[type="button"]:focus {
+  background: var(--rd-jade-soft);
+}
+
+/* ---------- کارت دسته‌بندیِ فرزند، در صفحات دسته‌بندی (مثل «Computers») ---------- */
+/* همان زبان تصویریِ کارت‌های دسته‌بندی صفحه‌ی اصلی: عکس تمام‌کادر، گرادیان
+   تیره، عنوان روی عکس — به‌جای کارت ساده‌ی متن‌بالا/عکس‌پایین پیش‌فرض. */
+
+.sub-category-grid .item-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.sub-category-grid .item-box {
+  position: relative;
+  width: auto;
+  float: none;
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.sub-category-grid .item-box:hover {
+  transform: translateY(-6px);
+  border-color: var(--rd-gold);
+}
+
+.sub-category-grid .item-box .sub-category-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sub-category-grid .item-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, rgba(20, 35, 28, .92) 0%, rgba(20, 35, 28, .15) 55%, transparent 78%);
+  pointer-events: none;
+}
+
+.sub-category-grid .item-box .picture {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  z-index: 0;
+}
+
+.sub-category-grid .item-box .picture a {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.sub-category-grid .item-box .picture a:before {
+  padding-top: 0;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.sub-category-grid .item-box .picture a img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  margin: 0;
+}
+
+.sub-category-grid .item-box:hover .picture a img {
+  transform: translateZ(0) scale(1.06);
+}
+
+.sub-category-grid .item-box .title {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 20px;
+  text-align: start;
+  font-size: 18px;
+}
+
+.sub-category-grid .item-box .title a {
+  display: block;
+  padding: 0;
+  color: #FFFFFF;
+}
+
+.sub-category-grid .item-box .title a:hover {
+  color: var(--rd-gold);
+}
+
+@media all and (max-width: 1000px) {
+  .sub-category-grid .item-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media all and (max-width: 640px) {
+  .sub-category-grid .item-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .sub-category-grid .item-box .title {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* =========================================================================
+   بازطراحی کادر فیلترها (product-filter) در صفحات دسته‌بندی
+   قبلاً عنوان فیلتر پس‌زمینه‌ی نزدیک به مشکی (#202124) داشت درحالی‌که
+   متنش هم رنگ تیره بود (چون --dark-gray-color برای زمینه‌ی روشن تعریف
+   شده) — نتیجه تقریباً غیرقابل‌خواندن بود. الان کل بلوک با همون زبان
+   بصریِ بقیه‌ی سایدبار (کارت سفید، تیتر سبز تیره) بازطراحی شده.
+   ========================================================================= */
+
+.product-filter {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  overflow: hidden;
+  margin-block-end: 20px;
+}
+
+.product-filter .filter-title {
+  background: var(--rd-bg-soft) !important;
+  background-image: none !important;
+  margin: 0;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rd-onpanel-strong) !important;
+}
+
+.product-filter .filter-content {
+  padding: 16px 18px 18px;
+  color: var(--rd-text-dim);
+  margin-bottom: 0;
+}
+
+.product-filter .group + .group {
+  padding-block-start: 16px;
+  margin-block-start: 16px;
+  border-block-start: 1px dashed var(--rd-stroke-strong);
+}
+
+.product-filter .group .name {
+  color: var(--rd-text);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.product-filter .group .item {
+  padding-inline-start: 15px;
+  padding-block: 5px;
+  border-radius: 8px;
+  transition: background-color .15s ease;
+}
+
+.product-filter .group .item:hover {
+  background: var(--rd-surface-2);
+}
+
+.product-filter .group .item label {
+  color: var(--rd-text-dim);
+  font-size: 13.5px;
+}
+
+.product-filter .group .item label:hover {
+  color: var(--rd-jade);
+}
+
+/* چک‌باکس/رادیوی سفارشی به‌جای شکل خام مرورگر */
+.product-filter .group .item input[type="checkbox"],
+.product-filter .group .item input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1.5px solid var(--rd-stroke-strong);
+  border-radius: 5px;
+  background: var(--rd-surface);
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+
+.product-filter .group .item input[type="radio"] {
+  border-radius: 50%;
+}
+
+.product-filter .group .item input[type="checkbox"]:hover,
+.product-filter .group .item input[type="radio"]:hover {
+  border-color: var(--rd-jade);
+}
+
+.product-filter .group .item input[type="checkbox"]:checked,
+.product-filter .group .item input[type="radio"]:checked {
+  background: var(--rd-jade);
+  border-color: var(--rd-jade);
+}
+
+.product-filter .group .item input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border-inline-end: 2px solid #fff;
+  border-block-end: 2px solid #fff;
+  transform: rotate(45deg);
+}
+
+.product-filter .group .item input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* بازه‌ی قیمت */
+.price-range-filter .selected-price-range {
+  color: var(--rd-text-dim);
+}
+
+.price-range-filter .selected-price-range.manually input {
+  height: 36px;
+  text-align: center;
+}
+
+/* مربع‌های رنگ/ویژگی (attribute squares) */
+.product-filter .attribute-squares .attribute-square {
+  border: 1px solid var(--rd-stroke-strong);
+  border-radius: 4px;
+}
+
+.product-filter .attribute-squares .attribute-square.active,
+.product-filter .attribute-squares .attribute-square:hover {
+  border-color: var(--rd-jade);
+  box-shadow: 0 0 0 2px var(--rd-surface-2);
+}
+
+/* جدول مشخصات/سطوح فیلتر (specification) */
+.product-filter-level-values-box {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  padding: 16px 18px;
+}
+
+.product-filter-level-values-box .title,
+.product-filter-level-values-box .sub-title,
+.product-specs-box td.spec-group-name {
+  color: var(--rd-text);
+}
+
+.product-specs-box td,
+.product-filter-level-values-box td {
+  border-color: var(--rd-stroke);
+  color: var(--rd-text-dim);
+}
+
+@media all and (max-width: 1000px) {
+  .product-filter .filter-title {
+    background-image: none !important;
+  }
+}
+
+
+/* =========================================================================
+   رفع باگ: پاپ‌آپ‌های jQuery UI (ui-dialog) و پیشنهاد جستجو (ui-autocomplete)
+   این دو عنصر همیشه با رنگ‌های سخت‌کد‌شده‌ی تم تیره‌ی قبلی (#1c1d1f) مونده
+   بودند؛ چون رنگ متنشون از متغیرهایی می‌آد که الان برای زمینه‌ی روشن
+   بازتعریف شده‌اند (مثل --dark-gray-color)، نتیجه متن تیره روی زمینه‌ی
+   تیره = تقریباً ناخوانا. هر دو مستقیم از هوم پیج در دسترس‌اند: اولی از
+   کادر جستجوی هدر (۳ حرف به بالا)، دومی از دکمه‌ی «افزودن به لیست
+   علاقه‌مندی‌ها» روی کارت محصولات ویژه.
+   ========================================================================= */
+
+/* ---------- پیشنهادهای جستجو ---------- */
+
+.ui-autocomplete {
+  border: 1px solid var(--rd-stroke-strong);
+  background-color: var(--rd-surface);
+  box-shadow: 0 16px 34px -12px rgba(31, 58, 46, .28);
+}
+
+.ui-autocomplete li {
+  border-top-color: var(--rd-stroke);
+}
+
+.ui-autocomplete a {
+  color: var(--rd-text-dim) !important;
+}
+
+.ui-autocomplete a:hover,
+.ui-autocomplete a:focus,
+.ui-autocomplete a.ui-state-focus {
+  background-color: var(--rd-surface-2) !important;
+  color: var(--rd-jade) !important;
+}
+
+/* ---------- پاپ‌آپ‌های jQuery UI (افزودن به لیست علاقه‌مندی، و...) ---------- */
+
+.ui-dialog {
+  border: 1px solid var(--rd-stroke-strong);
+  box-shadow: 0 20px 46px -18px rgba(31, 58, 46, .4);
+  background-color: var(--rd-surface);
+  border-radius: var(--rd-radius);
+}
+
+.ui-dialog-titlebar {
+  border-bottom-color: var(--rd-stroke);
+  background-color: var(--rd-bg-soft);
+}
+
+.ui-dialog-titlebar > span {
+  color: var(--rd-onpanel-strong);
+}
+
+.ui-dialog-content {
+  background-color: var(--rd-surface) !important;
+  color: var(--rd-text-dim);
+}
+
+.wishlist-buttons-container .button-2,
+.add-wishlist-content .wishlist-add-custom-button {
+  background: var(--rd-jade);
+  color: #FFFFFF;
+  border-radius: 999px;
+}
+
+.wishlist-buttons-container .button-2:hover,
+.add-wishlist-content .wishlist-add-custom-button:hover {
+  background: var(--rd-jade-soft);
+}
+
+.add-wishlist-content input[type="text"] {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong);
+  color: var(--rd-text);
+}
+
+/* =========================================================================
+   رفع باگ: عنوان بلوک‌های ساید بار (دسته‌ها، تولیدکننده‌ها، برچسب‌ها، ...)
+   این عنوان‌ها در HTML به‌صورت <h2 class="title">متن</h2> هستند، بدون تگ
+   <strong> داخلشان. قانون رنگِ بازطراحی قبلی فقط برای «.block .title
+   strong» نوشته شده بود؛ چون این strong در HTML وجود نداشت، رنگ متن
+   هیچ‌وقت به سفید تغییر نمی‌کرد و همان رنگ تیره‌ی قدیمی (که الان برای
+   متن روی زمینه‌ی روشن تعریف شده) روی پس‌زمینه‌ی سبز تیره‌ی عنوان
+   می‌ماند → متن تقریباً نامرئی/سیاه به نظر می‌رسید.
+   ========================================================================= */
+
+.block .title {
+  color: var(--rd-onpanel-strong) !important;
+}
+
+/* =========================================================================
+   منوی دسته‌بندی‌ها در موبایل: نوار افقی لغزنده (مثل دیجی‌کالا)
+   به‌جای آکاردئونی که با کلیک روی دکمه‌ی «Categories» باز/بسته می‌شد،
+   الان دسته‌های سطح اول همیشه به‌صورت یک ردیف افقی از چیپ‌های گرد
+   نمایش داده می‌شوند و با انگشت به چپ/راست می‌لغزند؛ زیرمنوی هر دسته
+   (که در این حالت افقی جایی برای نمایش ندارد) مخفی می‌شود — کاربر برای
+   دیدن زیردسته‌ها روی خود دسته لمس می‌کند و وارد صفحه‌اش می‌شود.
+   فقط روی موبایل/تبلت؛ منوی دسکتاپ (مگامنوی کشویی) دست‌نخورده می‌ماند.
+   ========================================================================= */
+
+@media all and (max-width: 1000px) {
+  .header-menu {
+    margin-block-end: 16px;
+  }
+
+  /* دکمه‌ی «Categories» دیگر لازم نیست؛ محتوا همیشه نمایش داده می‌شود. */
+  .menu-container.menu-dropdown > .menu__toggle {
+    display: none;
+  }
+
+  .menu-container.menu-dropdown {
+    display: block;
+  }
+
+  .header-menu .menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-inline: 14px;
+    padding-block: 12px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .header-menu .menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu > .menu__item {
+    width: auto;
+    flex: 0 0 auto;
+    margin-block: 0;
+    scroll-snap-align: start;
+  }
+
+  .menu__item-toggle,
+  .menu__item:not(.menu-dropdown) {
+    width: auto;
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--rd-stroke-strong);
+    background: var(--rd-surface);
+    white-space: nowrap;
+  }
+
+  .menu__item-toggle:active,
+  .menu__item:not(.menu-dropdown):active {
+    background: var(--rd-surface-2);
+  }
+
+  .menu__item-toggle .menu__link,
+  .menu__item:not(.menu-dropdown) .menu__link {
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* پیکان بازشوی زیرمنو، چون زیرمنو دیگر نمایش داده نمی‌شود، حذف می‌شود. */
+  .menu__item-toggle::after {
+    display: none;
+  }
+
+  .menu__list-view {
+    display: none !important;
+  }
+}
+
+/* =========================================================================
+   بازطراحی فرم‌ها (ورود، ثبت‌نام، بازیابی رمز، حساب کاربری، تماس با ما،
+   آدرس‌ها و...) — این صفحات تا الان اصلاً لمس نشده بودند و کاملاً حالت
+   پیش‌فرض/ساده‌ی تم پایه را داشتند.
+   ========================================================================= */
+
+.fieldset .title,
+.section .title {
+  margin-block-end: 20px;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: var(--rd-text);
+}
+
+.form-fields {
+  border: 1px solid var(--rd-stroke);
+  background-color: var(--rd-surface);
+  border-radius: var(--rd-radius);
+  padding: 28px 24px;
+  box-shadow: 0 2px 14px -8px rgba(31, 58, 46, .14);
+}
+
+.inputs label {
+  color: var(--rd-text-faint);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+
+.checkout-attributes .option-list > li {
+  border-color: var(--rd-stroke-strong);
+  background-color: var(--rd-surface);
+}
+
+/* ---------- دکمه‌های اصلی این فرم‌ها ---------- */
+
+.registration-page .button-1,
+.registration-result-page .button-1,
+.login-page .button-1,
+.password-recovery-page .button-1,
+.account-page .button-1,
+.return-request-page .button-1 {
+  background: var(--rd-jade);
+  border-radius: 999px;
+  min-width: 170px;
+  padding: 12px 32px;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+
+.registration-page .button-1:hover,
+.registration-page .button-1:focus,
+.registration-result-page .button-1:hover,
+.registration-result-page .button-1:focus,
+.login-page .button-1:hover,
+.login-page .button-1:focus,
+.password-recovery-page .button-1:hover,
+.password-recovery-page .button-1:focus,
+.account-page .button-1:hover,
+.account-page .button-1:focus,
+.return-request-page .button-1:hover,
+.return-request-page .button-1:focus {
+  background: var(--rd-jade-soft);
+}
+
+/* ---------- صفحه‌ی ورود: دو ستون (کاربر قدیمی / کاربر جدید) ---------- */
+
+.login-page .title,
+.external-authentication .title {
+  color: var(--rd-text);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* باکس معرفی «مشتری جدید»، قبلاً فقط یک خط بالای آن بود؛ الان یک
+   کارت مجزا با لهجه‌ی طلایی است، هم‌راستا با کارت فرم ورود کنارش. */
+.login-page .new-wrapper .text {
+  border: 1px solid var(--rd-stroke);
+  background: var(--rd-surface-2);
+  border-radius: var(--rd-radius);
+  padding: 28px 24px;
+  line-height: 1.9;
+}
+
+.login-page .new-wrapper .topic-block-body strong {
+  color: var(--rd-gold-soft);
+}
+
+/* رفع باگ: این پس‌زمینه‌ی مشکی (#1c1d1f) بخش دکمه‌ی «ورود» را زیر فرم
+   کاملاً بی‌ربط با بقیه‌ی صفحه نشان می‌داد. */
+.login-page .returning-wrapper .buttons {
+  background-color: transparent;
+  padding-block: 20px 0;
+}
+
+.login-page .returning-wrapper .inputs.reversed * {
+  color: var(--rd-text-dim);
+}
+
+.login-page .returning-wrapper .inputs.reversed a:hover,
+.login-page .returning-wrapper .inputs.reversed a:focus {
+  color: var(--rd-jade);
+}
+
+/* =========================================================================
+   صفحه‌ی دسته‌بندی/جستجو در موبایل
+   =========================================================================
+   ترتیب موردنظر: ۱) سربرگ‌های فیلتر (افقی، فقط خودشان قابل‌اسکرول) —
+   همین که کاربر وارد صفحه می‌شود ببیندشان   ۲) عنوان صفحه   ۳) نوار
+   مرتب‌سازی/تعداد در صفحه (فشرده، یک خط)   ۴) محصولات.
+
+   چون این چهار بخش در HTML به این ترتیب کنار هم نیستند (سربرگ‌های
+   فیلتر از «.side-2» می‌آیند، بقیه از داخل «.center-2»)، با
+   display:contents روی چند لایه‌ی بی‌اهمیت (.center-2، .page،
+   .page-body) بخش‌های داخلی‌شان را «باز» می‌کنیم تا مستقیماً کنار
+   .side-2 در همون فلکس ردیف‌بندی بشن — بدون دست‌زدن به HTML. */
+@media all and (max-width: 1000px) {
+  .master-column-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .center-2 > .page,
+  .center-2 .page-body {
+    display: contents;
+  }
+
+  /* order: -1 (نه 1!) چون هر چیزی که order صریح نداشته باشه (مثلاً
+     محتوای صفحه‌ی جزئیات محصول، که با هیچ‌کدوم از سه کلاس پایین
+     مطابقت نداره) به‌طور پیش‌فرض order:0 می‌گیره — و ۰ از ۱ کوچیک‌تره،
+     یعنی با order:1 این محتوا زودتر از ساید‌بار می‌اومد (دقیقاً همون
+     باگی که تو صفحه‌ی محصول دیدید: فیلترها افتاده بودن ته صفحه). با
+     منفی‌کردنش، ساید‌بار تضمینی همیشه اول میاد، مستقل از این‌که صفحه
+     چه نوعی باشه. */
+  .side-2 {
+    order: -1;
+    margin-block: 0 10px;
+  }
+
+  .page-title {
+    order: 2;
+  }
+
+  .product-selectors {
+    order: 3;
+  }
+
+  .products-container {
+    order: 4;
+  }
+
+  /* نوار مرتب‌سازی/تعداد در صفحه: فشرده، در یک خط */
+  .product-selectors {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 0 12px;
+    padding: 10px 0;
+  }
+
+  .product-selectors::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-selectors > div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 0 0 auto;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .product-selectors span {
+    font-size: 11.5px;
+    color: var(--rd-text-faint);
+  }
+
+  .product-selectors select {
+    margin: 0;
+    font-size: 12px;
+    padding: 4px 6px;
+    height: 30px;
+  }
+}
+
+/* =========================================================================
+   فیلترهای ساید‌بار در موبایل: نوار سربرگ‌های افقیِ لغزنده (شبیه تب‌های
+   ویندوز) — هیچ HTML/JS جدیدی لازم نیست، همون رفتار کلیکِ موجودِ
+   «.block .title» است.
+   =========================================================================
+   روش کار: با «white-space: nowrap» + «overflow-x: auto» روی خودِ
+   ساید‌بار، و «display: inline-block» روی هر عنوان، عنوان‌ها کنار هم
+   در یک خط می‌مونن و قابل‌اسکرول افقی می‌شن (نه wrap). اما هر «.listbox»
+   خودش «display: block» است — و یک باکسِ block همیشه خط را می‌شکند و
+   تمام‌عرض روی خط بعدی می‌شینه، مستقل از nowrap اطرافش. یعنی محتوا
+   *همیشه در جریان عادی صفحه* باز می‌شود (نه شناور/absolute)، دقیقاً
+   زیرِ ردیفِ سربرگ‌ها، و بقیه‌ی صفحه را به‌درستی به پایین هول می‌دهد —
+   دیگر نیازی به اسکرولِ اضافه برای دیدنش نیست. */
+@media all and (max-width: 1000px) {
+  .side-2 {
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-block-end: 4px;
+  }
+
+  .side-2::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* فیلتر قیمت (چون قابل‌بازوبسته‌شدن نیست) یک کارت جدا، همیشه قبل از
+     سربرگ‌ها. */
+  .side-2 > .block.product-filters {
+    display: block;
+    white-space: normal;
+    margin: 0 0 10px;
+  }
+
+  .side-2 > .block.product-filters .filter-title {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .side-2 > .block.product-filters .filter-content {
+    padding: 12px 14px 14px;
+  }
+
+  /* بلوک‌های قابل‌بازوبسته: خودِ کادرشان حذف می‌شود و عنوان/محتوایشان
+     مستقیماً در جریانِ nowrap ساید‌بار قرار می‌گیرند. */
+  .side-2 > .block.block-category-navigation,
+  .side-2 > .block.block-manufacturer-navigation,
+  .side-2 > .block.block-popular-tags,
+  .side-2 > .block.block-recently-viewed-products {
+    display: contents;
+  }
+
+  .side-2 .title {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    margin: 0 4px 0 0;
+    padding: 10px 18px;
+    border-radius: 12px 12px 0 0;
+    background: var(--rd-surface);
+    border: 1px solid var(--rd-stroke-strong);
+    border-bottom: none;
+    color: var(--rd-text-dim) !important;
+    font-size: 13px;
+  }
+
+  /* توجه: display اینجا عمداً ست نمی‌شود — باز/بسته‌بودن همچنان با
+     همون قانون قبلیِ «.block .listbox» (که با کلیک، JS کنترلش
+     می‌کند) مشخص می‌شود؛ اینجا فقط ظاهرش را وقتی که باز است می‌سازیم. */
+  .side-2 .listbox {
+    white-space: normal;
+    width: 100%;
+    margin: 0 0 10px;
+    background: var(--rd-surface);
+    border: 1px solid var(--rd-stroke-strong);
+    border-radius: 0 var(--rd-radius) var(--rd-radius) var(--rd-radius);
+    padding: 14px;
+  }
+}
+
+/* =========================================================================
+   صفحه‌ی جزئیات محصول — بازطراحی کامل، اولویت با موبایل
+   =========================================================================
+   این صفحه تا الان اصلاً لمس نشده بود (فقط رنگ‌های سراسری مثل اینپوت‌ها
+   از قبل درست بودن). موارد زیر شامل چند باگِ رنگ تیره‌ی قدیمی، یک خطر
+   سرریزِ افقی روی موبایل، و بازطراحی بصری برای خوانایی و راحتی لمس
+   بهتر روی گوشی است. */
+
+/* ---------- رفع باگ‌های رنگ تیره‌ی باقی‌مانده ---------- */
+
+.product-essential {
+  border-bottom-color: var(--rd-stroke);
+}
+
+.overview .product-name {
+  border-bottom-color: var(--rd-stroke);
+}
+
+.tier-prices table td {
+  border-color: var(--rd-stroke);
+}
+
+/* ---------- رفع خطر سرریز افقی: عرض ثابت گالری ---------- */
+/* عرض ۵۵۰px ثابت، روی صفحه‌های بین ۷۶۹ تا ۱۰۰۰px (تبلت/گوشی‌های
+   بزرگ در حالت افقی) می‌توانست از عرض واقعی محتوا بیشتر شود و باعث
+   اسکرول افقی ناخواسته شود. */
+@media all and (min-width: 769px) and (max-width: 1000px) {
+  .gallery {
+    width: 100%;
+    max-width: 550px;
+  }
+}
+
+/* ---------- گالری تصاویر ---------- */
+
+.gallery .picture {
+  border-radius: var(--rd-radius);
+  background: var(--rd-surface-2);
+}
+
+.picture-gallery .picture-thumbs .thumb-item {
+  border-radius: 8px;
+  border: 1px solid var(--rd-stroke);
+  background: var(--rd-surface-2);
+}
+
+.picture-gallery .picture-thumbs .thumb-item:hover {
+  border-color: var(--rd-jade);
+}
+
+/* ---------- عنوان، توضیح کوتاه، امتیاز ---------- */
+
+.overview .product-name h1 {
+  color: var(--rd-text);
+  font-weight: 800;
+}
+
+.overview .short-description {
+  color: var(--rd-text-dim);
+}
+
+.product-review-links a {
+  color: var(--rd-jade);
+}
+
+/* ---------- موجودی و مشخصات ---------- */
+
+.overview .availability .stock .label,
+.overview .additional-details .label {
+  color: var(--rd-text-faint);
+}
+
+.overview .availability .stock .value,
+.overview .additional-details .value {
+  color: var(--rd-text);
+  font-weight: 700;
+}
+
+/* ---------- قیمت: لهجه‌ی طلایی برند، درشت‌تر ---------- */
+
+.overview .product-price,
+.variant-overview .product-price {
+  color: var(--rd-gold);
+  font-size: 26px;
+}
+
+/* ---------- دکمه‌ی افزودن به سبد خرید: هم‌زبان با بقیه‌ی سایت ---------- */
+
+.overview .add-to-cart-panel,
+.variant-overview .add-to-cart-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.overview .add-to-cart-panel > *,
+.variant-overview .add-to-cart-panel > * {
+  float: none;
+}
+
+.overview .qty-input,
+.variant-overview .qty-input {
+  width: 64px;
+  height: 48px;
+  border-radius: 10px;
+}
+
+.overview .add-to-cart-button,
+.variant-overview .add-to-cart-button {
+  flex: 1 1 auto;
+  height: 48px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+
+/* ---------- برچسب‌های محصول: شبیه چیپ، نه لیستِ کاما-جدا ---------- */
+
+.product-tags-box .title {
+  color: var(--rd-text);
+  border-bottom: 1px dashed var(--rd-stroke-strong);
+}
+
+.product-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.product-tags-list li.separator {
+  display: none;
+}
+
+.product-tags-list a {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.2;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--rd-surface-2);
+  border: 1px solid var(--rd-stroke);
+  color: var(--rd-text-dim);
+}
+
+.product-tags-list a:hover,
+.product-tags-list a:focus {
+  border-color: var(--rd-jade);
+  color: var(--rd-jade);
+}
+
+.product-tags-list li.tag span {
+  color: var(--rd-text-faint);
+  font-size: 12px;
+}
+
+/* ---------- توضیحات کامل ---------- */
+
+.full-description {
+  color: var(--rd-text-dim);
+}
+
+/* ---------- فقط موبایل: فاصله‌های کمتر + دکمه‌ی چسبان ---------- */
+
+@media all and (max-width: 1000px) {
+  .product-essential {
+    margin-block-end: 20px;
+    padding-block-end: 14px;
+  }
+
+  .gallery {
+    margin-block-end: 20px;
+  }
+
+  .overview {
+    margin-block-end: 20px;
+  }
+
+  .overview .product-name {
+    margin-block-end: 14px;
+    padding-block-end: 8px;
+  }
+
+  .overview .product-name h1 {
+    font-size: 22px;
+  }
+
+  .overview .short-description,
+  .product-reviews-overview,
+  .overview .availability,
+  .overview .additional-details,
+  .attributes,
+  .overview .prices {
+    margin-block-end: 16px;
+  }
+
+  /* دکمه‌ی افزودن به سبد خرید، هنگام اسکرول به پایین صفحه می‌چسبد؛
+     همیشه در دسترس بدون نیاز به برگشتن بالای صفحه. وقتی به انتهای
+     .overview می‌رسد (توضیحات/برچسب‌ها/محصولات مرتبط)، خودش با
+     جریان عادی صفحه از دید خارج می‌شود. */
+  .overview .add-to-cart {
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    padding-block: 10px;
+    background: var(--rd-bg);
+    box-shadow: 0 -10px 24px -14px rgba(31, 58, 46, .35);
+  }
+
+  .full-description {
+    margin-block-end: 20px;
+  }
+
+  .product-collateral {
+    margin-block-end: 30px;
+  }
+}
+
+
+/* =========================================================================
+   رفع باگ: متن وسط‌چین به‌جای راست‌چین در صفحه‌ی محصول
+   =========================================================================
+   قانون کلی «.page { text-align: center; }» باعث می‌شد عنوان، قیمت،
+   موجودی، مشخصات و attributes همه وسط صفحه بچینن — دقیقاً همون چیزی که
+   بهش می‌گفتید «انگار همه‌چی ریختی وسط». الان این بخش‌ها راست‌چین‌اند
+   (استاندارد برای متن فارسی). */
+
+.overview,
+.full-description,
+.product-tags-box,
+.product-collateral {
+  text-align: start;
+}
+
+/* =========================================================================
+   موجودی و مشخصات محصول: کارتِ مرتب به‌جای متنِ شناور
+   =========================================================================
+   قبلاً «دسترسی: در انبار» و «شناسه کالا: ...» فقط دو خط متنِ ساده و
+   وسط‌چین بودند. الان هر کدوم یک ردیف داخل یک کارتِ سبک‌اند — برچسب
+   یک‌طرف، مقدار طرف دیگر، دقیقاً مثل یک جدول مشخصات کوچک. */
+
+.overview .availability,
+.overview .additional-details {
+  background: var(--rd-surface-2);
+  border: 1px solid var(--rd-stroke);
+  border-radius: 10px;
+  padding-inline: 14px;
+}
+
+.overview .availability .stock,
+.overview .additional-details > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-block: 10px;
+}
+
+.overview .additional-details > div + div {
+  border-block-start: 1px solid var(--rd-stroke);
+}
+
+.overview .availability .label,
+.overview .additional-details .label {
+  color: var(--rd-text-faint);
+  font-size: 13px;
+}
+
+.overview .availability .value,
+.overview .additional-details .value {
+  color: var(--rd-text);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* =========================================================================
+   محصولات مرتبط: کارت‌های کوچک‌تر، اسکرول افقی (نه یک ستون بزرگ)
+   =========================================================================
+   قبلاً هر کارت تمام‌عرض بود و فقط یکی زیر دیگری دیده می‌شد. الان
+   کارت‌ها عرض ثابت و جمع‌وجورتری دارن و کنار هم، در یک ردیفِ
+   قابل‌اسکرولِ افقی قرار می‌گیرن — همیشه، فارغ از تعدادشون؛ نیازی به
+   شکستن به چند ردیف نیست.
+
+
+/* ---------- همین چیدمان، برای گرید «محصولات مرتبط» در صفحه‌ی محصول ---------- */
+
+.related-products-grid .title {
+  border-bottom: 1px dashed var(--rd-stroke-strong);
+  color: var(--rd-text);
+  font-size: 26px;
+}
+
+.related-products-grid .item-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  padding-block-end: 4px;
+  scrollbar-width: none;
+}
+
+.related-products-grid .item-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.related-products-grid .item-box {
+  flex: 0 0 auto;
+  width: 220px;
+  scroll-snap-align: start;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0;
+  text-align: start;
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+.related-products-grid .item-box:hover {
+  transform: translateY(-4px);
+  border-color: var(--rd-stroke-strong);
+  box-shadow: 0 18px 34px -22px rgba(31, 58, 46, .35);
+}
+
+/* پس‌زمینه‌ی سبز خیلی کم‌رنگِ پشت عکس محصول — نقطه‌ی اصلیِ رفع مشکل
+   کنتراست برای لباس‌های سفید/روشن؛ نه تیره است، نه کاملاً سفید. */
+.related-products-grid .item-box .picture {
+  background: var(--rd-surface-2);
+  margin: 0;
+  border-radius: 0;
+  padding: 18px;
+}
+
+.related-products-grid .item-box .details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px 18px 18px;
+}
+
+.related-products-grid .item-box .product-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rd-text);
+  margin-block-end: 4px;
+}
+
+.related-products-grid .item-box .product-title a:hover,
+.related-products-grid .item-box .product-title a:focus {
+  color: var(--rd-jade);
+}
+
+.related-products-grid .item-box .product-rating-box {
+  color: var(--rd-gold);
+}
+
+.related-products-grid .item-box .description {
+  color: var(--rd-text-faint);
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+
+.related-products-grid .item-box .add-info {
+  margin-block-start: auto;
+}
+
+.related-products-grid .item-box .actual-price {
+  color: var(--rd-text);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+/* خط‌چین جداکننده مثل برچسب پاره‌شونده‌ی قیمت روی لباس */
+.related-products-grid .item-box .buttons {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding-block-start: 14px;
+  border-block-start: 1.5px dashed var(--rd-stroke-strong);
+}
+
+/* ارتفاع دکمه‌ها هم‌اندازه‌ی نوار جستجو (۴۰px) — یکدست و جمع‌وجور */
+.related-products-grid .item-box button {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0 10px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.related-products-grid .item-box .product-box-add-to-cart-button {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  background: var(--rd-jade);
+  border: 1px solid var(--rd-jade);
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.related-products-grid .item-box .product-box-add-to-cart-button:hover,
+.related-products-grid .item-box .product-box-add-to-cart-button:focus {
+  background: var(--rd-jade-soft);
+  border-color: var(--rd-jade-soft);
+}
+
+.related-products-grid .item-box .add-to-compare-list-button,
+.related-products-grid .item-box .add-to-wishlist-button {
+  flex: 0 0 auto;
+  width: 40px;
+  padding: 0;
+  background-color: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong) !important;
+  border-radius: 999px;
+}
+
+.related-products-grid .item-box .add-to-compare-list-button:hover,
+.related-products-grid .item-box .add-to-wishlist-button:hover {
+  background-color: var(--rd-surface-2);
+  border-color: var(--rd-jade) !important;
+}
+@media all and (max-width: 640px) {
+  .related-products-grid .title {
+    font-size: 20px;
+  }
+
+  .related-products-grid .item-box {
+    width: 62vw;
+    max-width: 210px;
+  }
+
+  .related-products-grid .item-box .picture {
+    padding: 10px;
+  }
+
+  .related-products-grid .item-box .details {
+    padding: 10px 12px 12px;
+  }
+
+  .related-products-grid .item-box .product-title {
+    font-size: 12.5px;
+  }
+
+  .related-products-grid .item-box .description {
+    display: none;
+  }
+
+  .related-products-grid .item-box .actual-price {
+    font-size: 14px;
+  }
+
+  .related-products-grid .item-box .buttons {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-block-start: 10px;
+  }
+
+  .related-products-grid .item-box .product-box-add-to-cart-button {
+    flex: 1 1 100%;
+    width: 100%;
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+}
+
+/* =========================================================================
+   رفع باگ: پس‌زمینه‌ی مشکی در جدول مشخصات فنی و بخش نظرات محصول
+   =========================================================================
+   این دو مورد از قبل هیچ‌وقت لمس نشده بودن (فقط حاشیه/متن جدول‌های
+   دیگه مثل سبد خرید رنگش عوض شده بود، نه خودِ پس‌زمینه‌ی سلول‌ها). */
+
+.product-review-item .review-item-head {
+  background-color: var(--rd-surface-2);
+  border-top-color: var(--rd-stroke);
+}
+
+/* ردیف‌های جداکننده‌ی گروه (مثل «System unit») درشت‌تر و با کمی
+   فاصله‌ی بیشتر، تا جدول مشخصات خواناتر باشه. */
+.data-table td.spec-group-name {
+  background-color: var(--rd-surface-2) !important;
+  color: var(--rd-text) !important;
+  font-weight: 700;
+  padding-block-start: 16px;
+}
+
+.data-table td.spec-name {
+  color: var(--rd-text-faint);
+  font-weight: 600;
+}
+
