@@ -7130,7 +7130,7 @@ label, label + * {
     float: right;
     width: 100%;
     margin: 40px 0 0;
-    border: 1px solid #35373a;
+    border: 1px solid var(--rd-stroke);
   }
 
   .cart td {
@@ -7141,19 +7141,19 @@ label, label + * {
 
   .cart td.remove-from-cart {
     margin: 0 0 15px;
-    border-bottom: 1px solid #35373a;
-    background-color: #17181a;
+    border-bottom: 1px solid var(--rd-stroke);
+    background-color: var(--rd-surface-2);
     padding: 10px;
   }
 
   .cart td.product-picture {
-    border-top: 1px solid #35373a;
+    border-top: 1px solid var(--rd-stroke);
     padding: 15px 10px 5px;
   }
 
   .cart td.product {
     min-width: 0;
-    border-bottom: 1px solid #35373a;
+    border-bottom: 1px solid var(--rd-stroke);
     padding: 5px 10px 15px;
     text-align: center;
   }
@@ -7194,7 +7194,7 @@ label, label + * {
     float: right;
     width: 100%;
     margin: 40px 0 0;
-    border: 1px solid #35373a;
+    border: 1px solid var(--rd-stroke);
   }
 
   .order-details-page .data-table td {
@@ -7206,7 +7206,7 @@ label, label + * {
   .order-details-page .data-table td.product,
   .order-details-page .data-table td.tracking-number {
     min-width: 0;
-    border-bottom: 1px solid #35373a;
+    border-bottom: 1px solid var(--rd-stroke);
     padding: 5px 10px 15px;
     text-align: center;
   }
@@ -12241,4 +12241,188 @@ table.order-list {
   color: var(--rd-text-faint);
   font-weight: 600;
 }
+
+/* =========================================================================
+   سبد خرید در موبایل: کارت‌های جمع‌وجورتر
+   =========================================================================
+   قبلاً هر ردیف یه کارتِ نسبتاً بزرگ با حاشیه‌ی تیره‌ی قدیمی بود؛ عکس و
+   نام محصول هرکدوم روی خط جدا و وسط‌چین. الان: کارت با ظاهر تمِ روشن،
+   عکس و نام محصول کنار هم رو یه خط، و ردیف قیمت/تعداد/جمع جمع‌وجورتر —
+   ارتفاع کلی هر کارت خیلی کمتر شده. */
+@media all and (max-width: 1000px) {
+  .cart tr {
+    position: relative;
+    border-color: var(--rd-stroke);
+    border-radius: var(--rd-radius);
+    background: var(--rd-surface);
+    overflow: hidden;
+  }
+
+  /* شناسه کالا: خیلی کوچیک و کم‌رنگ، فقط عدد (بدون برچسبِ طولانی) */
+  .cart td.sku {
+    padding-block-end: 0;
+    font-size: 10.5px;
+    color: var(--rd-text-faint);
+  }
+
+  .cart td.sku .td-title {
+    display: none;
+  }
+
+  /* دکمه‌ی حذف: آیکون کوچیک گوشه‌ی کارت، نه یک نوار جداگانه */
+  .cart td.remove-from-cart {
+    position: absolute;
+    top: 8px;
+    inset-inline-start: 8px;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    z-index: 2;
+  }
+
+  .cart .remove-from-cart .remove-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: var(--rd-surface-2);
+    background-size: 10px;
+  }
+
+  /* عکس + نام محصول، کنار هم رو یه خط */
+  .cart td.product-picture {
+    display: inline-block;
+    width: 52px;
+    vertical-align: middle;
+    border: none;
+    padding: 0;
+    margin-inline-end: 10px;
+  }
+
+  .cart td.product-picture img {
+    border-radius: 8px;
+    border: 1px solid var(--rd-stroke);
+  }
+
+  .cart td.product {
+    display: inline-block;
+    width: calc(100% - 64px);
+    max-width: calc(100% - 64px);
+    vertical-align: middle;
+    text-align: start;
+    border: none;
+    padding: 0;
+  }
+
+  .cart td.product .product-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--rd-text);
+  }
+
+  /* ردیف قیمت/تعداد/جمع: فشرده، کنار هم، با لیبل کوچیک بالای هر مقدار */
+  .cart td.unit-price,
+  .cart td.quantity,
+  .cart td.subtotal {
+    padding: 0;
+    margin-block-start: 12px;
+    padding-inline-end: 16px;
+  }
+
+  .cart td .td-title {
+    display: block;
+    margin-block-end: 3px;
+    font-size: 10.5px;
+    color: var(--rd-text-faint);
+  }
+
+  .cart .product-unit-price,
+  .cart .product-subtotal {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--rd-text);
+  }
+
+  .cart td.quantity .qty-input {
+    width: 42px;
+    height: 30px;
+  }
+}
+
+/* =========================================================================
+   لیست محصولات دسته‌بندی/جستجو در موبایل: هر محصول یک ردیف افقی
+   =========================================================================
+   دقیقاً مثل نتایج جستجوی گوگل‌پلی: عکس یک طرف، ثابت و کوچیک؛ نام،
+   امتیاز و قیمت کنارش، زیر هم. به‌جای کارتِ عمودیِ بزرگ (عکس تمام‌عرض
+   بالا، بقیه‌ی اطلاعات پایینش)، الان همه چیز تو یک ردیفِ فشرده‌ست —
+   کاربر با یک نگاه، چند محصول رو پشت‌سرهم می‌بینه، نه اینکه برای هر
+   کدوم کلی اسکرول کنه.
+   این فقط برای گرید *عادیِ* دسته‌بندی/جستجوعه — گرید صفحه‌ی اصلی و
+   «محصولات مرتبط» چون طراحی مخصوص به خودشون رو دارن (اولی شبکه‌ای،
+   دومی اسکرول افقی)، از این قانون مستثنا شدن. */
+@media all and (max-width: 1000px) {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    float: none;
+    padding: 12px;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture {
+    flex: 0 0 100px;
+    width: 100px;
+    margin: 0;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .details {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-title {
+    margin: 0 0 4px;
+    font-size: 14px;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-rating-box {
+    margin: 0 0 6px;
+  }
+
+  /* توضیحات طولانی تو ردیفِ فشرده جا نمی‌شه، حذف می‌شه (مثل گوگل‌پلی
+     که فقط عنوان/امتیاز/قیمت رو تو نتیجه‌ی جستجو نشون می‌ده) */
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .description {
+    display: none;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .prices {
+    margin: 0 0 8px;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .actual-price {
+    font-size: 15px;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-box-add-to-cart-button {
+    flex: 1 1 auto;
+    padding: 8px 14px;
+    font-size: 12.5px;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .add-to-compare-list-button,
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .add-to-wishlist-button {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+  }
+}
+
 
