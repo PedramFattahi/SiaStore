@@ -10462,7 +10462,9 @@ select {
   float: none;
   margin: 0;
   padding: 0;
-  aspect-ratio: 1 / 1;
+  /* عمودی (پرتره) چون فروشگاه لباس است و این کارت‌ها عکسِ قدی (تمام‌قد)
+     نشان می‌دهند؛ 2/3 کشیده‌تر از 3/4 است */
+  aspect-ratio: 2 / 3;
   background: var(--rd-surface);
   border: 1px solid var(--rd-stroke);
   border-radius: var(--rd-radius);
