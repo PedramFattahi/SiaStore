@@ -10432,7 +10432,7 @@ select {
 
 @media all and (min-width: 1001px) {
   .home-page-category-grid {
-    padding-inline: 56px;
+    padding-inline: 24px;
   }
 
   .home-page-category-grid .item-grid {
@@ -10440,22 +10440,14 @@ select {
   }
 
   .home-page-category-grid .item-box {
-    width: calc((100% - 4 * 28px) / 5);
-  }
-}
-
-/* هم‌ترازی محتوا با ستونِ ۱۵۲۰px در مانیتورهای خیلی عریض */
-@media all and (min-width: 1600px) {
-  .home-page-category-grid {
-    padding-inline: calc((100vw - 1520px) / 2 + 24px);
+    width: calc((100% - 5 * 28px) / 6);
   }
 }
 
 .home-page-category-grid .item-box {
   position: relative;
   flex: 0 0 auto;
-  width: calc((100% - 3 * 22px) / 4);
-  min-width: 180px;
+  min-width: 120px;
   float: none;
   margin: 0;
   padding: 0;
