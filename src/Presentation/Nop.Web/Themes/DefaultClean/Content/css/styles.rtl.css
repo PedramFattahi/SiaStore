@@ -9804,7 +9804,6 @@ select {
     padding-block: 16px;
     text-align: start;
     background: var(--rd-surface);
-    border-bottom: 1px solid var(--rd-stroke);
   }
 
   .header-upper,
@@ -9931,7 +9930,7 @@ select {
   .header-links-wrapper {
     order: 1;
     padding: 10px 0;
-    border-bottom: 1px solid var(--rd-stroke);
+    border-bottom: none;
   }
 
   .header-selectors-wrapper {
@@ -10084,7 +10083,7 @@ select {
   .header-selectors-wrapper {
     display: flex;
     gap: 8px;
-    border-bottom: 1px solid var(--rd-stroke);
+    border-bottom: none;
     padding: 8px 0;
   }
 
