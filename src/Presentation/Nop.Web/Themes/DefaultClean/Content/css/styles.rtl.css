@@ -11573,9 +11573,11 @@ table.order-list {
     width: auto;
     padding: 6px 16px;
     border-radius: 999px;
-    border: 1px solid var(--rd-stroke-strong);
+    border: 0;
     background: var(--rd-surface);
     white-space: nowrap;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .menu__item-toggle:active,
@@ -11590,9 +11592,19 @@ table.order-list {
     white-space: nowrap;
   }
 
-  /* پیکان بازشوی زیرمنو، چون زیرمنو دیگر نمایش داده نمی‌شود، حذف می‌شود. */
+  /* تیرِ نشانگر زیرمنو، هماهنگ با دسکتاپ (در موبایل هاور نیست، پس همیشه
+     به حالتِ «طرفین» است). */
   .menu__item-toggle::after {
-    display: none;
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-inline-start: 3px;
+    border-inline-end: 1px solid currentColor;
+    border-block-end: 1px solid currentColor;
+    transform: rotate(45deg);
+    background: none;
+    padding: 0;
   }
 
   .menu__list-view {
