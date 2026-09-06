@@ -9945,6 +9945,7 @@ select {
     -ms-overflow-style: none;
     scrollbar-width: none;
     font-size: 0;
+    padding-block: 4px 0;
   }
 
   .header-links ul::-webkit-scrollbar {
