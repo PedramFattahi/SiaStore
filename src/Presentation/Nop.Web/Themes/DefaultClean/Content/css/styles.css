@@ -10592,11 +10592,11 @@ select {
   }
 
   .home-page-product-grid .item-grid {
-    gap: 28px;
+    gap: 10px;
   }
 
   .home-page-product-grid .item-box {
-    width: calc((100% - 5 * 28px) / 6);
+    width: calc((100% - 5 * 10px) / 6);
   }
 }
 
