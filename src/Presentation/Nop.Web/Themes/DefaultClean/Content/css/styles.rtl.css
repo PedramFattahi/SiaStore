@@ -10246,9 +10246,9 @@ select {
   .header-menu .menu > .menu__item > .menu__item-toggle::after {
     content: "";
     display: inline-block;
-    width: 4px;
-    height: 4px;
-    margin-inline-start: 5px;
+    width: 5px;
+    height: 5px;
+    margin-inline-start: 3px;
     border-inline-end: 1px solid currentColor;
     border-block-end: 1px solid currentColor;
     transform: rotate(45deg);
