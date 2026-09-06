@@ -10448,6 +10448,7 @@ select {
   position: relative;
   flex: 0 0 auto;
   min-width: 120px;
+  max-width: 205px;
   float: none;
   margin: 0;
   padding: 0;
@@ -10460,6 +10461,16 @@ select {
   border-radius: var(--rd-radius);
   overflow: hidden;
   transition: transform .25s ease, border-color .25s ease;
+}
+
+/* اگر تعداد کارت کم باشد، وسط ردیف می‌مانند و کشیده نمی‌شوند؛
+   با زیاد شدن تعداد، auto-marginها صفر شده و اسکرول افقی فعال می‌شود. */
+.home-page-category-grid .item-box:first-child {
+  margin-inline-start: auto;
+}
+
+.home-page-category-grid .item-box:last-child {
+  margin-inline-end: auto;
 }
 
 .home-page-category-grid .item-box:hover {
@@ -10535,29 +10546,51 @@ select {
 
 /* ---------- محصولات ویژه (کارت‌های بوتیک) ---------- */
 
-.home-page-product-grid .title {
-  border-bottom: 1px dashed var(--rd-stroke-strong);
-  color: var(--rd-text);
-  font-size: 26px;
+.home-page-product-grid {
+  margin-block: 0 46px;
 }
 
+.home-page-product-grid .title {
+  margin: 0 0 24px;
+  color: var(--rd-text);
+  font-size: 26px;
+  font-weight: 700;
+  text-align: start;
+}
+
+/* اسکرول افقی: وقتی تعداد محصولات زیاد شود، یک ردیفِ اسکرول‌شونده
+   (چپ/راست) می‌شوند؛ نوار اسکرول نمایش داده نمی‌شود. */
 .home-page-product-grid .item-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 22px;
+  padding-block-end: 14px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.home-page-product-grid .item-grid::-webkit-scrollbar {
+  display: none;
 }
 
 @media all and (min-width: 1001px) {
   .home-page-product-grid .item-grid {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 24px;
+    gap: 28px;
+  }
+
+  .home-page-product-grid .item-box {
+    width: calc((100% - 5 * 28px) / 6);
   }
 }
 
 .home-page-product-grid .item-box {
-  width: auto !important;
+  flex: 0 0 auto;
+  min-width: 120px;
+  max-width: 255px;
   float: none !important;
-  margin: 0 !important;
+  margin: 0;
   padding: 0;
   text-align: start;
   background: var(--rd-surface);
@@ -10567,6 +10600,16 @@ select {
   display: flex;
   flex-direction: column;
   transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+/* اگر تعداد کارت کم باشد، وسط ردیف می‌مانند و کشیده نمی‌شوند؛
+   با زیاد شدن تعداد، auto-marginها صفر شده و اسکرول افقی فعال می‌شود. */
+.home-page-product-grid .item-box:first-child {
+  margin-inline-start: auto;
+}
+
+.home-page-product-grid .item-box:last-child {
+  margin-inline-end: auto;
 }
 
 .home-page-product-grid .item-box:hover {
@@ -10838,8 +10881,8 @@ select {
   .home-page-category-grid .item-box {
     width: calc((100% - 28px) / 2);
   }
-  .home-page-product-grid .item-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .home-page-product-grid .item-box {
+    width: calc((100% - 28px) / 2);
   }
 }
 
@@ -10876,8 +10919,11 @@ select {
   }
 
   .home-page-product-grid .item-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 14px;
+  }
+
+  .home-page-product-grid .item-box {
+    width: calc((100% - 28px) / 2.75);
   }
 
   .home-page-product-grid .item-box .picture {
