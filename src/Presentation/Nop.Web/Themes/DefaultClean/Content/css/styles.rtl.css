@@ -10728,6 +10728,12 @@ select {
   font-size: 15px;
   font-weight: 700;
   color: var(--rd-text);
+  line-height: 1.5;
+  min-height: 45px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   margin-block-end: 4px;
 }
 
@@ -11034,7 +11040,7 @@ select {
   }
 
   .home-page-product-grid .item-box {
-    width: calc((100% - 28px) / 2.75);
+    width: calc((100% - 15.4px) / 2.1);
   }
 
   .home-page-product-grid .item-box .picture {
