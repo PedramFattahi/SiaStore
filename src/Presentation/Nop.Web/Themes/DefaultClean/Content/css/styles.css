@@ -10377,24 +10377,89 @@ select {
 
 /* ---------- دسته‌بندی‌های صفحه اصلی (کارت تصویری) ---------- */
 
+.home-page-category-grid {
+  position: relative;
+  margin-inline: calc(50% - 50vw);
+  margin-block: 0 46px;
+  padding-block: 34px 26px;
+  padding-inline: 16px;
+  width: 100vw;
+  max-width: none;
+  border-radius: 0;
+  background: linear-gradient(150deg, var(--rd-bg-soft) 0%, #2A5244 55%, var(--rd-jade) 115%);
+  box-shadow: 0 14px 34px rgba(16, 30, 24, .28);
+  overflow: hidden;
+}
+
+/* هاله‌ی طلایی در گوشه‌ی نوارِ دسته‌بندی، هم‌رنگِ لهجه‌ی قالب */
+.home-page-category-grid::before {
+  content: "";
+  position: absolute;
+  inline-size: 300px;
+  block-size: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(185, 134, 47, .30), transparent 65%);
+  inset-block-start: -100px;
+  inset-inline-end: -80px;
+  pointer-events: none;
+}
+
+/* اسکرول افقی: وقتی تعداد دسته‌ها زیاد شود، کارت‌ها به‌جای ردیف‌های
+   زیاد، یک ردیفِ اسکرول‌شونده (چپ/راست) می‌شوند. */
 .home-page-category-grid .item-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 22px;
+  padding-block-end: 14px;
+  scroll-snap-type: x proximity;
+  /* نوار اسکرول نمایش داده نمی‌شود، ولی اسکرول افقی فعال است */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.home-page-category-grid .item-grid::-webkit-scrollbar {
+  display: none;
+}
+
+@media all and (min-width: 641px) {
+  .home-page-category-grid {
+    padding-inline: 28px;
+  }
 }
 
 @media all and (min-width: 1001px) {
+  .home-page-category-grid {
+    padding-inline: 56px;
+  }
+
   .home-page-category-grid .item-grid {
     gap: 28px;
+  }
+
+  .home-page-category-grid .item-box {
+    width: calc((100% - 4 * 28px) / 5);
+  }
+}
+
+/* هم‌ترازی محتوا با ستونِ ۱۵۲۰px در مانیتورهای خیلی عریض */
+@media all and (min-width: 1600px) {
+  .home-page-category-grid {
+    padding-inline: calc((100vw - 1520px) / 2 + 24px);
   }
 }
 
 .home-page-category-grid .item-box {
   position: relative;
-  width: auto;
+  flex: 0 0 auto;
+  width: calc((100% - 3 * 22px) / 4);
+  min-width: 180px;
   float: none;
   margin: 0;
   padding: 0;
+  scroll-snap-align: start;
   /* عمودی (پرتره) چون فروشگاه لباس است و این کارت‌ها عکسِ قدی (تمام‌قد)
      نشان می‌دهند؛ 2/3 کشیده‌تر از 3/4 است */
   aspect-ratio: 2 / 3;
@@ -10778,8 +10843,8 @@ select {
 /* ---------- واکنش‌گرا ---------- */
 
 @media all and (min-width: 641px) and (max-width: 1000px) {
-  .home-page-category-grid .item-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .home-page-category-grid .item-box {
+    width: calc((100% - 28px) / 2);
   }
   .home-page-product-grid .item-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -10794,13 +10859,19 @@ select {
     padding-inline: 12px;
   }
 
+  /* نوار دسته‌بندی در موبایل: کارت‌ها کشیده‌تر (پرتره) و به‌صورت اسکرول افقی. */
+  .home-page-category-grid {
+    padding-block: 24px 20px;
+    padding-inline: 12px;
+  }
+
   .home-page-category-grid .item-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 14px;
   }
 
   .home-page-category-grid .item-box {
-    aspect-ratio: 1 / 1;
+    width: calc((100% - 28px) / 2.75);
+    aspect-ratio: 2 / 3;
   }
 
   .home-page-category-grid .item-box .title {
