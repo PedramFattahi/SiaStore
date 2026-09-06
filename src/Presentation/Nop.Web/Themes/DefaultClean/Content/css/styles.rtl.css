@@ -10155,6 +10155,7 @@ select {
 
 .header-menu {
   background: var(--rd-surface) !important;
+  border-top: none;
   border-bottom: 1px solid var(--rd-stroke);
   margin-block-end: 24px;
 }
@@ -10169,7 +10170,7 @@ select {
 .menu__item-toggle,
 .menu__link {
   color: var(--rd-text) !important;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .menu__item:hover > .menu__item-toggle,
@@ -10210,6 +10211,24 @@ select {
 
 .menu__group-title {
   color: var(--rd-gold-soft);
+}
+
+/* ارتفاع کم و فونت هماهنگ با موبایل در دسکتاپ: قانون قدیمیِ بخش پایه
+   font-size:18px و پدینگ 20px روی .menu-container می‌گذاشت که نوار را
+   بلند و نوشته‌ها را خیلی بزرگ/بولد نشان می‌دهد. */
+@media all and (min-width: 1001px) {
+  .header-menu .menu-container {
+    padding: 0 28px;
+  }
+
+  .header-menu .menu {
+    font-size: 14px;
+  }
+
+  .header-menu .menu > .menu__item {
+    padding-block: 8px;
+    border: 0;
+  }
 }
 
 /* ---------- اسلایدر (Hero) ---------- */
@@ -11493,7 +11512,7 @@ table.order-list {
     overflow-x: auto;
     overflow-y: hidden;
     padding-inline: 14px;
-    padding-block: 12px;
+    padding-block: 10px;
     scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -11513,7 +11532,7 @@ table.order-list {
   .menu__item-toggle,
   .menu__item:not(.menu-dropdown) {
     width: auto;
-    padding: 9px 18px;
+    padding: 6px 16px;
     border-radius: 999px;
     border: 1px solid var(--rd-stroke-strong);
     background: var(--rd-surface);
@@ -11527,8 +11546,8 @@ table.order-list {
 
   .menu__item-toggle .menu__link,
   .menu__item:not(.menu-dropdown) .menu__link {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 400;
     white-space: nowrap;
   }
 
