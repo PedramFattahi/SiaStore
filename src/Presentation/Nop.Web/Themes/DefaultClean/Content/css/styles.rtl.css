@@ -9724,11 +9724,16 @@ select {
    بدون نیاز به تغییر HTML به‌دست می‌آید. */
 
 @media all and (min-width: 1001px) {
+  /* ضدِ قانونِ قدیمیِ بخش پایه که هدر را «width:980px؛ margin:auto» (وسط)
+     می‌کرد و از دو طرف صفحه فاصله می‌گذاشت؛ اینجا قطعاً تمام‌عرض می‌شود. */
   .header {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
     gap: 24px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     padding-inline: 40px;
     padding-block: 16px;
     text-align: start;
@@ -9839,9 +9844,15 @@ select {
 /* ---------- هدر موبایل: جمع‌وجور و حرفه‌ای ---------- */
 
 @media all and (max-width: 1000px) {
+  /* تمام‌عرض و لبه‌به‌لبه: روی موبایل هم هیچ‌گاه عرض را نمی‌شکنیم؛ پس‌زمینه‌ی
+     سفیدِ کلِ ناحیه‌ی هدر تا لبه‌های صفحه ادامه می‌یابد */
   .header {
     text-align: start;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     padding-inline: 14px;
+    background: var(--rd-surface);
   }
 
   .header-upper {
