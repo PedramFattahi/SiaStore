@@ -9828,6 +9828,55 @@ select {
     border: 1px solid var(--rd-stroke-strong);
   }
 
+  /* در دسکتاپ هم مثل موبایل، هر لینکِ هدر یک دایره‌ی آیکونی + متن است
+     (بنا به درخواست کاربر: آیکون و متن با هم). دایره‌ها همان SVGهای
+     موبایل‌اند؛ بدون وابستگی به فونت‌آیکون/CDN. */
+  .header-links a {
+    gap: 8px;
+  }
+
+  .header-links a::before {
+    content: "";
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--rd-surface-2);
+    border: 1px solid var(--rd-stroke);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+  }
+
+  /* ثبت‌نام: آدمک + علامت جمع (user-plus) */
+  .header-links a.ico-register::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M2 21c0-4 3.1-7 7-7s7 3 7 7'/%3E%3Cpath d='M19 8v6'/%3E%3Cpath d='M22 11h-6'/%3E%3C/svg%3E");
+  }
+
+  /* ورود: فلش رو به داخلِ یک درگاه (sign-in) */
+  .header-links a.ico-login::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4'/%3E%3Cpath d='M10 17l5-5-5-5'/%3E%3Cpath d='M15 12H3'/%3E%3C/svg%3E");
+  }
+
+  /* حساب کاربری (بعد از ورود): آدمک ساده */
+  .header-links a.ico-account::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 20c0-4 3.6-7 8-7s8 3 8 7'/%3E%3C/svg%3E");
+  }
+
+  /* خروج: فلش رو به بیرونِ یک درگاه (sign-out) */
+  .header-links a.ico-logout::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'/%3E%3Cpath d='M16 17l5-5-5-5'/%3E%3Cpath d='M21 12H9'/%3E%3C/svg%3E");
+  }
+
+  .header-links a.ico-wishlist::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-6.7-4.3-9.1-8.4C1.2 9.4 2.5 5.8 6 5.3c2-.3 3.7.8 6 2.8 2.3-2 4-3.1 6-2.8 3.5.5 4.8 4.1 3.1 7.3C18.7 16.7 12 21 12 21z'/%3E%3C/svg%3E");
+  }
+
+  .header-links a.ico-cart::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8h12l-1 12H7L6 8z'/%3E%3Cpath d='M9 8V6a3 3 0 0 1 6 0v2'/%3E%3C/svg%3E");
+  }
+
   .header-selectors-wrapper select {
     color: var(--rd-text-faint);
   }
