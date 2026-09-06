@@ -10379,11 +10379,12 @@ select {
   }
 }
 
-/* عکس بنر به‌جای مرکزچین‌شدن با نوار سیاه اطرافش (چون نسبت ابعادش با
-   ارتفاع اسلایدر یکی نیست)، کل کادر را با کراپ ملایم پر می‌کند. */
+/* قیدِ نسبت تصویر روی خودِ اسلاید؛ عکس با height:100% همان کادر را
+   با کراپِ ملایم (object-fit: cover) پر می‌کند — بدون فضای خالی. */
 .swiper-slide {
   overflow: hidden;
   background: var(--rd-surface-2);
+  aspect-ratio: 3.5 / 1;
 }
 
 .swiper-slide a {
@@ -10394,9 +10395,17 @@ select {
 
 .swiper-slide img,
 .swiper-slide .slider-img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+}
+
+@media all and (max-width: 640px) {
+  .swiper-slide {
+    aspect-ratio: 2 / 1;
+  }
 }
 
 .swiper-pagination-bullet {
