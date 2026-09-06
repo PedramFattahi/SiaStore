@@ -9824,8 +9824,9 @@ select {
   }
 
   #topcartlink {
-    background: var(--rd-surface-2);
-    border: 1px solid var(--rd-stroke-strong);
+    background: none;
+    border: none;
+    border-radius: 0;
   }
 
   /* در دسکتاپ هم مثل موبایل، هر لینکِ هدر یک دایره‌ی آیکونی + متن است
@@ -9969,7 +9970,7 @@ select {
     width: auto;
     max-width: none;
     margin: 0;
-    padding: 6px 16px;
+    padding: 0;
   }
 }
 
