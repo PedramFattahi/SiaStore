@@ -10546,8 +10546,14 @@ select {
 
 /* ---------- محصولات ویژه (کارت‌های بوتیک) ---------- */
 
+/* سکشن محصولات ویژه تمام‌عرض است (بدون پس‌زمینه‌ی رنگی): کل عرض
+   صفحه و کارت‌ها نزدیک به لبه قرار می‌گیرند. */
 .home-page-product-grid {
+  margin-inline: calc(50% - 50vw);
   margin-block: 0 46px;
+  padding-inline: 16px;
+  width: 100vw;
+  max-width: none;
   border-block-end: 2px dashed var(--rd-jade);
   padding-block-end: 12px;
 }
@@ -10581,6 +10587,10 @@ select {
 }
 
 @media all and (min-width: 1001px) {
+  .home-page-product-grid {
+    padding-inline: 24px;
+  }
+
   .home-page-product-grid .item-grid {
     gap: 28px;
   }
@@ -10712,20 +10722,34 @@ select {
   border-color: var(--rd-jade-soft);
 }
 
-.home-page-product-grid .item-box .add-to-compare-list-button,
-.home-page-product-grid .item-box .add-to-wishlist-button {
-  flex: 0 0 auto;
-  width: 40px;
-  padding: 0;
-  background-color: var(--rd-surface);
-  border: 1px solid var(--rd-stroke-strong) !important;
-  border-radius: 999px;
+/* دکمه‌ی مقایسه در گرید صفحه‌ی اصلی نمایش داده نمی‌شود */
+.home-page-product-grid .item-box .add-to-compare-list-button {
+  display: none;
 }
 
-.home-page-product-grid .item-box .add-to-compare-list-button:hover,
-.home-page-product-grid .item-box .add-to-wishlist-button:hover {
-  background-color: var(--rd-surface-2);
-  border-color: var(--rd-jade) !important;
+/* دکمه‌ی علاقه‌مندی: دایره‌ی شناور در گوشه‌ی بالای کارت، فقط آیکون قلب */
+.home-page-product-grid .item-box .add-to-wishlist-button {
+  position: absolute;
+  inset-block-start: 12px;
+  inset-inline-end: 12px;
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  padding: 0;
+  background-color: var(--rd-jade);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFFFFF'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  border: none;
+  box-shadow: 0 6px 16px rgba(31, 58, 46, .25);
+  font-size: 0;
+}
+
+.home-page-product-grid .item-box .add-to-wishlist-button:hover,
+.home-page-product-grid .item-box .add-to-wishlist-button:focus {
+  background-color: var(--rd-jade-soft);
 }
 
 /* ---------- فوتر ---------- */
@@ -10889,6 +10913,9 @@ select {
   .home-page-product-grid .item-box {
     width: calc((100% - 28px) / 2);
   }
+  .home-page-product-grid {
+    padding-inline: 28px;
+  }
 }
 
 /* موبایل: به‌جای یک کارت تمام‌عرض، دو کارت در هر ردیف نشان داده می‌شود
@@ -10921,6 +10948,10 @@ select {
 
   .home-page-product-grid .title {
     font-size: 20px;
+  }
+
+  .home-page-product-grid {
+    padding-inline: 12px;
   }
 
   .home-page-product-grid .item-grid {
@@ -10964,11 +10995,10 @@ select {
     padding: 10px 6px;
   }
 
-  /* روی موبایل این دو دکمه به‌صورت متن کامل رندر می‌شوند (نه آیکون) و
-     باعث می‌شدند کارت‌ها خیلی طولانی شوند؛ برای جمع‌وجورتر شدن کارت‌ها
-     در صفحه اصلی مخفی می‌شوند — در صفحه‌ی جزئیات محصول همچنان در دسترس‌اند. */
-  .home-page-product-grid .item-box .add-to-compare-list-button,
-  .home-page-product-grid .item-box .add-to-wishlist-button {
+  /* روی موبایل این دو دکمه به‌صورت متن کامل رندر می‌شدند و باعث
+     طولانی شدن کارت‌ها می‌شدند؛ دکمه‌ی مقایسه مخفی است و دکمه‌ی
+     علاقه‌مندی در موبایل هم به‌صورت دایره‌ی شناور نمایش داده می‌شود. */
+  .home-page-product-grid .item-box .add-to-compare-list-button {
     display: none;
   }
 }
