@@ -10349,6 +10349,41 @@ select {
   background: var(--rd-jade);
 }
 
+/* دکمه‌های ناوبری اسلایدر (prev/next) — دایره‌ی روشن در کنار تصویر */
+.nop-slider .swiper-button-prev,
+.nop-slider .swiper-button-next {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(251, 249, 244, 0.92);
+  border: 1px solid var(--rd-stroke);
+  box-shadow: 0 6px 16px -8px rgba(31, 58, 46, .35);
+  color: var(--rd-jade);
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.nop-slider .swiper-button-prev::after,
+.nop-slider .swiper-button-next::after {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.nop-slider .swiper-button-prev:hover,
+.nop-slider .swiper-button-next:hover,
+.nop-slider .swiper-button-prev:focus,
+.nop-slider .swiper-button-next:focus {
+  background: var(--rd-jade);
+  border-color: var(--rd-jade);
+  color: #fff;
+}
+
+@media all and (max-width: 640px) {
+  .nop-slider .swiper-button-prev,
+  .nop-slider .swiper-button-next {
+    display: none;
+  }
+}
+
 /* ---------- بلوک خوش‌آمدگویی ---------- */
 
 .home-page .topic-block {
