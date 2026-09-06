@@ -9832,6 +9832,7 @@ select {
      (بنا به درخواست کاربر: آیکون و متن با هم). دایره‌ها همان SVGهای
      موبایل‌اند؛ بدون وابستگی به فونت‌آیکون/CDN. */
   .header-links a {
+    position: relative;
     gap: 8px;
   }
 
@@ -9875,6 +9876,23 @@ select {
 
   .header-links a.ico-cart::before {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8h12l-1 12H7L6 8z'/%3E%3Cpath d='M9 8V6a3 3 0 0 1 6 0v2'/%3E%3C/svg%3E");
+  }
+
+  /* عدد سبد خرید/علاقه‌مندی در دسکتاپ هم مثل موبایل روی «گوشه‌ی بالای
+     دایره‌ی آیکون» (لبه‌ی inline-end + لبه‌ی بالا). در موبایل دایره ۳۶px
+     و بج top:-3/end:-3 است؛ اینجا چون دایره‌ی ۲۸px وسطِ ۴۰px ارتفاعِ
+     لینک است (لبه‌ی بالاهاش 6px پایینِ start؛ و لبه‌ی endِ دایره 28px
+     از start فاصله دارد) مقادیرِ معادل می‌شود top:3px و
+     inset-inline-start:13px (در RTL آینه). اگر ابعاد عوض شد اینجا را
+     هم به‌روز کن. */
+  .wishlist-qty,
+  .cart-qty {
+    position: absolute;
+    top: 3px;
+    inset-inline-start: 13px;
+    align-self: auto;
+    flex: none;
+    margin: 0;
   }
 
   .header-selectors-wrapper select {
