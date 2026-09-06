@@ -10160,6 +10160,23 @@ select {
   .header-menu .menu > .menu__item {
     padding-block: 8px;
     border: 0;
+    background-image: linear-gradient(var(--rd-jade), var(--rd-jade));
+    background-repeat: no-repeat;
+    background-position: center calc(100% - 1px);
+    background-size: 0 2px;
+    transition: background-size .2s ease;
+  }
+
+  .header-menu .menu > .menu__item:hover {
+    background-size: 100% 2px;
+  }
+
+  /* پنلِ بازشونده (مگامنو/لیستی) چسبیده به لبه‌ی پایینِ نوار دسته‌بندی
+     باز شود، بدون هیچ فاصله؛ منوی مگا سرتاسر کادر و منوی لیستی زیرِ
+     همان دسته‌ای که هاور شده است. */
+  .header-menu .menu > .menu__item > .menu__grid-view,
+  .header-menu .menu > .menu__item > .menu__list-view {
+    top: 100%;
   }
 }
 
