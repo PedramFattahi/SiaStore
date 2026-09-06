@@ -10619,6 +10619,8 @@ select {
 
 .home-page-product-grid .title {
   margin: 0 0 24px;
+  border-bottom: none;
+  padding: 0;
   color: var(--rd-text);
   font-size: 26px;
   font-weight: 700;
@@ -10632,7 +10634,8 @@ select {
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 22px;
-  padding-block-end: 14px;
+  border-block: 2px dashed var(--rd-jade);
+  padding-block: 12px 14px;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -11189,7 +11192,7 @@ select {
 }
 
 /* عنوان بخش‌های لیست محصول/دسته‌بندی (خارج از صفحه‌ی اصلی) */
-.product-grid .title,
+.product-grid:not(.home-page-product-grid) .title,
 .product-list .title {
   color: var(--rd-text);
   border-bottom: 1px dashed var(--rd-stroke-strong);
