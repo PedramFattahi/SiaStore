@@ -9622,31 +9622,97 @@ select {
   width: auto;
 }
 
-.search-box input.search-box-text {
+/* ---------- جستجو: دکمه‌ی آیکونی داخلِ خودِ نوار ---------- */
+/* دکمه به‌جای متن «جستجو» فقط آیکون ذره‌بین دارد و داخلِ کپسولِ ورودی
+   شناور است؛ متن دکمه برای دسترس‌پذیری/سئو در کد می‌ماند و فقط از دید
+   کاربر با font-size:0 پنهان می‌شود (همان روش لینک‌های هدر موبایل). */
+
+.search-box form:not(:has(.search-box-category)) {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.search-box form:not(:has(.search-box-category)) input.search-box-text {
+  display: block;
+  float: none;
+  width: 100%;
+  height: 40px;
+  padding-inline: 18px 46px;
+  border: 1px solid var(--rd-stroke-strong);
+  border-radius: 999px;
   background: var(--rd-surface);
+  color: var(--rd-text);
+}
+
+.search-box form:not(:has(.search-box-category)) input.search-box-text:focus {
+  border-color: var(--rd-jade);
+}
+
+.search-box form:not(:has(.search-box-category)) .search-box-button {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 5px;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--rd-jade);
+  color: #FFFFFF;
+  font-size: 0;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.search-box form:not(:has(.search-box-category)) .search-box-button:hover,
+.search-box form:not(:has(.search-box-category)) .search-box-button:focus {
+  background: var(--rd-jade-soft);
+}
+
+.search-box form:not(:has(.search-box-category)) .search-box-button::before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* اگر «جستجو در دسته‌ها» فعال باشد، همان کپسولِ به‌هم‌چسبیده‌ی قبلی حفظ
+   می‌شود تا سلکتِ دسته کنار ورودی بماند. */
+.search-box form:has(.search-box-category) {
+  display: flex;
+  width: 100%;
+}
+
+.search-box form:has(.search-box-category) input.search-box-text {
+  flex: 1 1 auto;
+  min-width: 0;
   border: 1px solid var(--rd-stroke-strong);
   border-inline-end: none;
-  color: var(--rd-text);
   border-start-start-radius: 999px;
   border-end-start-radius: 999px;
   border-start-end-radius: 0;
   border-end-end-radius: 0;
   padding-inline-start: 16px;
+  background: var(--rd-surface);
+  color: var(--rd-text);
 }
 
-.search-box .search-box-button {
+.search-box form:has(.search-box-category) .search-box-button {
   background: var(--rd-jade);
   color: #FFFFFF;
-  font-weight: 700;
-  text-transform: none;
   border-start-end-radius: 999px;
   border-end-end-radius: 999px;
   border-start-start-radius: 0;
   border-end-start-radius: 0;
 }
 
-.search-box .search-box-button:hover,
-.search-box .search-box-button:focus {
+.search-box form:has(.search-box-category) .search-box-button:hover,
+.search-box form:has(.search-box-category) .search-box-button:focus {
   background: var(--rd-jade-soft);
 }
 
