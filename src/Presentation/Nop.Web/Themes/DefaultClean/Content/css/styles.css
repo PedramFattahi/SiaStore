@@ -10171,6 +10171,29 @@ select {
     background-size: 100% 2px;
   }
 
+  .header-menu .menu > .menu__item > .menu__item-toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .header-menu .menu > .menu__item > .menu__item-toggle::after {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin-inline-start: 5px;
+    border-inline-end: 1px solid currentColor;
+    border-block-end: 1px solid currentColor;
+    transform: rotate(-45deg);
+    background: none;
+    padding: 0;
+    transition: transform .2s ease;
+  }
+
+  .header-menu .menu > .menu__item:hover > .menu__item-toggle::after {
+    transform: rotate(45deg);
+  }
+
   /* پنلِ بازشونده (مگامنو/لیستی) چسبیده به لبه‌ی پایینِ نوار دسته‌بندی
      باز شود، بدون هیچ فاصله؛ منوی مگا سرتاسر کادر و منوی لیستی زیرِ
      همان دسته‌ای که هاور شده است. */
