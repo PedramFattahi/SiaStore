@@ -7506,7 +7506,7 @@ label, label + * {
 
   .item-box {
     width: 32.33333%;
-    margin: 0 0.5% 50px;
+    margin: 0 0.5% 10px;
   }
 
   .item-box:nth-child(2n+1) {
@@ -8777,7 +8777,7 @@ label, label + * {
   .product-details-page .product-grid .item-box,
   .shopping-cart-page .product-grid .item-box {
     width: 24%;
-    margin: 0 0.5% 50px;
+    margin: 0 0.5% 5px;
   }
 
   .home-page .product-grid .item-box:nth-child(3n+1),
@@ -10548,6 +10548,8 @@ select {
 
 .home-page-product-grid {
   margin-block: 0 46px;
+  border-block-end: 2px dashed var(--rd-jade);
+  padding-block-end: 12px;
 }
 
 .home-page-product-grid .title {
@@ -10567,8 +10569,8 @@ select {
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 22px;
-  border-block: 2px dashed var(--rd-jade);
-  padding-block: 12px 14px;
+  border-block-start: 2px dashed var(--rd-jade);
+  padding-block-start: 12px;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
   -ms-overflow-style: none;

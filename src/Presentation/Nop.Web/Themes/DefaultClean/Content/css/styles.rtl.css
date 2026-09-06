@@ -8859,7 +8859,7 @@ label, label + * {
   .product-details-page .product-grid .item-box,
   .shopping-cart-page .product-grid .item-box {
     width: 24%;
-    margin: 0 0.5% 50px;
+    margin: 0 0.5% 5px;
   }
 
   .home-page .product-grid .item-box:nth-child(3n+1),
@@ -10615,6 +10615,8 @@ select {
 
 .home-page-product-grid {
   margin-block: 0 46px;
+  border-block-end: 2px dashed var(--rd-jade);
+  padding-block-end: 12px;
 }
 
 .home-page-product-grid .title {
@@ -10634,8 +10636,8 @@ select {
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 22px;
-  border-block: 2px dashed var(--rd-jade);
-  padding-block: 12px 14px;
+  border-block-start: 2px dashed var(--rd-jade);
+  padding-block-start: 12px;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -10670,6 +10672,14 @@ select {
   display: flex;
   flex-direction: column;
   transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+/* کادرِ داخلیِ هر محصول هم باید ستونِ خم‌شونده باشد تا محتوا پر شود
+   و فضای خالی در پایینِ کارت باقی نماند */
+.home-page-product-grid .item-box .product-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 /* اگر تعداد کارت کم باشد، وسط ردیف می‌مانند و کشیده نمی‌شوند؛
