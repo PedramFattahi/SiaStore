@@ -150,9 +150,17 @@
             }
         });
 
+        // Desktop accordion starts with every section collapsed;
+        // mobile keeps the chips row (content is hidden via CSS anyway).
+        if (!isMobile()) {
+            $('.side-2 .block').addClass('closed');
+            $('.side-2 .product-filter').addClass('closed');
+            $('.side-2 .block .listbox, .side-2 .product-filter .filter-content').hide();
+        }
+
         $('.side-2 .block > .title, .side-2 .product-filter .filter-title')
             .attr('tabindex', '0')
             .attr('role', 'button')
-            .attr('aria-expanded', 'true');
+            .attr('aria-expanded', 'false');
     });
 </script>

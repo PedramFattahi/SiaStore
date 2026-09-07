@@ -11605,7 +11605,7 @@ select {
 }
 
 .block .title strong {
-  color: var(--rd-onpanel-strong);
+  color: var(--rd-text);
   font-weight: 700;
 }
 
@@ -11874,7 +11874,7 @@ table.order-list {
   padding: 14px 18px;
   font-size: 15px;
   font-weight: 700;
-  color: var(--rd-onpanel-strong) !important;
+  color: var(--rd-text) !important;
 }
 
 .product-filter .filter-content {
@@ -12100,7 +12100,7 @@ table.order-list {
    ========================================================================= */
 
 .block .title {
-  color: var(--rd-onpanel-strong) !important;
+  color: var(--rd-text) !important;
 }
 
 /* =========================================================================
@@ -13380,12 +13380,13 @@ table.order-list {
   width: 14px;
   height: 14px;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat center / contain;
+  transform: rotate(-180deg);
   opacity: .75;
   transition: transform .22s ease, opacity .22s ease;
 }
 
 .product-filter.closed .filter-title::after {
-  transform: rotate(-180deg);
+  transform: rotate(0deg);
   opacity: .4;
 }
 
@@ -13421,12 +13422,13 @@ table.order-list {
   width: 14px;
   height: 14px;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat center / contain;
+  transform: rotate(-180deg);
   opacity: .75;
   transition: transform .22s ease, opacity .22s ease;
 }
 
 .side-2 .block.closed > .title::after {
-  transform: rotate(-180deg);
+  transform: rotate(0deg);
   opacity: .4;
 }
 
@@ -13665,6 +13667,8 @@ table.order-list {
   padding: 9px 10px;
   border-radius: 10px;
   color: var(--rd-text-dim);
+  font-size: 13.5px;
+  font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
@@ -13679,6 +13683,14 @@ table.order-list {
   padding-inline-start: 14px;
 }
 
+.listbox > ul.list li {
+  padding: 0;
+}
+
+.listbox ul.list a::before {
+  content: none;
+}
+
 .listbox > ul.list > li.active > a {
   background: var(--rd-surface-2);
   color: var(--rd-jade);
@@ -13686,8 +13698,38 @@ table.order-list {
 }
 
 .listbox > ul.list ul.sublist {
+  padding-inline-start: 26px;
+}
+
+.listbox > ul.list > li > ul.sublist {
+  padding-block-start: 4px;
+  margin-block-start: 2px;
+}
+
+.listbox > ul.list ul.sublist > li > a:not(.product-picture):not(.product-name) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--rd-text-dim);
+  font-size: 12.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color .15s ease, color .15s ease, padding-inline-start .15s ease;
+}
+
+.listbox > ul.list ul.sublist > li > a:not(.product-picture):not(.product-name):hover,
+.listbox > ul.list ul.sublist > li > a:not(.product-picture):not(.product-name):focus-visible {
+  background: var(--rd-surface-2);
+  color: var(--rd-jade);
   padding-inline-start: 14px;
-  border-block-start: 1px dashed var(--rd-stroke);
+}
+
+.listbox > ul.list ul.sublist li.active > a {
+  background: var(--rd-surface-2);
+  color: var(--rd-jade);
+  font-weight: 700;
 }
 
 /* ---------- «اخیراً دیده‌شده» ---------- */
@@ -13787,7 +13829,7 @@ table.order-list {
 }
 
 .filter-content .group .name strong {
-  color: var(--rd-jade);
+  color: var(--rd-text);
   font-size: 13px;
 }
 
@@ -13868,6 +13910,11 @@ table.order-list {
     font-size: 14px;
   }
 
+  body > .listbox.overlay-open > ul.list ul.sublist > li > a {
+    padding: 10px 10px;
+    font-size: 13px;
+  }
+
   body > .listbox.overlay-open > .tags li a {
     padding: 8px 15px;
   }
@@ -13884,6 +13931,114 @@ table.order-list {
   body > .filter-content.overlay-open .group .item {
     padding: 10px 8px;
     font-size: 14px;
+  }
+}
+
+/* =========================================================================
+   دسکتاپ: سایدبار به‌صورت یک فهرستِ یکپارچه
+   کارت‌های جداگانه (سرتیترِ سبز و گوشه‌های گرد) حذف می‌شوند؛ همهٔ بخش‌ها
+   (فیلترها و بلوک‌ها) داخل یک لیستِ پیوسته با ردیف‌های جدا شده و یک فلش در
+   انتهای هر ردیف قرار می‌گیرند. در حالت اول همه بسته‌اند (استیتِ بسته را JS
+   هنگام لود اعمال می‌کند).
+   ========================================================================= */
+
+@media all and (min-width: 1001px) {
+  .side-2 {
+    background: var(--rd-surface);
+    border: 1px solid var(--rd-stroke);
+    border-radius: var(--rd-radius);
+    overflow: hidden;
+  }
+
+  .side-2 > .block {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    margin: 0;
+  }
+
+  .side-2 > .block.product-filters {
+    margin: 0;
+  }
+
+  .side-2 > .block.product-filters .product-filter {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    margin: 0;
+  }
+
+  .side-2 > .block + .block,
+  .side-2 > .block.product-filters .product-filter + .product-filter {
+    border-block-start: 1px solid var(--rd-stroke);
+  }
+
+  .side-2 .block > .title,
+  .side-2 .product-filter .filter-title {
+    background: transparent !important;
+    background-image: none !important;
+    margin: 0;
+    padding: 14px 18px;
+    border-radius: 0;
+    gap: 12px;
+  }
+
+  .side-2 .product-filter .filter-title {
+    color: var(--rd-text) !important;
+  }
+
+  .side-2 .block > .title,
+  .side-2 .product-filter .filter-title {
+    color: var(--rd-text);
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .side-2 .block > .title strong {
+    font-size: inherit;
+    font-weight: 600;
+    color: inherit;
+  }
+
+  .side-2 .block > .title:hover,
+  .side-2 .block > .title:focus-visible,
+  .side-2 .product-filter .filter-title:hover,
+  .side-2 .product-filter .filter-title:focus-visible {
+    background-color: var(--rd-surface-2) !important;
+  }
+
+  .side-2 .block .listbox,
+  .side-2 .product-filter .filter-content {
+    padding: 6px 18px 14px;
+    border: none;
+  }
+
+  .side-2 .listbox > ul.list > li > a:not(.product-picture):not(.product-name),
+  .side-2 .filter-content .group .item label {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .side-2 .filter-content .group .name strong {
+    font-size: 13.5px;
+  }
+
+  .side-2 .listbox .product-name {
+    font-size: 13.5px;
+  }
+
+  .side-2 .listbox > .tags li a {
+    font-size: 13px;
+  }
+
+  .side-2 .listbox > .view-all a {
+    font-size: 13.5px;
   }
 }
 
