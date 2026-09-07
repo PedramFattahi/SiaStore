@@ -12465,84 +12465,9 @@ table.order-list {
 }
 
 /* =========================================================================
-   فیلترهای ساید‌بار در موبایل: نوار سربرگ‌های افقیِ لغزنده (شبیه تب‌های
-   ویندوز) — هیچ HTML/JS جدیدی لازم نیست، همون رفتار کلیکِ موجودِ
-   «.block .title» است.
-   =========================================================================
-   روش کار: با «white-space: nowrap» + «overflow-x: auto» روی خودِ
-   ساید‌بار، و «display: inline-block» روی هر عنوان، عنوان‌ها کنار هم
-   در یک خط می‌مونن و قابل‌اسکرول افقی می‌شن (نه wrap). اما هر «.listbox»
-   خودش «display: block» است — و یک باکسِ block همیشه خط را می‌شکند و
-   تمام‌عرض روی خط بعدی می‌شینه، مستقل از nowrap اطرافش. یعنی محتوا
-   *همیشه در جریان عادی صفحه* باز می‌شود (نه شناور/absolute)، دقیقاً
-   زیرِ ردیفِ سربرگ‌ها، و بقیه‌ی صفحه را به‌درستی به پایین هول می‌دهد —
-   دیگر نیازی به اسکرولِ اضافه برای دیدنش نیست. */
-@media all and (max-width: 1000px) {
-  .side-2 {
-    white-space: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-block-end: 4px;
-  }
-
-  .side-2::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* فیلتر قیمت (چون قابل‌بازوبسته‌شدن نیست) یک کارت جدا، همیشه قبل از
-     سربرگ‌ها. */
-  .side-2 > .block.product-filters {
-    display: block;
-    white-space: normal;
-    margin: 0 0 10px;
-  }
-
-  .side-2 > .block.product-filters .filter-title {
-    padding: 10px 14px;
-    font-size: 13px;
-  }
-
-  .side-2 > .block.product-filters .filter-content {
-    padding: 12px 14px 14px;
-  }
-
-  /* بلوک‌های قابل‌بازوبسته: خودِ کادرشان حذف می‌شود و عنوان/محتوایشان
-     مستقیماً در جریانِ nowrap ساید‌بار قرار می‌گیرند. */
-  .side-2 > .block.block-category-navigation,
-  .side-2 > .block.block-manufacturer-navigation,
-  .side-2 > .block.block-popular-tags,
-  .side-2 > .block.block-recently-viewed-products {
-    display: contents;
-  }
-
-  .side-2 .title {
-    display: inline-block;
-    vertical-align: top;
-    white-space: nowrap;
-    margin: 0 4px 0 0;
-    padding: 10px 18px;
-    border-radius: 12px 12px 0 0;
-    background: var(--rd-surface);
-    border: 1px solid var(--rd-stroke-strong);
-    border-bottom: none;
-    color: var(--rd-text-dim) !important;
-    font-size: 13px;
-  }
-
-  /* توجه: display اینجا عمداً ست نمی‌شود — باز/بسته‌بودن همچنان با
-     همون قانون قبلیِ «.block .listbox» (که با کلیک، JS کنترلش
-     می‌کند) مشخص می‌شود؛ اینجا فقط ظاهرش را وقتی که باز است می‌سازیم. */
-  .side-2 .listbox {
-    white-space: normal;
-    width: 100%;
-    margin: 0 0 10px;
-    background: var(--rd-surface);
-    border: 1px solid var(--rd-stroke-strong);
-    border-radius: 0 var(--rd-radius) var(--rd-radius) var(--rd-radius);
-    padding: 14px;
-  }
-}
+   طراحی موبایلِ سایدبار (چیپ‌ها + پنلِ overlay) به انتهایِ همین فایل
+   منتقل شده تا بر قواعد دسکتاپِ انتهایِ فایل چیره شود.
+   ========================================================================= */
 
 /* =========================================================================
    صفحه‌ی جزئیات محصول — بازطراحی کامل، اولویت با موبایل
@@ -13500,6 +13425,264 @@ table.order-list {
 .product-grid .item-box .buttons,
 .product-list .item-box .buttons {
   display: none;
+}
+
+/* =========================================================================
+   فیلترهای سایدبار (کارت‌های «فیلتر بر اساس…») به سبک فروشگاه‌های
+   امروزی: هر فیلتر یک کارت آکاردئونی است. کلیک روی عنوان، محتوا را
+   باز/بسته می‌کند (در همه‌ی عرض‌ها؛ اسکریپتِ آن در
+   Themes/DefaultClean/Views/Catalog/_CatalogFilters.cshtml است) و یک فلش
+   کنار عنوان، وضعیتِ باز/بسته را نشان می‌دهد.
+   ========================================================================= */
+
+.product-filter .filter-title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  user-select: none;
+}
+
+.product-filter .filter-title::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat center / contain;
+  opacity: .75;
+  transition: transform .22s ease, opacity .22s ease;
+}
+
+.product-filter.closed .filter-title::after {
+  transform: rotate(-180deg);
+  opacity: .4;
+}
+
+.product-filter .filter-title:hover,
+.product-filter .filter-title:focus-visible {
+  background-color: var(--rd-surface-2) !important;
+}
+
+.product-filter .filter-title:focus-visible {
+  outline: 2px solid var(--rd-jade);
+  outline-offset: -2px;
+}
+
+/* =========================================================================
+   بلوک‌های سایدبار (دسته‌ها، تولیدکننده‌ها، برچسب‌های پرطرفدار،
+   «اخیراً دیده‌شده» و…) همان رفتار آکاردئونیِ فیلترها را می‌گیرند:
+   کلیک روی عنوان، لیستِ داخلش را باز/بسته می‌کند. اسکریپتِ آن در
+   Themes/DefaultClean/Views/Shared/Head.cshtml آمده (سراسری است).
+   ========================================================================= */
+
+.side-2 .block > .title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  user-select: none;
+}
+
+.side-2 .block > .title::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5546' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat center / contain;
+  opacity: .75;
+  transition: transform .22s ease, opacity .22s ease;
+}
+
+.side-2 .block.closed > .title::after {
+  transform: rotate(-180deg);
+  opacity: .4;
+}
+
+.side-2 .block > .title:hover,
+.side-2 .block > .title:focus-visible {
+  background-color: var(--rd-surface-2);
+}
+
+.side-2 .block > .title:focus-visible {
+  outline: 2px solid var(--rd-jade);
+  outline-offset: -2px;
+}
+
+/* =========================================================================
+   موبایل: چیپ‌های سایدبار + محتوای overlay (پنلِ از پایین)
+   هر بخش (فیلترها و بلوک‌های دسته‌ها/سازنده‌ها/برچسب‌ها/اخیراً دیده‌شده)
+   یک «چیپ» در ردیف بالاست. کلیک → محتوایش به‌صورت پنلی از پایینِ صفحه
+   روی محتوا باز می‌شود؛ با دکمه‌ی «×» یا کلیک روی فضای خالیِ پشت پنل
+   بسته می‌شود. اسکریپتِ آن در Themes/DefaultClean/Views/Shared/Head.cshtml
+   است. این بلوک آخرِ فایل است تا در همه‌ی حالت‌ها چیره شود.
+   ========================================================================= */
+@media all and (max-width: 1000px) {
+  /* ردیفِ چیپ‌ها: افقی و لغزنده */
+  .side-2 {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+    margin-block: 0 10px;
+    padding-block-end: 4px;
+  }
+
+  .side-2::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* کادرهای بیرونی حذف می‌شوند تا فقط چیپ‌ها و محتوایِ overlay بمانند */
+  .side-2 > .block {
+    display: contents;
+  }
+
+  .side-2 > .block.product-filters .product-filter {
+    display: contents;
+  }
+
+  /* چیپِ هر بخش */
+  .side-2 .block > .title,
+  .side-2 .product-filter .filter-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: var(--rd-surface) !important;
+    border: 1px solid var(--rd-stroke-strong);
+    color: var(--rd-text-dim) !important;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 12.5px !important;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0;
+    text-transform: none;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(31, 58, 46, .06);
+  }
+
+  /* داخل عنوانِ بلاک‌ها <strong> هست؛ آن‌هم با همان فونتِ چیپ رندر شود */
+  .side-2 .block > .title strong {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+  }
+
+  .side-2 .block > .title::after,
+  .side-2 .product-filter .filter-title::after {
+    display: none;
+  }
+
+  /* محتوا: پیش‌فرض مخفی؛ وقتی باز شد پنلِ fixed از پایین.
+     JS محتوا را به‌صورت فرزندِ مستقیم body می‌برد (portal) — به همین
+     دلیل سلکتورها body > … هستند و از داخل .side-2 که اسکرول‌دار و
+     display:contents است بیرون می‌آیند. */
+  .side-2 .listbox,
+  .side-2 .product-filter .filter-content {
+    display: none !important;
+  }
+
+  body > .listbox.overlay-open,
+  body > .filter-content.overlay-open {
+    display: block !important;
+    position: fixed;
+    inset-block-end: 0;
+    inset-inline: 0;
+    z-index: 9990;
+    max-height: 85vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+    background: var(--rd-surface);
+    border: 1px solid var(--rd-stroke);
+    border-block-end: none;
+    border-radius: var(--rd-radius) var(--rd-radius) 0 0;
+    box-shadow: 0 -12px 32px rgba(31, 58, 46, .25);
+  }
+
+  /* سربرگِ پنل با دکمه‌ی «×» (توسط JS تزریق می‌شود) */
+  .overlay-head {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 8px 12px;
+    background: var(--rd-surface);
+    border-block-end: 1px solid var(--rd-stroke);
+    border-radius: var(--rd-radius) var(--rd-radius) 0 0;
+  }
+
+  .overlay-close {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: var(--rd-surface-2);
+    color: var(--rd-text);
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .overlay-close:hover {
+    background: var(--rd-stroke-strong);
+  }
+
+  /* پدینگِ محتوای داخل پنل */
+  body > .listbox.overlay-open {
+    padding: 0;
+  }
+
+  body > .listbox.overlay-open > ul.list,
+  body > .listbox.overlay-open > .tags,
+  body > .listbox.overlay-open > .view-all,
+  body > .filter-content.overlay-open {
+    padding: 14px 16px 18px;
+  }
+
+  body > .filter-content.overlay-open {
+    padding-block-start: 0;
+  }
+
+  body > .filter-content.overlay-open > .group {
+    padding-inline: 16px;
+  }
+
+  body > .filter-content.overlay-open .price-range-slider {
+    padding-inline: 16px;
+  }
+
+  /* لایه‌یِ رویدادِ پشتِ پنل برای بستن با کلیک (خیلی کمرنگ، فقط کمی تیرگی) */
+  .sidebar-overlay-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9989;
+    background: rgba(20, 28, 24, .45);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body.sidebar-overlay-open {
+    overflow: hidden;
+  }
 }
 
 

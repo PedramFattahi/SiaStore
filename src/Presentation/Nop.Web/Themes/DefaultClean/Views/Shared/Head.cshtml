@@ -22,3 +22,132 @@
     //add jQuery UI css file
     NopHtml.AppendCssFileParts("~/lib_npm/jquery-ui-dist/jquery-ui.min.css");
 }
+
+<script asp-location="Footer">
+    // SIDEBAR ACCORDION / MOBILE OVERLAY
+    // Desktop (>= 1001px) : clicking a section title expands/collapses its
+    //                       content in place (accordion).
+    // Mobile (< 1001px)   : every section (product filters + blocks) is a
+    //                       chip in the top row; clicking opens the content
+    //                       as a bottom-sheet overlay over the page. It is
+    //                       closed via the X button, the dimmed backdrop,
+    //                       or the Escape key.
+    // Everything is bound with event delegation, so clicks keep working
+    // after Ajax re-renders the sidebar.
+    $(function() {
+        var isMobile = function () {
+            var e = window, a = 'inner';
+            if (!('innerWidth' in window)) {
+                a = 'client';
+                e = document.documentElement || document.body;
+            }
+            return e[a + 'Width'] < 1001;
+        };
+
+        var $backdrop = $('<div class="sidebar-overlay-backdrop"></div>').appendTo('body').hide();
+        var $open = null;
+
+        // The opened content is appended to <body> (portal-style) instead of
+        // staying inside .side-2, because some browsers fail to honour
+        // position: fixed for descendants of a display:contents element inside
+        // the .side-2 scroll container (the sheet then renders inline in the
+        // chip row and the backdrop covers it). As a body child in the root
+        // stacking context, sheet and backdrop always layer correctly.
+        // The open/close motion is driven by jQuery with an explicit, identical
+        // duration for every sheet, so content size no longer affects speed.
+        var closeOverlay = function () {
+            if ($open) {
+                var $origin = $open.data('overlay-origin') || null;
+                $open.removeData('overlay-origin');
+                $open.children('.overlay-head').remove();
+                $open.removeClass('overlay-open');
+                $open.removeAttr('style');
+                if ($origin && $origin.length) $origin.append($open);
+                $open = null;
+            }
+            $backdrop.stop(true, true).animate({ opacity: 0 }, 120, function () {
+                $(this).hide();
+            });
+            $('body').removeClass('sidebar-overlay-open');
+        };
+
+        var openOverlay = function ($content) {
+            closeOverlay();
+            $content.data('overlay-origin', $content.parent());
+            $('<div class="overlay-head"><button type="button" class="overlay-close" aria-label="close">×</button></div>')
+                .prependTo($content);
+            $content.addClass('overlay-open');
+            $('body').append($content);
+            $content.scrollTop(0);
+            $open = $content;
+            $backdrop.stop(true, true).css({ display: 'block', opacity: 0 }).animate({ opacity: 1 }, 180);
+            $content.stop(true, true)
+                .css({ opacity: 0, transform: 'translateY(24px)' })
+                .animate({ opacity: 1, transform: 'translateY(0)' }, 180);
+            $('body').addClass('sidebar-overlay-open');
+        };
+
+        $backdrop.on('click', closeOverlay);
+        $(document).on('click', '.overlay-close', closeOverlay);
+        $(document).on('keyup', function (e) {
+            if (e.key === 'Escape') closeOverlay();
+        });
+
+        // sidebar blocks (categories, manufacturers, popular tags, recently viewed)
+        $(document).on('click', '.side-2 .block > .title', function () {
+            var $title = $(this);
+            var $block = $title.closest('.block');
+            var $listbox = $block.children('.listbox').first();
+            if ($listbox.length === 0) return;
+
+            if (isMobile()) {
+                if ($listbox.hasClass('overlay-open')) {
+                    closeOverlay();
+                    return;
+                }
+                openOverlay($listbox);
+                return;
+            }
+
+            var isOpen = $listbox.is(':visible');
+            $listbox.stop(true, true).slideToggle(220);
+            $block.toggleClass('closed', isOpen);
+            $title.attr('aria-expanded', isOpen ? 'false' : 'true');
+        });
+
+        // product filter boxes (price, specifications, manufacturers)
+        $(document).on('click', '.side-2 .product-filter .filter-title', function () {
+            var $title = $(this);
+            var $filter = $title.closest('.product-filter');
+            var $content = $filter.children('.filter-content').first();
+            if ($content.length === 0) return;
+
+            if (isMobile()) {
+                if ($content.hasClass('overlay-open')) {
+                    closeOverlay();
+                    return;
+                }
+                openOverlay($content);
+                return;
+            }
+
+            var isOpen = $content.is(':visible');
+            $content.stop(true, true).slideToggle(220);
+            $filter.toggleClass('closed', isOpen);
+            $title.attr('aria-expanded', isOpen ? 'false' : 'true');
+        });
+
+        // keyboard support: chips/titles behave like buttons
+        $(document).on('keydown', '.side-2 .block > .title, .side-2 .product-filter .filter-title', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                $(this).trigger('click');
+            }
+        });
+
+        $('.side-2 .block > .title, .side-2 .product-filter .filter-title')
+            .attr('tabindex', '0')
+            .attr('role', 'button')
+            .attr('aria-expanded', 'true');
+    });
+</script>
