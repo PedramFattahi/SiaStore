@@ -11542,23 +11542,6 @@ select {
   color: var(--rd-text);
 }
 
-/* به‌جای «/» ساده، یک فلش کوچک و شیک؛ چون متن راست‌به‌چپ است، فلش رو
-   به چپ یعنی «جلوتر/عمیق‌تر» را نشان می‌دهد. کمی بالاتر از وسطِ خط
-   نشسته چون فونت فارسی معمولاً پایین‌تر از عدد ۱۴px میانه می‌گیرد. */
-.breadcrumb .delimiter {
-  position: relative;
-  top: -2px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  margin: 0 2px;
-  vertical-align: middle;
-  font-size: 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237C8577' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 6l-6 6 6 6'/%3E%3C/svg%3E") no-repeat center / contain;
-}
-
 /* ---------- کارت محصول در سایر صفحات (دسته‌بندی، جستجو، مرتبط) ---------- */
 /* همان سبک کارت‌های صفحه‌ی اصلی، این‌بار برای item-box عمومی که در
    لیست دسته‌بندی‌ها، نتایج جستجو، محصولات مرتبط و... استفاده می‌شود. */
