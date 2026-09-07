@@ -13172,78 +13172,191 @@ table.order-list {
 }
 
 /* =========================================================================
-   لیست محصولات دسته‌بندی/جستجو در موبایل: هر محصول یک ردیف افقی
-   =========================================================================
-   دقیقاً مثل نتایج جستجوی گوگل‌پلی: عکس یک طرف، ثابت و کوچیک؛ نام،
-   امتیاز و قیمت کنارش، زیر هم. به‌جای کارتِ عمودیِ بزرگ (عکس تمام‌عرض
-   بالا، بقیه‌ی اطلاعات پایینش)، الان همه چیز تو یک ردیفِ فشرده‌ست —
-   کاربر با یک نگاه، چند محصول رو پشت‌سرهم می‌بینه، نه اینکه برای هر
-   کدوم کلی اسکرول کنه.
-   این فقط برای گرید *عادیِ* دسته‌بندی/جستجوعه — گرید صفحه‌ی اصلی و
-   «محصولات مرتبط» چون طراحی مخصوص به خودشون رو دارن (اولی شبکه‌ای،
-   دومی اسکرول افقی)، از این قانون مستثنا شدن. */
-@media all and (max-width: 1000px) {
+   محصولات صفحات دیگر (دسته، جستجو، تگ، سازنده، فروشنده، «اخیراً دیده‌شده»
+   و «خریدهای مشابه»): کارت‌های نمایشیِ فقط-تصویر (تصویر، نام، امتیاز و
+   قیمت؛ بدون دکمه — دکمه‌ها سراسری از گریدها حذف شده‌اند). در دسکتاپ/
+   تبلت کارتِ عمودیِ مثل صفحه‌ی اصلی؛ در موبایل ردیفِ تک‌ستونه‌ی فشرده مثل
+   نتایج جستجوی گوگل‌پلی (عکس یک طرف، نام/امتیاز/قیمت کنارش).
+   گرید صفحه‌ی اصلی (اسکرول افقی) و «محصولات مرتبط» چون طراحی مخصوص
+   خودشون رو دارن، از این قوانین مستثنا شدن. */
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* کارت عمودی مثل صفحه‌ی اصلی (دسکتاپ/تبلت) */
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box {
+  flex: 0 0 100%;
+  width: 100%;
+  float: none !important;
+  margin: 0;
+  padding: 0;
+  text-align: start;
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box:hover {
+  transform: translateY(-4px);
+  border-color: var(--rd-stroke-strong);
+  box-shadow: 0 18px 34px -22px rgba(31, 58, 46, .35);
+}
+
+/* پس‌زمینه‌ی سبز کم‌رنگِ پشت عکس محصول — مانند کارت‌های صفحه‌ی اصلی */
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture {
+  margin: 0;
+  border-radius: 0;
+  background: var(--rd-surface-2);
+  padding: 18px;
+}
+
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px 18px 18px;
+}
+
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rd-text);
+  line-height: 1.5;
+  min-height: 45px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-block-end: 4px;
+}
+
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-title a:hover,
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-title a:focus {
+  color: var(--rd-jade);
+}
+
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-rating-box {
+  color: var(--rd-gold);
+  margin-block-end: 6px;
+}
+
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .description {
+  color: var(--rd-text-faint);
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .add-info {
+  margin-block-start: auto;
+}
+
+.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .actual-price {
+  color: var(--rd-text);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+/* تبلت (۶۴۱ تا ۱۰۰۰): دو کارت عمودی در هر ردیف */
+@media all and (min-width: 641px) and (max-width: 1000px) {
   .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 12px;
-    width: 100%;
-    float: none;
-    padding: 12px;
+    flex: 0 0 calc((100% - 16px) / 2);
+  }
+}
+
+/* دسکتاپ: سه کارت عمودی در هر ردیف */
+@media all and (min-width: 1001px) {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-grid {
+    gap: 18px;
   }
 
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box {
+    flex: 0 0 calc((100% - 2 * 18px) / 3);
+  }
+}
+
+/* موبایل (تا ۶۴۰): ردیفِ تک‌ستونه‌ی فشرده مثل گوگل‌پلی — عکس کوچک یک
+   طرف، نام/امتیاز/قیمت کنارش؛ توضیحات حذف می‌شود */
+@media all and (max-width: 640px) {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-grid {
+    gap: 12px;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box {
+    flex: 0 0 100%;
+    flex-direction: row;
+    align-items: stretch;
+    --rd-thumb: 120px;
+  }
+
+  /* ستونِ تصویر تمام‌ارتفاعِ کارت را می‌گیرد؛ عکس بدون حاشیه کلِ
+     ستون را پر می‌کند و جزئیات در ستونِ مقابل‌ش می‌ماند — ستون به‌صورت
+     absolute است تا ارتفاعش همیشه برابر ارتفاعِ کارت باشد */
   .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture {
-    flex: 0 0 100px;
-    width: 100px;
+    position: absolute;
+    inset-block-start: 0;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    width: var(--rd-thumb);
     margin: 0;
+    padding: 0;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture a {
+    position: relative;
+    display: block;
+    height: 100%;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture a:before {
+    display: none;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture a img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: contain;
+    max-width: none;
+    max-height: none;
+  }
+
+  /* چند عکس (swiper): اسلایدها را تمام‌ارتفاعِ ستون بکن تا عکس به‌درستی
+     دیده شود و کادرِ نسبت‌تصویرِ ۳.۵/۱ روی آن اعمال نشود */
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture .swiper,
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture .swiper-wrapper,
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture .swiper-slide {
+    height: 100%;
+  }
+
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture .swiper-slide {
+    aspect-ratio: auto;
   }
 
   .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .details {
-    flex: 1 1 auto;
-    min-width: 0;
+    padding-block: 10px 12px;
+    padding-inline-start: calc(var(--rd-thumb) + 12px);
+    padding-inline-end: 12px;
   }
 
   .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-title {
-    margin: 0 0 4px;
-    font-size: 14px;
+    font-size: 13px;
+    min-height: 0;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-rating-box {
-    margin: 0 0 6px;
-  }
-
-  /* توضیحات طولانی تو ردیفِ فشرده جا نمی‌شه، حذف می‌شه (مثل گوگل‌پلی
-     که فقط عنوان/امتیاز/قیمت رو تو نتیجه‌ی جستجو نشون می‌ده) */
   .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .description {
     display: none;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .prices {
-    margin: 0 0 8px;
-  }
-
   .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .actual-price {
-    font-size: 15px;
-  }
-
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-box-add-to-cart-button {
-    flex: 1 1 auto;
-    padding: 8px 14px;
-    font-size: 12.5px;
-  }
-
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .add-to-compare-list-button,
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .add-to-wishlist-button {
-    width: 34px;
-    height: 34px;
-    padding: 0;
+    font-size: 14px;
   }
 }
 
@@ -13392,6 +13505,18 @@ table.order-list {
     font-weight: 600;
     cursor: pointer;
   }
+}
+
+/* =========================================================================
+   کارت‌های محصول فقط نمایشی هستند (تصویر، نام، امتیاز و قیمت):
+   دکمه‌های «افزودن به سبد خرید» و «افزودن به علاقه‌مندی» از همه‌ی
+   گریدهای محصول (صفحه‌ی اصلی، دسته/جستجو، مرتبط، «خریدهای مشابه» و…)
+   حذف شدند. خرید از داخل صفحه‌ی محصول انجام می‌شود.
+   این قاعده در انتهایِ فایل است تا بر قاعده‌های جزءِ دیگر که
+   «display: flex» می‌دهند (انتصاب همسان) غلبه کند — بدون !important. */
+.product-grid .item-box .buttons,
+.product-list .item-box .buttons {
+  display: none;
 }
 
 
