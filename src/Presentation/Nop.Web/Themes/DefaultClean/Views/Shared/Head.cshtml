@@ -74,8 +74,13 @@
         var openOverlay = function ($content) {
             closeOverlay();
             $content.data('overlay-origin', $content.parent());
-            $('<div class="overlay-head"><button type="button" class="overlay-close" aria-label="close">×</button></div>')
-                .prependTo($content);
+            var $titleEl = $content.closest('.product-filter').children('.filter-title').first();
+            if (!$titleEl.length) $titleEl = $content.closest('.block').children('.title').first();
+            var label = $.trim($titleEl.text());
+            var $head = $('<div class="overlay-head"></div>');
+            if (label) $head.append($('<span class="overlay-head-title"></span>').text(label));
+            $head.append($('<button type="button" class="overlay-close" aria-label="close">×</button>'));
+            $head.prependTo($content);
             $content.addClass('overlay-open');
             $('body').append($content);
             $content.scrollTop(0);
