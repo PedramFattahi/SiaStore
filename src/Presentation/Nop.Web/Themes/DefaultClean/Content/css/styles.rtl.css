@@ -10847,11 +10847,6 @@ select {
   border-color: var(--rd-jade-soft);
 }
 
-/* دکمه‌ی مقایسه در گرید صفحه‌ی اصلی نمایش داده نمی‌شود */
-.home-page-product-grid .item-box .add-to-compare-list-button {
-  display: none;
-}
-
 /* دکمه‌ی علاقه‌مندی: دایره‌ی شناور در گوشه‌ی بالای کارت، فقط آیکون قلب */
 .home-page-product-grid .item-box .add-to-wishlist-button {
   position: absolute;
@@ -11032,24 +11027,13 @@ select {
 
 @media all and (min-width: 641px) {
   .master-wrapper-content {
-    padding-inline: 28px;
+    padding-inline: 20px;
   }
 }
 
 @media all and (min-width: 1001px) {
   .master-wrapper-content {
-    padding-inline: 56px;
-  }
-}
-
-/* روی مانیتورهای خیلی عریض، به‌جای کش‌آمدن محتوا تا لبه‌ی صفحه، عرض
-   محتوا سقف می‌خورد و در وسط صفحه قرار می‌گیرد — هم فاصله‌ی بیشتری از
-   لبه ایجاد می‌شود، هم کارت‌ها به‌جای کش‌آمدن، کمی جمع‌وجورتر می‌مانند. */
-@media all and (min-width: 1600px) {
-  .master-wrapper-content {
-    max-width: 1520px;
-    margin-inline: auto;
-    padding-inline: 24px;
+    padding-inline: 20px;
   }
 }
 
@@ -11144,13 +11128,7 @@ select {
     padding: 10px 6px;
   }
 
-  /* روی موبایل این دو دکمه به‌صورت متن کامل رندر می‌شدند و باعث
-     طولانی شدن کارت‌ها می‌شدند؛ دکمه‌ی مقایسه مخفی است و دکمه‌ی
-     علاقه‌مندی در موبایل هم به‌صورت دایره‌ی شناور نمایش داده می‌شود. */
-  .home-page-product-grid .item-box .add-to-compare-list-button {
-    display: none;
   }
-}
 
 /* ---------- بازطراحی سکشن «اخبار» صفحه‌ی اصلی ---------- */
 /* هر خبر یک ردیف تمام‌عرض؛ عنوان + کادر تاریخ کنارِ هم،
@@ -13625,13 +13603,15 @@ table.order-list {
 
 /* =========================================================================
    کارت‌های محصول فقط نمایشی هستند (تصویر، نام، امتیاز و قیمت):
-   دکمه‌های «افزودن به سبد خرید» و «افزودن به علاقه‌مندی» از همه‌ی
-   گریدهای محصول (صفحه‌ی اصلی، دسته/جستجو، مرتبط، «خریدهای مشابه» و…)
-   حذف شدند. خرید از داخل صفحه‌ی محصول انجام می‌شود.
+   دکمه‌ی «افزودن به سبد خرید» از همه‌ی گریدهای محصول (صفحه‌ی اصلی،
+   دسته/جستجو، مرتبط، «خریدهای مشابه» و…) حذف شد؛ خرید از داخل صفحه‌ی
+   محصول انجام می‌شود. دکمه‌های «علاقه‌مندی» و «مقایسه» مطابق تنظیمات
+   ادمین (Catalog → Product fields) نمایش داده می‌شوند و دیگر در CSS
+   مخفی نیستند.
    این قاعده در انتهایِ فایل است تا بر قاعده‌های جزءِ دیگر که
    «display: flex» می‌دهند (انتصاب همسان) غلبه کند — بدون !important. */
-.product-grid .item-box .buttons,
-.product-list .item-box .buttons {
+.product-grid .item-box .product-box-add-to-cart-button,
+.home-page-product-grid .item-box .product-box-add-to-cart-button {
   display: none;
 }
 
