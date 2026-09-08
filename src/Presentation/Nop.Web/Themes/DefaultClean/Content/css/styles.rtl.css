@@ -1756,7 +1756,7 @@ label, label + * {
 
 
 .breadcrumb {
-  margin: 0 0 50px;
+  margin: 0 0 18px;
   background-color: #202124;
   padding: 5px 10px;
 }
@@ -12413,6 +12413,12 @@ table.order-list {
     margin-block: 0 10px;
   }
 
+  /* کرامب باید بالاتر از فیلترها دیده شود؛ order:-2 تضمین می‌کند
+     حتی از سایدبارِ (order:-1) هم بالاتر بماند */
+  .master-column-wrapper > .breadcrumb {
+    order: -2;
+  }
+
   .page-title {
     order: 2;
   }
@@ -13804,25 +13810,64 @@ table.order-list {
 
 /* ---------- «اخیراً دیده‌شده» ---------- */
 
-.listbox .product-picture {
+.block-recently-viewed-products .listbox > ul.list > li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 9px 6px;
+  border-radius: 10px;
+  border-block-end: 1px solid var(--rd-stroke);
+  transition: background-color .15s ease;
+}
+
+.block-recently-viewed-products .listbox > ul.list > li:last-child {
+  border-block-end: none;
+}
+
+.block-recently-viewed-products .listbox > ul.list > li:hover {
+  background: var(--rd-surface-2);
+}
+
+.block-recently-viewed-products .listbox > ul.list > li > a.product-picture {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  margin: 0;
   border-radius: 10px;
   overflow: hidden;
   background: var(--rd-surface-2);
   border: 1px solid var(--rd-stroke);
 }
 
-.listbox .product-name {
-  display: inline-block;
-  padding: 2px 0;
+.block-recently-viewed-products .listbox > ul.list > li > a.product-picture img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.block-recently-viewed-products .listbox > ul.list > li > a.product-name {
+  flex: 1;
+  min-width: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   color: var(--rd-text);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.45;
   text-decoration: none;
 }
 
-.listbox .product-name:hover,
-.listbox .product-name:focus {
+.block-recently-viewed-products .listbox > ul.list > li > a.product-name:hover,
+.block-recently-viewed-products .listbox > ul.list > li > a.product-name:focus-visible,
+.block-recently-viewed-products .listbox > ul.list > li:hover > a.product-name {
   color: var(--rd-jade);
 }
 
@@ -14012,6 +14057,57 @@ table.order-list {
     padding: 10px 8px;
     font-size: 14px;
   }
+
+  body > .listbox.overlay-open > ul.list > li:has(> a.product-picture) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 0;
+  }
+
+  body > .listbox.overlay-open > ul.list > li:has(> a.product-picture):hover {
+    background: var(--rd-surface-2);
+  }
+
+  body > .listbox.overlay-open > ul.list > li:has(> a.product-picture) > a.product-picture {
+    position: relative;
+    display: block;
+    flex: 0 0 auto;
+    width: 54px;
+    height: 54px;
+    margin: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--rd-surface-2);
+    border: 1px solid var(--rd-stroke);
+  }
+
+  body > .listbox.overlay-open > ul.list > li:has(> a.product-picture) > a.product-picture img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  body > .listbox.overlay-open > ul.list > li:has(> a.product-picture) > a.product-name {
+    flex: 1;
+    min-width: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--rd-text);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.45;
+    text-decoration: none;
+  }
+
+  body > .listbox.overlay-open > ul.list > li:has(> a.product-picture):hover > a.product-name {
+    color: var(--rd-jade);
+  }
 }
 
 /* =========================================================================
@@ -14110,6 +14206,10 @@ table.order-list {
   }
 
   .side-2 .listbox .product-name {
+    font-size: 13.5px;
+  }
+
+  .side-2 .block-recently-viewed-products .listbox > ul.list > li > a.product-name {
     font-size: 13.5px;
   }
 
