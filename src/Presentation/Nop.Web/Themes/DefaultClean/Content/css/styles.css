@@ -13767,6 +13767,13 @@ table.order-list {
   gap: 8px;
 }
 
+.listbox > .tags li {
+  margin: 0;
+  overflow: visible;
+  font-size: 12.5px !important;
+  line-height: 1.35;
+}
+
 .listbox > .tags li a {
   display: inline-block;
   padding: 6px 13px;
@@ -13774,6 +13781,9 @@ table.order-list {
   background: var(--rd-surface-2);
   border: 1px solid var(--rd-stroke);
   color: var(--rd-text-dim);
+  font-size: 12.5px !important;
+  line-height: 1.35;
+  float: none;
   text-decoration: none;
   transition: background-color .15s ease, color .15s ease, border-color .15s ease;
 }
@@ -14034,7 +14044,7 @@ table.order-list {
   }
 
   .side-2 .listbox > .tags li a {
-    font-size: 13px;
+    font-size: 12.5px;
   }
 
   .side-2 .listbox > .view-all a {

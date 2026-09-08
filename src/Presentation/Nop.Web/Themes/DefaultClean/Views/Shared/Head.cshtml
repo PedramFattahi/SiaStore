@@ -87,8 +87,8 @@
             $open = $content;
             $backdrop.stop(true, true).css({ display: 'block', opacity: 0 }).animate({ opacity: 1 }, 180);
             $content.stop(true, true)
-                .css({ opacity: 0, transform: 'translateY(24px)' })
-                .animate({ opacity: 1, transform: 'translateY(0)' }, 180);
+                .css({ opacity: 0 })
+                .animate({ opacity: 1 }, 180);
             $('body').addClass('sidebar-overlay-open');
         };
 
