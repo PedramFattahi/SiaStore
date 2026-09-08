@@ -63,6 +63,7 @@
                 $open.removeClass('overlay-open');
                 $open.removeAttr('style');
                 if ($origin && $origin.length) $origin.append($open);
+                if ($open.hasClass('product-sorting-overlay')) $open.remove();
                 $open = null;
             }
             $backdrop.stop(true, true).animate({ opacity: 0 }, 120, function () {
@@ -150,6 +151,151 @@
             }
         });
 
+        // SORT-BY (mobile): the sort chip opens a bottom-sheet overlay listing
+        // the options of #products-orderby (same pattern as the filters).
+        var decorateSortChip = function () {
+            if (!isMobile()) return;
+            $('.product-sorting').each(function () {
+                var $s = $(this);
+                if ($s.find('.sortby-current').length) return;
+                var $select = $s.find('select');
+                if (!$select.length) return;
+                $s.find('.orderby-chips').remove();
+                $s.append('<span class="sortby-current"></span><span class="sortby-chev" aria-hidden="true"></span>');
+            });
+            $('.product-sorting .sortby-current').text(
+                $('#products-orderby option:selected').text() || ''
+            );
+        };
+
+        // Desktop: every sort option becomes a chip in a row above the
+        // products; the selected one is highlighted. Selection still goes
+        // through #products-orderby so the AJAX flow stays unchanged.
+        var decorateSortDesktop = function () {
+            if (isMobile()) return;
+            var $s = $('.product-sorting').first();
+            if (!$s.length) return;
+            if ($s.find('.orderby-chips').length) return;
+            var $select = $s.find('select');
+            if (!$select.length) return;
+            $s.find('.sortby-current, .sortby-chev').remove();
+            var $chips = $('<div class="orderby-chips"></div>');
+            $select.find('option').each(function () {
+                $('<button type="button" class="orderby-chip"></button>')
+                    .attr('data-value', this.value)
+                    .addClass(this.selected ? 'selected' : '')
+                    .text($(this).text())
+                    .appendTo($chips);
+            });
+            $s.append($chips);
+            $select.hide();
+        };
+
+        // Mobile: live in the FILTERS CHIP ROW (first position) instead of a
+        // separate bar. Desktop: back inside .product-selectors.
+        var relocateSortChip = function () {
+            var $s = $('.product-sorting').not('.side-2 .product-sorting').first();
+            if (!$s.length) return;
+            if (isMobile()) {
+                $('.side-2 > .product-sorting').remove();
+                $('.side-2').first().prepend($s);
+                var $sel = $('.product-selectors').first();
+                if ($sel.length) {
+                    var hasVisible = $sel.children().filter(function () { return $(this).is(':visible'); }).length > 0;
+                    $sel.toggle(hasVisible);
+                }
+            } else if ($s.closest('.side-2').length) {
+                var $sel = $('.product-selectors').first();
+                if ($sel.length) {
+                    $s.appendTo($sel);
+                    $sel.show();
+                }
+            }
+        };
+
+        // Applies the right UI for the CURRENT viewport: mobile keeps the
+        // sort chip (in the filters row + bottom-sheet overlay), desktop
+        // renders every option as a chip row. Re-run on resize and after Ajax.
+        var applyResponsiveSort = function () {
+            if (isMobile()) {
+                decorateSortChip();
+                relocateSortChip();
+            } else {
+                relocateSortChip();
+                decorateSortDesktop();
+            }
+        };
+
+        var openSortOverlay = function () {
+            var $select = $('#products-orderby');
+            if (!$select.length) return;
+            closeOverlay();
+            $('.product-sorting-overlay').remove();
+            var label = $.trim($('.product-sorting > span').first().text());
+            if (!label) label = 'Sort by';
+            var $ov = $('<div class="filter-content product-sorting-overlay"></div>');
+            $('<div class="overlay-head"></div>')
+                .append($('<span class="overlay-head-title"></span>').text(label))
+                .append('<button type="button" class="overlay-close" aria-label="close">×</button>')
+                .prependTo($ov);
+            var $ul = $('<ul class="sortby-options"></ul>');
+            $select.find('option').each(function () {
+                $('<li></li>')
+                    .attr('data-value', this.value)
+                    .addClass(this.selected ? 'selected' : '')
+                    .text($(this).text())
+                    .appendTo($ul);
+            });
+            $ov.append($ul);
+            $('body').append($ov);
+            $ov.addClass('overlay-open');
+            $ov.scrollTop(0);
+            $open = $ov;
+            $backdrop.stop(true, true).css({ display: 'block', opacity: 0 }).animate({ opacity: 1 }, 180);
+            $ov.stop(true, true).css({ opacity: 0 }).animate({ opacity: 1 }, 180);
+            $('body').addClass('sidebar-overlay-open');
+        };
+
+        $(document).on('click', '.product-sorting', function (e) {
+            if (!isMobile()) return;
+            e.preventDefault();
+            decorateSortChip();
+            openSortOverlay();
+        });
+
+        $(document).on('keydown', '.product-sorting', function (e) {
+            if (!isMobile()) return;
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                $(this).trigger('click');
+            }
+        });
+
+        $(document).on('click', '.sortby-options li', function () {
+            var $select = $('#products-orderby');
+            if ($select.length && !$(this).hasClass('selected')) {
+                $select.val($(this).data('value')).trigger('change');
+            }
+            closeOverlay();
+        });
+
+        $(document).on('click', '.orderby-chip', function () {
+            var $select = $('#products-orderby');
+            if ($select.length && !$(this).hasClass('selected')) {
+                $select.val($(this).data('value')).trigger('change');
+            }
+        });
+
+        if (window.CatalogProducts) {
+            $(CatalogProducts).on('loaded', applyResponsiveSort);
+        }
+
+        var resizeTimer;
+        $(window).on('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(applyResponsiveSort, 150);
+        });
+
         // Desktop accordion starts with every section collapsed;
         // mobile keeps the chips row (content is hidden via CSS anyway).
         if (!isMobile()) {
@@ -162,5 +308,7 @@
             .attr('tabindex', '0')
             .attr('role', 'button')
             .attr('aria-expanded', 'false');
+
+        applyResponsiveSort();
     });
 </script>

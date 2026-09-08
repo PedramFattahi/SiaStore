@@ -11547,6 +11547,158 @@ select {
   color: var(--rd-text);
 }
 
+/* ---------- نوار مرتب‌سازی / تعداد (سبک چیپ، هماهنگ با فیلترها) ---------- */
+
+.product-selectors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 0;
+  border: none;
+}
+
+.product-selectors:first-child {
+  border: none;
+}
+
+.product-selectors > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong);
+  white-space: nowrap;
+}
+
+.product-selectors span {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12.5px;
+  color: var(--rd-text-dim);
+  vertical-align: middle;
+}
+
+.product-selectors select {
+  margin: 0;
+  padding: 2px 8px;
+  border: none;
+  background: transparent;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--rd-text);
+  cursor: pointer;
+  outline: none;
+}
+
+/* چیپِ مرتب‌سازی: خودکفا تا هم داخلِ نوار و هم درونِ ردیفِ چیپ‌های
+   سایدبار (که JS آن را در موبایل به آن‌جا منتقل می‌کند) یک‌سان دیده شود */
+.product-sorting {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong);
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(31, 58, 46, .06);
+}
+
+.product-sorting > span:not(.sortby-chev) {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12.5px;
+  color: var(--rd-text-dim);
+}
+
+.product-sorting .sortby-current {
+  font-weight: 600;
+  color: var(--rd-text);
+}
+
+.product-sorting select {
+  margin: 0;
+  padding: 2px 8px;
+  border: none;
+  background: transparent;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--rd-text);
+  cursor: pointer;
+  outline: none;
+}
+
+/* آیکونِ مرتب‌سازی: دو فلش عمودی (معنای مرتب‌کردن) جلویِ چیپ اول */
+.product-sorting::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%237C8577' d='M8 2l4.2 5H3.8z'/%3E%3Cpath fill='%237C8577' d='M8 14l-4.2-5h8.4z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ---------- دسکتاپ: همه‌ی گزینه‌های مرتب‌سازی به‌صورت چیپ، بالای محصولات ---------- */
+@media all and (min-width: 1001px) {
+  .product-selectors > .product-sorting {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+  }
+
+  .product-sorting > span:not(.sortby-chev) {
+    font-weight: 700;
+    color: var(--rd-text);
+  }
+
+  .orderby-chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .orderby-chip {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--rd-stroke-strong);
+    background: var(--rd-surface);
+    color: var(--rd-text-dim);
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease, border-color .18s ease;
+  }
+
+  .orderby-chip:hover,
+  .orderby-chip:focus-visible {
+    background: var(--rd-surface-2);
+    color: var(--rd-text);
+  }
+
+  .orderby-chip.selected {
+    background: var(--rd-jade);
+    border-color: var(--rd-jade);
+    color: #fff;
+  }
+}
+
 /* ---------- کارت محصول در سایر صفحات (دسته‌بندی، جستجو، مرتبط) ---------- */
 /* همان سبک کارت‌های صفحه‌ی اصلی، این‌بار برای item-box عمومی که در
    لیست دسته‌بندی‌ها، نتایج جستجو، محصولات مرتبط و... استفاده می‌شود. */
@@ -12453,49 +12605,70 @@ table.order-list {
   }
 
   .product-selectors {
-    order: 3;
+    order: -2;
   }
 
   .products-container {
     order: 4;
   }
 
-  /* نوار مرتب‌سازی/تعداد در صفحه: فشرده، در یک خط */
+  /* نوار مرتب‌سازی در موبایل: مثل چیپ‌های فیلتر، یک ردیفِ لغزنده */
   .product-selectors {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    margin: 0 0 12px;
-    padding: 10px 0;
+    margin: 0 0 10px;
+    padding: 0;
   }
 
   .product-selectors::-webkit-scrollbar {
     display: none;
   }
+}
 
-  .product-selectors > div {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+/* ---------- Sort-by موبایل: چیپِ بازکننده‌ی پنلِ گزینه‌ها ---------- */
+@media (max-width: 1000px) {
+  .product-sorting {
+    cursor: pointer;
+  }
+
+  .product-sorting select {
+    display: none;
+  }
+
+  .product-sorting .sortby-chev {
     flex: 0 0 auto;
-    margin: 0;
-    white-space: nowrap;
+    width: 10px;
+    height: 10px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' fill='none' stroke='%237C8577' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
   }
 
-  .product-selectors span {
-    font-size: 11.5px;
-    color: var(--rd-text-faint);
+  /* فهرستِ گزینه‌های مرتب‌سازی داخلِ پنلِ bottom-sheet */
+  .product-sorting-overlay .sortby-options {
+    list-style: none;
+    margin: 0;
+    padding: 6px 10px 18px;
   }
 
-  .product-selectors select {
-    margin: 0;
-    font-size: 12px;
-    padding: 4px 6px;
-    height: 30px;
+  .product-sorting-overlay .sortby-options li {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--rd-text-dim);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .product-sorting-overlay .sortby-options li.selected {
+    color: var(--rd-jade);
+    font-weight: 600;
+    background: rgba(59, 107, 84, .09);
   }
 }
 
