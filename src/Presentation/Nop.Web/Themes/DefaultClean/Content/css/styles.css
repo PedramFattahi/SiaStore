@@ -11439,12 +11439,17 @@ select {
 /* ---------- عنوان صفحه و مسیر (breadcrumb) ---------- */
 
 .page-title {
+  text-align: start;
   border-bottom: 1px solid var(--rd-stroke);
 }
 
 .page-title h1 {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0;
   color: var(--rd-text);
-  font-weight: 800;
 }
 
 .breadcrumb {
@@ -11743,14 +11748,34 @@ table.order-list {
    تیره، عنوان روی عکس — به‌جای کارت ساده‌ی متن‌بالا/عکس‌پایین پیش‌فرض. */
 
 .sub-category-grid .item-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 18px;
+  padding-block-end: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rd-stroke-strong) transparent;
+}
+
+.sub-category-grid .item-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.sub-category-grid .item-grid::-webkit-scrollbar-thumb {
+  background: var(--rd-stroke-strong);
+  border-radius: 999px;
+}
+
+.sub-category-grid .item-grid::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .sub-category-grid .item-box {
   position: relative;
-  width: auto;
+  flex: 0 0 auto;
+  width: 180px;
   float: none;
   margin: 0;
   padding: 0;
@@ -11835,15 +11860,19 @@ table.order-list {
 
 @media all and (max-width: 1000px) {
   .sub-category-grid .item-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 14px;
+  }
+  .sub-category-grid .item-box {
+    width: 150px;
   }
 }
 
 @media all and (max-width: 640px) {
   .sub-category-grid .item-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+  }
+  .sub-category-grid .item-box {
+    width: 128px;
   }
   .sub-category-grid .item-box .title {
     padding: 12px;
