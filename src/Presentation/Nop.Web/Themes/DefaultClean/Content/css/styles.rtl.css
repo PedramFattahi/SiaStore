@@ -1756,7 +1756,7 @@ label, label + * {
 
 
 .breadcrumb {
-  margin: 0 0 18px;
+  margin: 0 0 10px;
   background-color: #202124;
   padding: 5px 10px;
 }
@@ -13537,7 +13537,14 @@ table.order-list {
     scrollbar-width: none;
     white-space: nowrap;
     margin-block: 0 10px;
-    padding-block-end: 4px;
+    /* فاصلهٔ بالایی داخل خودِ نوار است تا پس‌زمینه آن را بپوشاند
+       و محتوای اسکرول‌شده پشتش دیده نشود */
+    padding-block: 8px 4px;
+    /* وقتی اسکرول می‌شود چیپ‌ها بالای صفحه می‌چسبند */
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--rd-bg);
   }
 
   .side-2::-webkit-scrollbar {
@@ -14124,6 +14131,9 @@ table.order-list {
     border: 1px solid var(--rd-stroke);
     border-radius: var(--rd-radius);
     overflow: hidden;
+    /* سایدبار هنگام اسکرول در کنار صفحه می‌چسبد */
+    position: sticky;
+    top: 24px;
   }
 
   .side-2 > .block {
