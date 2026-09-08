@@ -9619,6 +9619,25 @@ input:-webkit-autofill {
   --rd-gold-rgb: 138, 109, 0;
   --rd-bg-rgb: 250, 250, 248;
 
+  /* رنگ‌های وضعیت/میان‌بر (state) — جایگزین رنگ‌های هاردکد UI قدیمی */
+  --rd-success: #4BB07A;          /* بار موفقیت */
+  --rd-warning: #F39C12;          /* بار هشدار */
+  --rd-danger: #DE444C;           /* متن هشدار/ناموجود */
+  --rd-danger-deep: #B43C55;      /* دکمهٔ حذف (wishlist) */
+  --rd-danger-active: #E1133E;    /* هاور دکمهٔ حذف */
+  --rd-notice-bg: #FFFF99;        /* پس‌زمینهٔ نوار noscript */
+  --rd-link: #4AB3F1;             /* لینک/آبی accent (ایمیل-دوست و…) */
+  --rd-gold-hover: #C99A45;       /* هاور دکمهٔ طلایی */
+  --rd-surface-hover: #F3F3F3;    /* هاور سطح‌های خنثی */
+  --rd-fill-mid: #F6F6F6;         /* سلول‌های رسمی / سطح تناوبی */
+  --rd-fill-mid-2: #D9DBDD;       /* سلول‌های جداکنندهٔ جدول */
+  --rd-disabled-fill: #EAEAEA;    /* ورودی/کامپوننت غیرفعال */
+  --rd-border-faint: #CACECE;     /* مرز کمرنگ */
+  --rd-border-hair: #BBB;         /* مرز بسیار کمرنگ */
+  --rd-text-disabled: #CECECE;    /* متن غیرفعال */
+  --rd-text-placeholder: #99A1A7; /* متن جانشین */
+  --rd-field-bg: rgba(255, 255, 255, 0.94); /* ورودی متن روی زمینهٔ تیره */
+
   --rd-onpanel: rgba(255, 255, 255, 0.88);
   --rd-onpanel-strong: #FFFFFF;
   --rd-onpanel-faint: rgba(255, 255, 255, 0.6);
@@ -9724,7 +9743,7 @@ select {
   padding: 0;
   border-radius: 50%;
   background: var(--rd-gold);
-  color: #2A1E08;
+  color: var(--rd-on-gold);
   font-size: 10.5px;
   line-height: 1;
   font-weight: 700;
@@ -10348,7 +10367,7 @@ select {
 .menu__list-view {
   border: 1px solid var(--rd-stroke-strong);
   border-radius: 10px;
-  box-shadow: 0 16px 34px -12px rgba(31, 58, 46, .28);
+  box-shadow: 0 16px 34px -12px rgba(var(--rd-shade-rgb), .28);
 }
 
 .menu__list-view .menu__item {
@@ -10487,7 +10506,7 @@ select {
 }
 
 .swiper-pagination-bullet {
-  background: rgba(31, 58, 46, .3);
+  background: rgba(var(--rd-shade-rgb), .3);
 }
 
 .swiper-pagination-bullet-active {
@@ -10502,7 +10521,7 @@ select {
   border-radius: 50%;
   background: rgba(var(--rd-bg-rgb), 0.92);
   border: 1px solid var(--rd-stroke);
-  box-shadow: 0 6px 16px -8px rgba(31, 58, 46, .35);
+  box-shadow: 0 6px 16px -8px rgba(var(--rd-shade-rgb), .35);
   color: var(--rd-jade);
   transition: background .2s ease, color .2s ease, border-color .2s ease;
 }
@@ -10519,7 +10538,7 @@ select {
 .nop-slider .swiper-button-next:focus {
   background: var(--rd-jade);
   border-color: var(--rd-jade);
-  color: #fff;
+  color: var(--rd-on-jade);
 }
 
 @media all and (max-width: 640px) {
@@ -10819,7 +10838,7 @@ select {
 .home-page-product-grid .item-box:hover {
   transform: translateY(-4px);
   border-color: var(--rd-stroke-strong);
-  box-shadow: 0 18px 34px -22px rgba(31, 58, 46, .35);
+  box-shadow: 0 18px 34px -22px rgba(var(--rd-shade-rgb), .35);
 }
 
 /* پس‌زمینه‌ی سبز خیلی کم‌رنگِ پشت عکس محصول — نقطه‌ی اصلیِ رفع مشکل
@@ -10933,7 +10952,7 @@ select {
   background-repeat: no-repeat;
   background-size: 18px 18px;
   border: none;
-  box-shadow: 0 6px 16px rgba(31, 58, 46, .25);
+  box-shadow: 0 6px 16px rgba(var(--rd-shade-rgb), .25);
   font-size: 0;
 }
 
@@ -11009,7 +11028,7 @@ select {
 .product-grid.bestsellers .item-box:hover {
   transform: translateY(-4px);
   border-color: var(--rd-stroke-strong);
-  box-shadow: 0 18px 34px -22px rgba(31, 58, 46, .35);
+  box-shadow: 0 18px 34px -22px rgba(var(--rd-shade-rgb), .35);
 }
 
 .product-grid.bestsellers .item-box .picture {
@@ -11234,7 +11253,7 @@ select {
 .newsletter-email input[type="email"] {
   flex: 1;
   border: none;
-  background: rgba(255, 255, 255, 0.94);
+  background: var(--rd-field-bg);
   color: var(--rd-text);
   border-radius: 0;
 }
@@ -11249,7 +11268,7 @@ select {
 
 #newsletter-subscribe-block .newsletter-subscribe-button:hover,
 #newsletter-subscribe-block .newsletter-subscribe-button:focus {
-  background: #C99A45;
+  background: var(--rd-gold-hover);
 }
 
 .footer-lower {
@@ -11505,7 +11524,7 @@ select {
   border: 1px solid var(--rd-jade);
   background: var(--rd-jade);
   font-size: 13px;
-  color: #fff;
+  color: var(--rd-on-jade);
   border-radius: 999px;
   transition: background .2s ease, border-color .2s ease;
 }
@@ -11603,9 +11622,9 @@ select {
   margin-inline: auto;
   padding: 28px 30px;
   background: var(--rd-jade);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--rd-onpanel-stroke);
   border-radius: var(--rd-radius);
-  box-shadow: 0 18px 34px -26px rgba(31, 58, 46, .4);
+  box-shadow: 0 18px 34px -26px rgba(var(--rd-shade-rgb), .4);
   text-align: start;
 }
 
@@ -11617,7 +11636,7 @@ select {
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0;
-  color: #fff;
+  color: var(--rd-on-jade);
 }
 
 .poll-options,
@@ -11680,7 +11699,7 @@ select {
   padding: 0 32px;
   height: 44px;
   font-size: 14px;
-  color: #fff;
+  color: var(--rd-on-gold);
   border-radius: 999px;
   transition: background .2s ease, border-color .2s ease;
 }
@@ -11709,7 +11728,7 @@ select {
   margin: 16px 0 0;
   font-style: normal;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--rd-onpanel);
   font-size: 13px;
   text-align: center;
 }
@@ -11833,7 +11852,7 @@ select {
   background: var(--rd-surface);
   border: 1px solid var(--rd-stroke-strong);
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(31, 58, 46, .06);
+  box-shadow: 0 2px 8px rgba(var(--rd-shade-rgb), .06);
 }
 
 .product-sorting > span:not(.sortby-chev) {
@@ -11919,7 +11938,7 @@ select {
   .orderby-chip.selected {
     background: var(--rd-jade);
     border-color: var(--rd-jade);
-    color: #fff;
+    color: var(--rd-on-jade);
   }
 }
 
@@ -11937,7 +11956,7 @@ select {
 
 .item-box:hover {
   border-color: var(--rd-stroke-strong);
-  box-shadow: 0 18px 34px -22px rgba(31, 58, 46, .3);
+  box-shadow: 0 18px 34px -22px rgba(var(--rd-shade-rgb), .3);
   transform: translateY(-3px);
 }
 
@@ -12151,7 +12170,7 @@ table.order-list {
   background-color: var(--rd-surface) !important;
   border: 1px solid var(--rd-stroke);
   border-radius: 12px;
-  box-shadow: 0 20px 40px -16px rgba(31, 58, 46, .35) !important;
+  box-shadow: 0 20px 40px -16px rgba(var(--rd-shade-rgb), .35) !important;
   overflow: hidden;
 }
 
@@ -12434,8 +12453,8 @@ table.order-list {
   top: 2px;
   width: 5px;
   height: 9px;
-  border-inline-end: 2px solid #fff;
-  border-block-end: 2px solid #fff;
+  border-inline-end: 2px solid var(--rd-on-jade);
+  border-block-end: 2px solid var(--rd-on-jade);
   transform: rotate(45deg);
 }
 
@@ -12444,7 +12463,7 @@ table.order-list {
   position: absolute;
   inset: 4px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--rd-on-jade);
 }
 
 /* بازه‌ی قیمت */
@@ -12510,7 +12529,7 @@ table.order-list {
 .ui-autocomplete {
   border: 1px solid var(--rd-stroke-strong);
   background-color: var(--rd-surface);
-  box-shadow: 0 16px 34px -12px rgba(31, 58, 46, .28);
+  box-shadow: 0 16px 34px -12px rgba(var(--rd-shade-rgb), .28);
 }
 
 .ui-autocomplete li {
@@ -12532,7 +12551,7 @@ table.order-list {
 
 .ui-dialog {
   border: 1px solid var(--rd-stroke-strong);
-  box-shadow: 0 20px 46px -18px rgba(31, 58, 46, .4);
+  box-shadow: 0 20px 46px -18px rgba(var(--rd-shade-rgb), .4);
   background-color: var(--rd-surface);
   border-radius: var(--rd-radius);
 }
@@ -12697,7 +12716,7 @@ table.order-list {
   background-color: var(--rd-surface);
   border-radius: var(--rd-radius);
   padding: 28px 24px;
-  box-shadow: 0 2px 14px -8px rgba(31, 58, 46, .14);
+  box-shadow: 0 2px 14px -8px rgba(var(--rd-shade-rgb), .14);
 }
 
 .inputs label {
@@ -13108,7 +13127,7 @@ table.order-list {
     z-index: 20;
     padding-block: 10px;
     background: var(--rd-bg);
-    box-shadow: 0 -10px 24px -14px rgba(31, 58, 46, .35);
+    box-shadow: 0 -10px 24px -14px rgba(var(--rd-shade-rgb), .35);
   }
 
   .full-description {
@@ -13230,7 +13249,7 @@ table.order-list {
 .related-products-grid .item-box:hover {
   transform: translateY(-4px);
   border-color: var(--rd-stroke-strong);
-  box-shadow: 0 18px 34px -22px rgba(31, 58, 46, .35);
+  box-shadow: 0 18px 34px -22px rgba(var(--rd-shade-rgb), .35);
 }
 
 /* پس‌زمینه‌ی سبز خیلی کم‌رنگِ پشت عکس محصول — نقطه‌ی اصلیِ رفع مشکل
@@ -13550,7 +13569,7 @@ table.order-list {
 .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box:hover {
   transform: translateY(-4px);
   border-color: var(--rd-stroke-strong);
-  box-shadow: 0 18px 34px -22px rgba(31, 58, 46, .35);
+  box-shadow: 0 18px 34px -22px rgba(var(--rd-shade-rgb), .35);
 }
 
 /* پس‌زمینه‌ی سبز کم‌رنگِ پشت عکس محصول — مانند کارت‌های صفحه‌ی اصلی */
@@ -13791,7 +13810,7 @@ table.order-list {
     background: var(--rd-surface);
     border: 1px solid var(--rd-stroke-strong);
     border-radius: 12px;
-    box-shadow: 0 18px 44px rgba(31, 58, 46, 0.22);
+    box-shadow: 0 18px 44px rgba(var(--rd-shade-rgb), 0.22);
     padding: 8px;
   }
 
@@ -14017,7 +14036,7 @@ table.order-list {
     text-overflow: ellipsis;
     cursor: pointer;
     user-select: none;
-    box-shadow: 0 2px 8px rgba(31, 58, 46, .06);
+    box-shadow: 0 2px 8px rgba(var(--rd-shade-rgb), .06);
   }
 
   /* داخل عنوانِ بلاک‌ها <strong> هست؛ آن‌هم با همان فونتِ چیپ رندر شود */
@@ -14058,7 +14077,7 @@ table.order-list {
     border: 1px solid var(--rd-stroke);
     border-block-end: none;
     border-radius: var(--rd-radius) var(--rd-radius) 0 0;
-    box-shadow: 0 -12px 32px rgba(31, 58, 46, .25);
+    box-shadow: 0 -12px 32px rgba(var(--rd-shade-rgb), .25);
   }
 
   /* سربرگِ پنل با دکمه‌ی «×» (توسط JS تزریق می‌شود) */
@@ -14138,7 +14157,7 @@ table.order-list {
     position: fixed;
     inset: 0;
     z-index: 9989;
-    background: rgba(20, 28, 24, .45);
+    background: rgba(var(--rd-shade-rgb), .45);
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -14452,9 +14471,9 @@ table.order-list {
   height: 18px;
   top: -6px;
   border-radius: 50%;
-  background: #FFFFFF;
+  background: var(--rd-surface);
   border: 3px solid var(--rd-jade);
-  box-shadow: 0 2px 8px rgba(31, 58, 46, .25);
+  box-shadow: 0 2px 8px rgba(var(--rd-shade-rgb), .25);
   outline: none;
   cursor: grab;
 }
