@@ -20147,6 +20147,12 @@
   <LocaleResource Name="Products.Qty.AriaLabel">
     <Value>Enter a quantity</Value>
   </LocaleResource>
+  <LocaleResource Name="Products.Qty.Increase">
+    <Value>Increase quantity</Value>
+  </LocaleResource>
+  <LocaleResource Name="Products.Qty.Decrease">
+    <Value>Decrease quantity</Value>
+  </LocaleResource>
   <LocaleResource Name="Products.QuantityShouldBePositive">
     <Value>Quantity should be positive</Value>
   </LocaleResource>

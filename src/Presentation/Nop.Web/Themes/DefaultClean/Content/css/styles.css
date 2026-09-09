@@ -14846,4 +14846,76 @@ table.order-list {
   }
 }
 
+/* =========================================================================
+   استپر تعداد محصول (qty-stepper) با دکمه‌ی + و -
+   ========================================================================= */
+
+.overview .qty-stepper,
+.variant-overview .qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  height: 43px;
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.overview .qty-stepper .qty-btn,
+.variant-overview .qty-stepper .qty-btn {
+  width: 34px;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: var(--dark-gray-color);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.overview .qty-stepper .qty-btn:hover,
+.variant-overview .qty-stepper .qty-btn:hover {
+  background: var(--accent-button-active-color);
+  color: #fff;
+}
+
+.overview .qty-stepper .qty-btn:active,
+.variant-overview .qty-stepper .qty-btn:active {
+  transform: translateY(1px);
+}
+
+.overview .qty-stepper .qty-input,
+.variant-overview .qty-stepper .qty-input {
+  width: 44px;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  border-left: 1px solid var(--rd-stroke-strong);
+  border-right: 1px solid var(--rd-stroke-strong);
+  border-radius: 0;
+  background: var(--rd-surface);
+  padding: 0;
+  text-align: center;
+  font-size: 15px;
+  color: var(--dark-gray-color);
+  outline: none;
+}
+
+.overview .qty-stepper .qty-input:focus,
+.variant-overview .qty-stepper .qty-input:focus {
+  outline: none;
+}
+
+/* مخفی کردن spinner مرورگر روی input عددی */
+.overview .qty-stepper input[type=number]::-webkit-inner-spin-button,
+.overview .qty-stepper input[type=number]::-webkit-outer-spin-button,
+.variant-overview .qty-stepper input[type=number]::-webkit-inner-spin-button,
+.variant-overview .qty-stepper input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 

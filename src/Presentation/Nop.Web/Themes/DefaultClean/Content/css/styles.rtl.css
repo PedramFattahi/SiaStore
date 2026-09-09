@@ -14916,4 +14916,16 @@ table.order-list {
   }
 }
 
+/* استپر تعداد محصول (qty-stepper) - RTL */
+.overview .qty-stepper,
+.variant-overview .qty-stepper {
+  direction: rtl;
+}
+
+.overview .qty-stepper .qty-input,
+.variant-overview .qty-stepper .qty-input {
+  border-left: 1px solid var(--rd-stroke-strong);
+  border-right: 1px solid var(--rd-stroke-strong);
+}
+
 
