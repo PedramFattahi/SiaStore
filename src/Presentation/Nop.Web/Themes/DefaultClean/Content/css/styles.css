@@ -12961,8 +12961,6 @@ table.order-list {
 .gallery .picture {
   border-radius: var(--rd-radius);
   background: var(--rd-surface-2);
-  cursor: zoom-in;
-  touch-action: pan-y;
 }
 
 .picture-slides {
@@ -13023,21 +13021,6 @@ table.order-list {
 
 .picture-gallery .picture-thumbs .thumb-item:hover img {
   transform: scale(1.06);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .picture-gallery .picture .zoom-veil {
-    position: absolute;
-    inset: 0;
-    background-repeat: no-repeat;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .15s ease;
-  }
-
-  .picture-gallery .picture:hover .zoom-veil {
-    opacity: 1;
-  }
 }
 
 @media all and (max-width: 769px) {

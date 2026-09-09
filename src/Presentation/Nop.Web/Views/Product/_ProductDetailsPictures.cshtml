@@ -44,7 +44,6 @@
 
         var $main = $('#main-product-img-@Model.Id');
         var $mainAnchor = $('#main-product-img-lightbox-anchor-@Model.Id');
-        var $picture = $gallery.find('.picture');
         var $thumbs = $gallery.find('.thumb-item');
         var $wrap = $gallery.find('.picture-thumbs');
 
@@ -74,7 +73,6 @@
 
         var pictures = buildPictures();
         var current = 0;
-        var veil = null;
 
         function centerThumb($thumb) {
             if (!$wrap.length || !$thumb.length) return;
@@ -93,25 +91,12 @@
                 p.thumb.addClass('active').attr('aria-selected', 'true');
                 if (scrollThumb) centerThumb(p.thumb);
             }
-            if (veil) veil.css('background-image', 'url("' + p.src + '")');
         }
 
         $thumbs.on('click', function(e) {
             e.preventDefault();
             setPicture($thumbs.index(this), true);
         });
-
-        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-            veil = $('<div class="zoom-veil" aria-hidden="true"></div>').appendTo($picture);
-            $gallery.addClass('zoom-ready');
-            $picture.on('mousemove', function(e) {
-                var r = $picture[0].getBoundingClientRect();
-                var x = (e.clientX - r.left) / r.width * 100;
-                var y = (e.clientY - r.top) / r.height * 100;
-                veil.css('background-size', (r.width * 2) + 'px ' + (r.height * 2) + 'px');
-                veil.css('background-position', (x * 2 - 50) + '% ' + (y * 2 - 50) + '%');
-            });
-        }
 
         setPicture($thumbs.filter('.active').index() >= 0 ? $thumbs.filter('.active').index() : 0, false);
 
