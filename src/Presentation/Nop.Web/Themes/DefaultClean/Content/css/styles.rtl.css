@@ -11574,7 +11574,7 @@ select {
 
 .news-title:hover,
 .news-title:focus {
-  color: var(--rd-gold);
+  color: var(--rd-jade);
 }
 
 .news-date {
@@ -11582,12 +11582,12 @@ select {
   align-items: center;
   margin: 0;
   background: var(--rd-surface-2);
-  border: 1px solid var(--rd-gold);
+  border: 1px solid var(--rd-gold-soft);
   padding: 3px 12px;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
-  color: var(--rd-gold);
+  color: var(--rd-on-gold);
   border-radius: 999px;
   white-space: nowrap;
 }
@@ -11630,7 +11630,7 @@ select {
 
 .news-list-homepage .view-all a:hover,
 .news-list-homepage .view-all a:focus {
-  color: var(--rd-gold);
+  color: var(--rd-jade-soft);
 }
 
 @media all and (min-width: 1001px) {
@@ -11743,7 +11743,7 @@ select {
 
 .poll-options li:hover,
 .poll-options li:has(input:checked) {
-  border-color: var(--rd-gold);
+  border-color: var(--rd-jade);
   background: var(--rd-surface-2);
 }
 
@@ -12056,7 +12056,7 @@ select {
 }
 
 .item-box .tax-shipping-info a {
-  color: var(--rd-gold);
+  color: var(--rd-jade);
 }
 
 .item-box .description {
@@ -13075,11 +13075,11 @@ table.order-list {
   font-weight: 700;
 }
 
-/* ---------- قیمت: لهجه‌ی طلایی برند، درشت‌تر ---------- */
+/* ---------- قیمت: لهجه‌ی فیروزه‌ای برند، درشت‌تر ---------- */
 
 .overview .product-price,
 .variant-overview .product-price {
-  color: var(--rd-gold);
+  color: var(--rd-jade);
   font-size: 26px;
 }
 
