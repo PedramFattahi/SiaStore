@@ -2981,6 +2981,61 @@ label, label + * {
   margin: 0 5px;
 }
 
+.attributes .option-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.attributes .option-chips li {
+  position: relative;
+  margin: 0;
+  border: 1px solid var(--rd-stroke-strong);
+  border-radius: 999px;
+  background-color: var(--rd-surface);
+  color: var(--rd-text);
+  transition: border-color .15s ease, background-color .15s ease, color .15s ease, box-shadow .15s ease;
+}
+
+.attributes .option-chips li:hover,
+.attributes .option-chips li:focus-within {
+  border-color: var(--rd-jade);
+}
+
+.attributes .option-chips li:has(input:checked) {
+  border-color: var(--rd-jade);
+  background-color: var(--rd-jade);
+  color: var(--rd-on-jade);
+}
+
+.attributes .option-chips li:has(input:checked) label {
+  color: var(--rd-on-jade);
+}
+
+.attributes .option-chips li:focus-within {
+  outline: 2px solid var(--rd-jade);
+  outline-offset: 2px;
+}
+
+.attributes .option-chips input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.attributes .option-chips label {
+  display: inline-block;
+  margin: 0;
+  padding: 7px 16px;
+  cursor: pointer;
+}
+
+.attributes .option-chips li.disabled {
+  opacity: .45;
+  pointer-events: none;
+}
+
 .attributes .datepicker {
   width: 280px;
   text-align: center;
