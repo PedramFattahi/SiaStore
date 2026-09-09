@@ -1,4 +1,4 @@
-﻿@model ProductDetailsModel
+@model ProductDetailsModel
 @using Nop.Core
 @using Nop.Core.Domain.Catalog
 @using Nop.Core.Domain.Media
@@ -36,34 +36,38 @@
                     {
                         case AttributeControlType.DropdownList:
                             {
-                                <select data-attr="@(attribute.Id)" name="@(controlId)" id="@(controlId)" aria-labelledby="@textPromptId" @(attribute.Values.Any(value => value.CustomerEntersQty) ? Html.Raw($"onchange=\"showHideDropdownQuantity('{controlId}')\"") : null)>
-                                    <option value="0">@T("Products.ProductAttributes.DropdownList.DefaultItem")</option>
+                                <ul data-attr="@(attribute.Id)" role="radiogroup" class="option-list option-chips" aria-labelledby="@textPromptId">
                                     @foreach (var attributeValue in attribute.Values)
                                     {
-                                        var attributeName = attributeValue.PriceAdjustmentValue == 0 ?
+                                        var attributeName = string.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
                                             attributeValue.Name :
                                             T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment,
                                                 attributeValue.CustomerEntersQty ? T("Products.ProductAttributes.PriceAdjustment.PerItem").Text : string.Empty).Text;
-                                        <option data-attr-value="@attributeValue.Id" selected="@attributeValue.IsPreSelected" value="@attributeValue.Id">@attributeName</option>
+                                        <li data-attr-value="@attributeValue.Id">
+                                            <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected"
+                                                   @(attribute.Values.Any(value => value.CustomerEntersQty) ? Html.Raw($"onclick=\"showHideRadioQuantity('{controlId}')\"") : null) />
+                                            <label for="@(controlId)_@(attributeValue.Id)">@attributeName</label>
+
+                                            @if (attributeValue.CustomerEntersQty)
+                                            {
+                                                <div class="qty-box" id="@(controlId)_@(attributeValue.Id)_qty_box" style="display:none">
+                                                    <label for="@(controlId)_@(attributeValue.Id)_qty">@(T("Products.ProductAttributes.PriceAdjustment.Quantity").Text)</label>
+                                                    <input type="text" name="@(controlId)_@(attributeValue.Id)_qty" id="@(controlId)_@(attributeValue.Id)_qty" value="@(attributeValue.Quantity)" />
+                                                </div>
+                                            }
+                                        </li>
                                     }
-                                </select>
-                                foreach (var attributeValue in attribute.Values.Where(value => value.CustomerEntersQty))
-                                {
-                                    <div class="qty-box" id="@(controlId)_@(attributeValue.Id)_qty_box" style="display:none">
-                                        <label for="@(controlId)_@(attributeValue.Id)_qty">@(T("Products.ProductAttributes.PriceAdjustment.Quantity").Text)</label>
-                                        <input type="text" name="@(controlId)_@(attributeValue.Id)_qty" id="@(controlId)_@(attributeValue.Id)_qty" value="@(attributeValue.Quantity)" />
-                                    </div>
-                                }
+                                </ul>
                                 <script asp-location="Footer">
                                     $(function() {
-                                        showHideDropdownQuantity("@controlId");
+                                        showHideRadioQuantity("@controlId");
                                     });
                                 </script>
                             }
                             break;
                         case AttributeControlType.RadioList:
                             {
-                                <ul data-attr="@(attribute.Id)" class="option-list">
+                                <ul data-attr="@(attribute.Id)" role="radiogroup" class="option-list option-chips" aria-labelledby="@textPromptId">
                                     @foreach (var attributeValue in attribute.Values)
                                     {
                                         var attributeName = string.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
@@ -95,7 +99,7 @@
                         case AttributeControlType.Checkboxes:
                         case AttributeControlType.ReadonlyCheckboxes:
                             {
-                                <ul @(attribute.AttributeControlType == AttributeControlType.Checkboxes ? Html.Raw("data-attr=" + attribute.Id) : null) class="option-list">
+                                <ul @(attribute.AttributeControlType == AttributeControlType.Checkboxes ? Html.Raw("data-attr=" + attribute.Id) : null) class="option-list option-chips" aria-labelledby="@textPromptId">
                                     @foreach (var attributeValue in attribute.Values)
                                     {
                                         var attributeName = string.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
@@ -384,10 +388,6 @@
                 switch (attribute.AttributeControlType)
                 {
                     case AttributeControlType.DropdownList:
-                        {
-                            attributeChangeScriptsBuilder.AppendFormat("$('#{0}').on('change', function(){{{1}();}});\n", controlId, attributeChangeHandlerFuncName);
-                        }
-                        break;
                     case AttributeControlType.RadioList:
                     case AttributeControlType.ColorSquares:
                     case AttributeControlType.ImageSquares:

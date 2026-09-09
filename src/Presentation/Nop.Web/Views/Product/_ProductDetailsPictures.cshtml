@@ -1,8 +1,4 @@
 ﻿@model ProductDetailsModel
-@{
-    var defaultPictureId = Model.DefaultPictureModel.Id;
-    var hasDefaultInList = Model.PictureModels.Any(p => p.Id == defaultPictureId);
-}
 
 <link rel="stylesheet" href="~/lib_npm/magnific-popup/magnific-popup.css" />
 <script asp-exclude-from-bundle="true" src="~/lib_npm/magnific-popup/jquery.magnific-popup.min.js" asp-location="Footer"></script>
@@ -10,132 +6,91 @@
 <div class="picture-gallery">
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsBeforePictures, additionalData = Model })
     <div class="picture">
-        <a href="@Model.DefaultPictureModel.FullSizeImageUrl" title="@Model.DefaultPictureModel.Title" id="main-product-img-lightbox-anchor-@Model.Id">
+        @if (Model.DefaultPictureZoomEnabled && Model.PictureModels.Count == 1)
+        {
+            <a href="@Model.DefaultPictureModel.FullSizeImageUrl" title="@Model.DefaultPictureModel.Title" id="main-product-img-lightbox-anchor-@Model.Id">
+                <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" id="main-product-img-@Model.Id" />
+            </a>
+            <script asp-location="Footer">
+                $(function() {
+                    $('#main-product-img-lightbox-anchor-@Model.Id').magnificPopup({ type: 'image' });
+                });
+            </script>
+        }
+        else
+        {
             <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" id="main-product-img-@Model.Id" />
-        </a>
+        }
     </div>
-    @if (Model.PictureModels.Count > 1)
+    @if (Model.PictureModels.Count > 1 && Model.DefaultPictureZoomEnabled)
     {
-        <div class="picture-slides" role="list" aria-label="@Model.Name">
+        <div class="picture-thumbs">
             @foreach (var picture in Model.PictureModels)
             {
-                <a class="slide-item" href="@picture.FullSizeImageUrl" title="@picture.Title">
-                    <img src="@picture.ImageUrl" alt="@picture.AlternateText" title="@picture.Title" />
-                </a>
-            }
-        </div>
-        <div class="picture-thumbs" role="listbox" aria-label="@Model.Name">
-            @for (var i = 0; i < Model.PictureModels.Count; i++)
-            {
-                var picture = Model.PictureModels[i];
-                var isActive = (hasDefaultInList && picture.Id == defaultPictureId) || (!hasDefaultInList && i == 0);
-                <a class="thumb-item@(isActive ? " active" : null)" data-pictureid="@picture.Id" href="@picture.FullSizeImageUrl" role="option" aria-selected="@(isActive ? "true" : "false")">
+                <a class="thumb-item" data-pictureid="@picture.Id" href="@picture.FullSizeImageUrl" alt="@picture.AlternateText" title="@picture.Title">
                     <img src="@picture.ThumbImageUrl" alt="@picture.AlternateText" title="@picture.Title" data-defaultsize="@picture.ImageUrl" data-fullsize="@picture.FullSizeImageUrl" />
                 </a>
             }
         </div>
+        <script asp-location="Footer">
+            $(function() {
+                $('.picture-thumbs').magnificPopup(
+                    {
+                        type: 'image',
+                        delegate: 'a',
+                        removalDelay: 300,
+                        gallery: {
+                            enabled: true,
+                            navigateByImgClick: true,
+                            preload: [0, 1],
+                            tPrev: '@T("Media.MagnificPopup.Previous")',
+                            tNext: '@T("Media.MagnificPopup.Next")',
+                            tCounter: '@T("Media.MagnificPopup.Counter")'
+                        },
+                        tClose: '@T("Media.MagnificPopup.Close")',
+                        tLoading: '@T("Media.MagnificPopup.Loading")'
+                    });
+            });
+        </script>
+        <script asp-location="Footer">
+            $(function() {
+                $('.thumb-item > img').on('click',
+                    function() {
+                        $('#main-product-img-@Model.Id').attr('src', $(this).attr('data-defaultsize'));
+                        $('#main-product-img-@Model.Id').attr('title', $(this).attr('title'));
+                        $('#main-product-img-@Model.Id').attr('alt', $(this).attr('alt'));
+                        $('#main-product-img-lightbox-anchor-@Model.Id').attr('href', $(this).attr('data-fullsize'));
+                        $('#main-product-img-lightbox-anchor-@Model.Id').attr('title', $(this).attr('title'));
+                    });
+            });
+        </script>
+    }
+    else
+    {
+        if (Model.PictureModels.Count > 1)
+        {
+            <div class="picture-thumbs">
+                @foreach (var picture in Model.PictureModels)
+                {
+                    <div class="thumb-item" data-pictureid="@picture.Id">
+                        <img src="@picture.ThumbImageUrl" alt="@picture.AlternateText" title="@picture.Title" data-defaultsize="@picture.ImageUrl" data-fullsize="@picture.FullSizeImageUrl" />
+                    </div>
+                }
+            </div>
+            <script asp-location="Footer">
+                $(function() {
+                    $('.thumb-item img').on('click',
+                        function() {
+                            $('#main-product-img-@Model.Id').attr('src', $(this).attr('data-defaultsize'));
+                            $('#main-product-img-@Model.Id').attr('title', $(this).attr('title'));
+                            $('#main-product-img-@Model.Id').attr('alt', $(this).attr('alt'));
+                            $('#main-product-img-lightbox-anchor-@Model.Id')
+                                .attr('href', $(this).attr('data-fullsize'));
+                            $('#main-product-img-lightbox-anchor-@Model.Id').attr('title', $(this).attr('title'));
+                        });
+                });
+            </script>
+        }
     }
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsAfterPictures, additionalData = Model })
 </div>
-<script asp-location="Footer">
-    $(function() {
-        var $gallery = $('.picture-gallery');
-        if (!$gallery.length) return;
-
-        var $main = $('#main-product-img-@Model.Id');
-        var $mainAnchor = $('#main-product-img-lightbox-anchor-@Model.Id');
-        var $thumbs = $gallery.find('.thumb-item');
-        var $wrap = $gallery.find('.picture-thumbs');
-
-        function buildPictures() {
-            var pics = [];
-            $thumbs.each(function() {
-                var $img = $(this).find('img');
-                pics.push({
-                    thumb: $(this),
-                    src: $img.attr('data-defaultsize'),
-                    full: $(this).attr('href'),
-                    title: $img.attr('title'),
-                    alt: $img.attr('alt')
-                });
-            });
-            if (!pics.length) {
-                pics.push({
-                    thumb: null,
-                    src: $main.attr('src'),
-                    full: $mainAnchor.attr('href'),
-                    title: $main.attr('title'),
-                    alt: $main.attr('alt')
-                });
-            }
-            return pics;
-        }
-
-        var pictures = buildPictures();
-        var current = 0;
-
-        function centerThumb($thumb) {
-            if (!$wrap.length || !$thumb.length) return;
-            var target = $thumb[0].offsetLeft - ($wrap[0].clientWidth - $thumb[0].offsetWidth) / 2;
-            $wrap.stop().animate({ scrollLeft: target }, 260);
-        }
-
-        function setPicture(index, scrollThumb) {
-            if (index < 0 || index >= pictures.length) return;
-            current = index;
-            var p = pictures[index];
-            $main.attr('src', p.src).attr('title', p.title).attr('alt', p.alt);
-            $mainAnchor.attr('href', p.full).attr('title', p.title);
-            if (p.thumb) {
-                $thumbs.removeClass('active').attr('aria-selected', 'false');
-                p.thumb.addClass('active').attr('aria-selected', 'true');
-                if (scrollThumb) centerThumb(p.thumb);
-            }
-        }
-
-        $thumbs.on('click', function(e) {
-            e.preventDefault();
-            setPicture($thumbs.index(this), true);
-        });
-
-        setPicture($thumbs.filter('.active').index() >= 0 ? $thumbs.filter('.active').index() : 0, false);
-
-        function openLightbox(index) {
-            $.magnificPopup.open({
-                items: $.map(pictures, function(p) { return { src: p.full, title: p.title }; }),
-                type: 'image',
-                removalDelay: 300,
-                gallery: {
-                    enabled: true,
-                    navigateByImgClick: true,
-                    preload: [0, 2],
-                    tPrev: '@T("Media.MagnificPopup.Previous")',
-                    tNext: '@T("Media.MagnificPopup.Next")',
-                    tCounter: '@T("Media.MagnificPopup.Counter")'
-                },
-                tClose: '@T("Media.MagnificPopup.Close")',
-                tLoading: '@T("Media.MagnificPopup.Loading")',
-                callbacks: {
-                    change: function() {
-                        setPicture(this.index, false);
-                    }
-                }
-            }, index);
-        }
-
-        if (pictures.length > 1) {
-            $gallery.on('click', 'a.slide-item', function(e) {
-                e.preventDefault();
-                openLightbox($gallery.find('a.slide-item').index(this));
-            });
-
-            $mainAnchor.on('click', function(e) {
-                e.preventDefault();
-                openLightbox(current);
-            });
-        }
-        else {
-            $mainAnchor.magnificPopup({ type: 'image', tClose: '@T("Media.MagnificPopup.Close")', tLoading: '@T("Media.MagnificPopup.Loading")' });
-        }
-    });
-</script>
