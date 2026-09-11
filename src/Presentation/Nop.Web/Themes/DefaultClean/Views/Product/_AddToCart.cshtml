@@ -12,7 +12,6 @@
             <div class="customer-entered-price">
                 <div class="price-input">
                     <label asp-for="CustomerEnteredPrice" asp-postfix=":" class="enter-price-label"></label>
-                    @*round price*@
                     <input asp-for="CustomerEnteredPrice" value="@Convert.ToInt32(Math.Ceiling(Model.CustomerEnteredPrice))" class="enter-price-input" />
                 </div>
                 <div class="price-range">
@@ -51,7 +50,6 @@
                         <button type="button" class="qty-btn qty-plus" data-qty-target="product_enteredQuantity_@Model.ProductId" aria-label="@T("Products.Qty.Increase")">+</button>
                     </div>
                     <script asp-location="Footer">
-                        //when a customer clicks 'Enter' button we submit the "add to cart" button (if visible)
                         $(function() {
                             $("#@Html.IdFor(model => model.EnteredQuantity)").on("keydown", function(event) {
                                 if (event.keyCode == 13) {
@@ -60,7 +58,6 @@
                                 }
                             });
 
-                            // +/- stepper buttons
                             $(".qty-stepper .qty-btn").on("click", function () {
                                 var targetId = $(this).data("qty-target");
                                 var $input = $("#" + targetId);
@@ -125,6 +122,16 @@
                     @Html.Raw(Model.PreOrderAvailabilityStartDateTimeUserTime)
                 </div>
             }
+            <script asp-location="Footer">
+                $(function () {
+                    if (window.innerWidth > 768) return;
+                    var $panel = $('#product-details-form .add-to-cart-panel');
+                    if (!$panel.length) return;
+                    var h = $panel.outerHeight();
+                    $panel.after('<div class="add-to-cart-placeholder" style="height:' + h + 'px"></div>');
+                    $panel.addClass('mobile-fixed-bar');
+                });
+            </script>
         }
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsAddInfo, additionalData = Model })
     </div>

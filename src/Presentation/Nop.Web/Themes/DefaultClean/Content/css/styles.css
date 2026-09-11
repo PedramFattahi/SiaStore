@@ -14919,3 +14919,32 @@ table.order-list {
   margin: 0;
 }
 
+/* =========================================================================
+   چسبان کردن بخش سبد خرید در موبایل
+   ========================================================================= */
+
+@media (max-width: 768px) {
+  .mobile-fixed-bar {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 900;
+    display: flex !important;
+    flex-direction: row-reverse;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    float: none !important;
+    background: var(--rd-surface, #fff);
+    border-top: 1px solid var(--rd-stroke-strong, rgba(0,0,0,.12));
+    box-shadow: 0 -2px 12px rgba(0,0,0,.08);
+    padding: 10px 12px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-fixed-bar > * {
+    float: none !important;
+  }
+}
+
