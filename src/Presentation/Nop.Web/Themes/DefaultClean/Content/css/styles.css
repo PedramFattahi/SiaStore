@@ -13714,14 +13714,14 @@ table.order-list {
    نتایج جستجوی گوگل‌پلی (عکس یک طرف، نام/امتیاز/قیمت کنارش).
    گرید صفحه‌ی اصلی (اسکرول افقی) و «محصولات مرتبط» چون طراحی مخصوص
    خودشون رو دارن، از این قوانین مستثنا شدن. */
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-grid {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
 }
 
 /* کارت عمودی مثل صفحه‌ی اصلی (دسکتاپ/تبلت) */
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box {
   flex: 0 0 100%;
   width: 100%;
   float: none !important;
@@ -13737,28 +13737,28 @@ table.order-list {
   transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
 }
 
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box:hover {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box:hover {
   transform: translateY(-4px);
   border-color: var(--rd-stroke-strong);
   box-shadow: 0 18px 34px -22px rgba(var(--rd-shade-rgb), .35);
 }
 
 /* پس‌زمینه‌ی سبز کم‌رنگِ پشت عکس محصول — مانند کارت‌های صفحه‌ی اصلی */
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .picture {
   margin: 0;
   border-radius: 0;
   background: var(--rd-surface-2);
   padding: 18px;
 }
 
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .details {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .details {
   display: flex;
   flex-direction: column;
   flex: 1;
   padding: 16px 18px 18px;
 }
 
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-title {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .product-title {
   font-size: 15px;
   font-weight: 700;
   color: var(--rd-text);
@@ -13771,27 +13771,27 @@ table.order-list {
   margin-block-end: 4px;
 }
 
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-title a:hover,
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-title a:focus {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .product-title a:hover,
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .product-title a:focus {
   color: var(--rd-jade);
 }
 
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-rating-box {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .product-rating-box {
   color: var(--rd-gold);
   margin-block-end: 6px;
 }
 
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .description {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .description {
   color: var(--rd-text-faint);
   font-size: 12.5px;
   line-height: 1.7;
 }
 
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .add-info {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .add-info {
   margin-block-start: auto;
 }
 
-.product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .actual-price {
+.product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .actual-price {
   color: var(--rd-text);
   font-weight: 800;
   font-size: 17px;
@@ -13799,18 +13799,18 @@ table.order-list {
 
 /* تبلت (۶۴۱ تا ۱۰۰۰): دو کارت عمودی در هر ردیف */
 @media all and (min-width: 641px) and (max-width: 1000px) {
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box {
     flex: 0 0 calc((100% - 16px) / 2);
   }
 }
 
 /* دسکتاپ: سه کارت عمودی در هر ردیف */
 @media all and (min-width: 1001px) {
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-grid {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-grid {
     gap: 18px;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box {
     flex: 0 0 calc((100% - 2 * 18px) / 3);
   }
 }
@@ -13818,11 +13818,11 @@ table.order-list {
 /* موبایل (تا ۶۴۰): ردیفِ تک‌ستونه‌ی فشرده مثل گوگل‌پلی — عکس کوچک یک
    طرف، نام/امتیاز/قیمت کنارش؛ توضیحات حذف می‌شود */
 @media all and (max-width: 640px) {
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-grid {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-grid {
     gap: 12px;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box {
     flex: 0 0 100%;
     flex-direction: row;
     align-items: stretch;
@@ -13832,7 +13832,7 @@ table.order-list {
   /* ستونِ تصویر تمام‌ارتفاعِ کارت را می‌گیرد؛ عکس بدون حاشیه کلِ
      ستون را پر می‌کند و جزئیات در ستونِ مقابل‌ش می‌ماند — ستون به‌صورت
      absolute است تا ارتفاعش همیشه برابر ارتفاعِ کارت باشد */
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .picture {
     position: absolute;
     inset-block-start: 0;
     inset-block-end: 0;
@@ -13842,17 +13842,17 @@ table.order-list {
     padding: 0;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture a {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .picture a {
     position: relative;
     display: block;
     height: 100%;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture a:before {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .picture a:before {
     display: none;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture a img {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .picture a img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -13865,32 +13865,32 @@ table.order-list {
 
   /* چند عکس (swiper): اسلایدها را تمام‌ارتفاعِ ستون بکن تا عکس به‌درستی
      دیده شود و کادرِ نسبت‌تصویرِ ۳.۵/۱ روی آن اعمال نشود */
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture .swiper,
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture .swiper-wrapper,
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture .swiper-slide {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .picture .swiper,
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .picture .swiper-wrapper,
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .picture .swiper-slide {
     height: 100%;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .picture .swiper-slide {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .picture .swiper-slide {
     aspect-ratio: auto;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .details {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .details {
     padding-block: 10px 12px;
     padding-inline-start: calc(var(--rd-thumb) + 12px);
     padding-inline-end: 12px;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .product-title {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .product-title {
     font-size: 13px;
     min-height: 0;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .description {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .description {
     display: none;
   }
 
-  .product-grid:not(.home-page-product-grid):not(.related-products-grid) .item-box .actual-price {
+  .product-grid:not(.home-page-product-grid):not(.related-products-grid):not(.also-purchased-products-grid) .item-box .actual-price {
     font-size: 14px;
   }
 }
@@ -15081,18 +15081,19 @@ table.order-list {
   }
 
   .product-essential > .overview {
-    margin-block-end: 0;
+    margin: 0;
     padding-block-end: 20px;
   }
 
   .product-essential > .full-description {
-    margin-block-end: 0;
+    margin: 0;
     padding-block-end: 10px;
   }
 
   .product-details-page .product-essential {
-    margin-block-end: 0;
+    margin: 0;
     padding-block-end: 0;
+    border-bottom-color: transparent;
   }
 
   /* فاصلهٔ از دست‌رفتهٔ پایین product-essential به اینجا منتقل می‌شود
@@ -15745,12 +15746,13 @@ table.order-list {
   .write-review .review-rating .rating-options {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 2px;
   }
 
   .write-review .review-rating .rating-options label[data-val] {
-    width: 38px;
-    height: 38px;
-    font-size: 21px;
+    width: 30px;
+    height: 30px;
+    font-size: 17px;
   }
 
   .write-review .button-1 {
@@ -15828,5 +15830,286 @@ table.order-list {
     margin: 0;
     scroll-snap-align: start;
   }
+}
+
+/* =========================================================================
+   «خریداری‌شده همراه این محصول» (also purchased): آینهٔ «محصولات مرتبط» —
+   همین ظاهر کارت‌ها، همین اسکرول افقیِ بدون اسکرول‌بار/با snap، و همین
+   انطباق موبایل. (بلوک related بالا در همان شکل اولیه‌اش دست‌نخورده است.)
+   ========================================================================= */
+
+.also-purchased-products-grid .title {
+  border-bottom: 1px dashed var(--rd-stroke-strong);
+  color: var(--rd-text);
+  font-size: 26px;
+}
+
+.also-purchased-products-grid .item-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  padding-block-end: 4px;
+  scrollbar-width: none;
+}
+
+.also-purchased-products-grid .item-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.also-purchased-products-grid .item-box {
+  flex: 0 0 auto;
+  width: 220px;
+  scroll-snap-align: start;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0;
+  text-align: start;
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+.also-purchased-products-grid .item-box:hover {
+  transform: translateY(-4px);
+  border-color: var(--rd-stroke-strong);
+  box-shadow: 0 18px 34px -22px rgba(var(--rd-shade-rgb), .35);
+}
+
+/* پس‌زمینه‌ی سبز خیلی کم‌رنگِ پشت عکس محصول — نقطه‌ی اصلیِ رفع مشکل
+   کنتراست برای لباس‌های سفید/روشن؛ نه تیره است، نه کاملاً سفید. */
+.also-purchased-products-grid .item-box .picture {
+  background: var(--rd-surface-2);
+  margin: 0;
+  border-radius: 0;
+  padding: 18px;
+}
+
+.also-purchased-products-grid .item-box .details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px 18px 18px;
+}
+
+.also-purchased-products-grid .item-box .product-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rd-text);
+  margin-block-end: 4px;
+}
+
+.also-purchased-products-grid .item-box .product-title a:hover,
+.also-purchased-products-grid .item-box .product-title a:focus {
+  color: var(--rd-jade);
+}
+
+.also-purchased-products-grid .item-box .product-rating-box {
+  color: var(--rd-gold);
+}
+
+.also-purchased-products-grid .item-box .description {
+  color: var(--rd-text-faint);
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+
+.also-purchased-products-grid .item-box .add-info {
+  margin-block-start: auto;
+}
+
+.also-purchased-products-grid .item-box .actual-price {
+  color: var(--rd-text);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+/* خط‌چین جداکننده مثل برچسب پاره‌شونده‌ی قیمت روی لباس */
+.also-purchased-products-grid .item-box .buttons {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding-block-start: 14px;
+  border-block-start: 1.5px dashed var(--rd-stroke-strong);
+}
+
+/* ارتفاع دکمه‌ها هم‌اندازه‌ی نوار جستجو (۴۰px) — یکدست و جمع‌وجور */
+.also-purchased-products-grid .item-box button {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0 10px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.also-purchased-products-grid .item-box .product-box-add-to-cart-button {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  background: var(--rd-jade);
+  border: 1px solid var(--rd-jade);
+  color: var(--rd-on-jade);
+  font-weight: 700;
+  text-transform: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.also-purchased-products-grid .item-box .product-box-add-to-cart-button:hover,
+.also-purchased-products-grid .item-box .product-box-add-to-cart-button:focus {
+  background: var(--rd-jade-soft);
+  border-color: var(--rd-jade-soft);
+}
+
+.also-purchased-products-grid .item-box .add-to-compare-list-button,
+.also-purchased-products-grid .item-box .add-to-wishlist-button {
+  flex: 0 0 auto;
+  width: 40px;
+  padding: 0;
+  background-color: var(--rd-surface);
+  border: 1px solid var(--rd-stroke-strong) !important;
+  border-radius: 999px;
+}
+
+.also-purchased-products-grid .item-box .add-to-compare-list-button:hover,
+.also-purchased-products-grid .item-box .add-to-wishlist-button:hover {
+  background-color: var(--rd-surface-2);
+  border-color: var(--rd-jade) !important;
+}
+
+@media all and (max-width: 640px) {
+  .also-purchased-products-grid .title {
+    font-size: 20px;
+  }
+
+  .also-purchased-products-grid .item-box {
+    width: 62vw;
+    max-width: 210px;
+  }
+
+  .also-purchased-products-grid .item-box .picture {
+    padding: 10px;
+  }
+
+  .also-purchased-products-grid .item-box .details {
+    padding: 10px 12px 12px;
+  }
+
+  .also-purchased-products-grid .item-box .product-title {
+    font-size: 12.5px;
+  }
+
+  .also-purchased-products-grid .item-box .description {
+    display: none;
+  }
+
+  .also-purchased-products-grid .item-box .actual-price {
+    font-size: 14px;
+  }
+
+  .also-purchased-products-grid .item-box .buttons {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-block-start: 10px;
+  }
+
+  .also-purchased-products-grid .item-box .product-box-add-to-cart-button {
+    flex: 1 1 100%;
+    width: 100%;
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+}
+
+/* =========================================================================
+   هماهنگ‌سازی «محصولات مرتبط» و «خریداری‌شده همراه» با زبان بصریِ بخش
+   نظرات محصول (Reviews): تیترِ با نوار عمودی سبز، سایهٔ نرم کارت،
+   ستاره‌های کاراکتری طلایی مثل نظرات، جداکنندهٔ ظریف و خط جداکنندهٔ
+   زیر عکس. این بلوک بعد از هر دو بلوکِ بالا آمده و با همان اختصاصی بودن
+   برنده می‌شود؛ در RTL نوار سبز به‌درستی سمت راست می‌نشیند.
+   ========================================================================= */
+
+.related-products-grid .title,
+.also-purchased-products-grid .title {
+  margin: 0 0 18px;
+  padding-inline-start: 12px;
+  border-inline-start: 4px solid var(--accent-button-color);
+  border-block-end: none;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--rd-text);
+}
+
+.related-products-grid .item-box,
+.also-purchased-products-grid .item-box {
+  box-shadow: 0 12px 30px -20px rgba(var(--rd-shade-rgb), .4);
+}
+
+/* زیر عکس، خط جداکنندهٔ ظریف — مانند هدرِ کارت نظر (سطح روشن + خط) */
+.related-products-grid .item-box .picture,
+.also-purchased-products-grid .item-box .picture {
+  border-block-end: 1px solid var(--rd-stroke);
+}
+
+/* ستاره‌ها: کاراکتری و طلایی — دقیقاً همان سیستم نمایش امتیاز در نظرات */
+.related-products-grid .item-box .rating,
+.also-purchased-products-grid .item-box .rating {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  direction: ltr;
+  background: none;
+  line-height: 1;
+  letter-spacing: 2px;
+  font-size: var(--rd-star-size, 14px);
+  color: var(--rd-star-empty);
+}
+
+.related-products-grid .item-box .rating::before,
+.also-purchased-products-grid .item-box .rating::before {
+  content: "\2605\2605\2605\2605\2605";
+}
+
+.related-products-grid .item-box .rating div,
+.also-purchased-products-grid .item-box .rating div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  background: none;
+  font-size: 0;
+  line-height: 0;
+  color: var(--rd-star);
+}
+
+.related-products-grid .item-box .rating div::before,
+.also-purchased-products-grid .item-box .rating div::before {
+  content: "\2605\2605\2605\2605\2605";
+  display: block;
+  font-size: var(--rd-star-size, 14px);
+  line-height: 1;
+  color: var(--rd-star);
+  text-shadow: 0 1px 0 var(--rd-star-edge);
+}
+
+/* جداکنندهٔ زیر قیمت مثل خطوط ظریفِ نظرات (به‌جای خط‌چین) */
+.related-products-grid .item-box .buttons,
+.also-purchased-products-grid .item-box .buttons {
+  border-block-start: 1px solid var(--rd-stroke);
 }
 
