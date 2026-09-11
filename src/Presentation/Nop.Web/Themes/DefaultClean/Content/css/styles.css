@@ -15102,3 +15102,731 @@ table.order-list {
   }
 }
 
+/* =========================================================================
+   بازطراحی بخش نظرات محصول (Reviews)
+   کارت‌های مدرن، ستاره‌های کاراکتری (بدون وابستگی به تصویر اسپرایت)،
+   آواتارِ حرفِ اولِ نام کاربر، بلوکِ رای «این دیدگاه مفید بود»، و فرمِ
+   نوشتنِ نظر. همه‌چیز با Logical Properties نوشته شده تا در راست‌چین و
+   چپ‌چین یکسان دیده شود.
+   ========================================================================= */
+
+:root {
+  --rd-star: #D99C2B;
+  --rd-star-edge: #A87C1F;
+  --rd-star-empty: #DFD6BE;
+  --rd-star-size: 17px;
+}
+
+/* ---------- خلاصهٔ امتیاز (وضعیت بالای صفحهٔ محصول) ---------- */
+
+.product-reviews-overview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin: 0 0 16px;
+  padding: 10px 16px;
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius, 16px);
+  background: var(--rd-surface-2);
+}
+
+.product-reviews-overview .product-review-box {
+  margin: 0;
+  width: auto;
+}
+
+.product-reviews-overview .product-review-box .rating {
+  --rd-star-size: 14px;
+}
+
+.product-reviews-overview .product-review-links a {
+  display: inline-block;
+  color: var(--rd-text-faint);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.product-reviews-overview .product-review-links a:hover,
+.product-reviews-overview .product-review-links a:focus {
+  color: var(--accent-blue-color);
+  text-decoration: underline;
+}
+
+.product-reviews-overview .product-review-links.add-review::before {
+  content: none;
+}
+
+.product-reviews-overview .product-review-links.add-review a {
+  padding: 7px 18px;
+  border-radius: 999px;
+  background: var(--accent-button-color);
+  color: var(--rd-on-jade);
+  font-size: 13px;
+}
+
+.product-reviews-overview .product-review-links.add-review a:hover,
+.product-reviews-overview .product-review-links.add-review a:focus {
+  background: var(--accent-button-active-color);
+  color: var(--rd-text);
+  text-decoration: none;
+}
+
+/* ---------- عنوان بخش‌ها (لیست نظرها / فرم نوشتن) ---------- */
+
+.product-reviews .title {
+  margin: 0 0 18px;
+  padding-inline-start: 12px;
+  border-inline-start: 4px solid var(--accent-button-color);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--rd-text);
+}
+
+/* ---------- نمایش ستاره‌ها: کاراکتری، بدون تصویر ---------- */
+
+.product-review-box .rating {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  direction: ltr;
+  background: none;
+  line-height: 1;
+  letter-spacing: 2px;
+  font-size: var(--rd-star-size, 17px);
+  color: var(--rd-star-empty);
+}
+
+.product-review-box .rating::before {
+  content: "\2605\2605\2605\2605\2605";
+}
+
+.product-review-box .rating div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  background: none;
+  font-size: 0;
+  line-height: 0;
+  color: var(--rd-star);
+}
+
+.product-review-box .rating div::before {
+  content: "\2605\2605\2605\2605\2605";
+  display: block;
+  font-size: var(--rd-star-size, 17px);
+  line-height: 1;
+  color: var(--rd-star);
+  text-shadow: 0 1px 0 var(--rd-star-edge);
+}
+
+/* ---------- کارت نظر ---------- */
+
+.product-review-item {
+  margin: 0 0 20px;
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius, 16px);
+  background: var(--rd-surface);
+  overflow: hidden;
+  box-shadow: 0 12px 30px -20px rgba(var(--rd-shade-rgb), .4);
+}
+
+.product-review-item .review-item-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: none;
+  border-block-end: 1px solid var(--rd-stroke);
+  background: var(--rd-surface-2);
+}
+
+.product-review-item .avatar,
+.product-review-item .review-item-head .avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rd-jade), var(--accent-button-color));
+  overflow: hidden;
+}
+
+.product-review-item .avatar-img-link,
+.product-review-item .avatar a,
+.product-review-item .avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.product-review-item .avatar-img {
+  object-fit: cover;
+}
+
+.product-review-item .avatar-initial {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+}
+
+.product-review-item .review-meta {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.product-review-item .review-title {
+  float: none;
+  max-width: none;
+  margin: 0 0 3px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--rd-text);
+}
+
+.product-review-item .review-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--rd-text-faint);
+}
+
+.product-review-item .review-info label {
+  margin: 0 4px 0 0;
+  font-weight: 600;
+  color: var(--rd-text-faint);
+}
+
+.product-review-item .review-info .user a {
+  color: var(--accent-blue-color);
+}
+
+.product-review-item .review-info .user a:hover,
+.product-review-item .review-info .user a:focus {
+  text-decoration: underline;
+}
+
+.product-review-item .review-item-head .product-review-box {
+  float: none;
+  flex-shrink: 0;
+  margin: 0;
+  width: auto;
+}
+
+.product-review-item .review-item-head .rating {
+  --rd-star-size: 16px;
+}
+
+.product-review-item .review-content {
+  padding: 16px;
+}
+
+.product-review-item .review-text {
+  display: block;
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--rd-text-dim);
+}
+
+.product-review-item .text-body {
+  display: block;
+}
+
+/* ---------- معیارهای امتیازدهی اضافه ---------- */
+
+.product-review-item .review-type-rating-ext {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 14px;
+  margin: 0 0 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--rd-stroke);
+  border-radius: 12px;
+  background: var(--rd-surface-2);
+}
+
+.product-review-item .review-type-rating-ext .review-title i {
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--rd-text-dim);
+}
+
+.product-review-item .review-type-rating-ext .product-review-box {
+  margin: 0;
+  width: auto;
+}
+
+.product-review-item .review-type-rating-ext .rating {
+  --rd-star-size: 12px;
+}
+
+/* ---------- «آیا این دیدگاه مفید بود؟» ---------- */
+
+.product-review-helpfulness {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--rd-text-faint);
+}
+
+.product-review-helpfulness .question {
+  margin: 0;
+  font-style: normal;
+}
+
+.product-review-helpfulness .vote-options {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.product-review-helpfulness .vote {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border: 1px solid var(--rd-stroke);
+  border-radius: 999px;
+  background: var(--rd-surface);
+  color: var(--rd-text-dim);
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.product-review-helpfulness .vote[id^="vote-yes-"]::before {
+  content: "\1F44D";
+  font-size: 14px;
+  line-height: 1;
+}
+
+.product-review-helpfulness .vote[id^="vote-no-"]::before {
+  content: "\1F44E";
+  font-size: 14px;
+  line-height: 1;
+}
+
+.product-review-helpfulness .vote:hover,
+.product-review-helpfulness .vote:focus {
+  border-color: var(--accent-button-color);
+  background: var(--rd-surface-2);
+  color: var(--accent-button-color);
+}
+
+.product-review-helpfulness .vote-stats {
+  direction: ltr;
+  font-size: 12px;
+  color: var(--rd-text-faint);
+}
+
+.product-review-helpfulness .result {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--success-green-color);
+}
+
+/* ---------- پاسخ فروشگاه به نظر ---------- */
+
+.product-review-item .reply {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border: none;
+  border-inline-start: 3px solid var(--accent-button-color);
+  border-radius: 10px;
+  background: var(--rd-surface-2);
+}
+
+.product-review-item .reply-header {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  color: var(--accent-button-color);
+}
+
+.product-review-item .reply-text {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--rd-text-dim);
+}
+
+/* ---------- پیام «نظر قبلاً ثبت شده» ---------- */
+
+.product-reviews .result.review-already-added {
+  margin: 0 0 24px;
+  padding: 14px 18px;
+  border: 1px dashed var(--rd-stroke);
+  border-radius: var(--rd-radius, 16px);
+  background: var(--rd-surface-2);
+  color: var(--rd-text-dim);
+  text-align: center;
+  font-size: 13px;
+}
+
+/* ---------- فرم نوشتن نظر ---------- */
+
+.write-review {
+  margin: 0 0 60px;
+  padding: 20px 24px 24px;
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius, 16px);
+  background: var(--rd-surface);
+}
+
+.write-review .fieldset {
+  margin: 0 0 20px;
+}
+
+.write-review .form-fields,
+.write-review .inputs {
+  text-align: start;
+}
+
+.write-review .inputs {
+  margin: 0 0 16px;
+  font-size: 14px;
+  white-space: normal;
+}
+
+.write-review .inputs label {
+  display: block;
+  width: auto;
+  margin: 0 0 8px;
+  padding: 0;
+  text-align: start;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--rd-text);
+}
+
+.write-review .inputs input[type="text"],
+.write-review .inputs textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--rd-stroke);
+  border-radius: 10px;
+  background: var(--rd-surface-2);
+  color: var(--rd-text);
+  font-size: 14px;
+  line-height: 1.6;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.write-review .inputs textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.write-review .inputs input[type="text"]:focus,
+.write-review .inputs textarea:focus {
+  outline: none;
+  border-color: var(--accent-blue-color);
+  box-shadow: 0 0 0 3px rgba(var(--rd-shade-rgb), .12);
+}
+
+.write-review .field-validation-error,
+.write-review .message-error {
+  text-align: start;
+}
+
+.write-review .message-error {
+  margin: 0 0 14px;
+}
+
+.write-review .review-rating {
+  margin: 2px 0 18px;
+  padding: 0;
+  text-align: start;
+}
+
+.write-review .review-rating .name-description {
+  display: block;
+  width: auto;
+  margin: 0 0 10px;
+  text-align: start;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--rd-text);
+}
+
+.write-review .review-rating .name-description .tooltip label {
+  margin: 0;
+  border-bottom: 1px dotted var(--rd-stroke);
+  color: var(--rd-text);
+  cursor: help;
+}
+
+.write-review .review-rating .rating-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid var(--rd-stroke);
+  border-radius: 12px;
+  background: var(--rd-surface-2);
+}
+
+.write-review .review-rating .label,
+.write-review .review-rating .label.first,
+.write-review .review-rating .label.last {
+  height: auto;
+  margin: 0;
+  padding: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.write-review .review-rating .label.first {
+  color: var(--error-red-color);
+}
+
+.write-review .review-rating .label.last {
+  color: var(--success-green-color);
+}
+
+.write-review .review-rating .rating-options {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.write-review .review-rating .rating-options input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
+
+.write-review .review-rating .rating-options label[data-val] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  border: 1px solid var(--rd-stroke);
+  border-radius: 10px;
+  background: var(--rd-surface);
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--rd-star-empty);
+  transition: color .15s ease, transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.write-review .review-rating .rating-options label[data-val]:hover {
+  border-color: var(--rd-star);
+  color: var(--rd-star);
+}
+
+.write-review .review-rating .rating-options label.on {
+  border-color: var(--rd-star);
+  color: var(--rd-star);
+  transform: translateY(-1px);
+}
+
+.write-review .review-rating .rating-options input[type="radio"]:focus-visible + label[data-val] {
+  outline: 2px solid var(--accent-blue-color);
+  outline-offset: 2px;
+}
+
+.nop-captcha {
+  margin: 14px 0 0;
+}
+
+.write-review .buttons {
+  margin: 4px 0 0;
+  text-align: center;
+}
+
+.write-review .button-1 {
+  display: inline-block;
+  padding: 12px 34px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent-button-color);
+  color: var(--rd-on-jade);
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.write-review .button-1:hover,
+.write-review .button-1:focus {
+  background: var(--accent-button-active-color);
+  transform: translateY(-1px);
+}
+
+/* ---------- موبایل ---------- */
+
+@media (max-width: 768px) {
+  .product-reviews-overview {
+    padding: 10px 12px;
+  }
+
+  .product-review-item .review-item-head {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .product-review-item .review-item-head .avatar,
+  .product-review-item .review-item-head .avatar a,
+  .product-review-item .review-item-head .avatar img {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .product-review-item .review-item-head .product-review-box {
+    margin-inline-start: auto;
+  }
+
+  .product-review-item .review-content {
+    padding: 12px;
+  }
+
+  .product-review-item .review-title {
+    font-size: 14px;
+  }
+
+  .product-review-item .review-type-rating-ext {
+    align-items: flex-start;
+  }
+
+  .write-review {
+    padding: 16px;
+  }
+
+  .write-review .review-rating .rating-wrapper {
+    padding: 10px 12px;
+    justify-content: center;
+  }
+
+  .write-review .review-rating .rating-options {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .write-review .review-rating .rating-options label[data-val] {
+    width: 38px;
+    height: 38px;
+    font-size: 21px;
+  }
+
+  .write-review .button-1 {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* =========================================================================
+   موبایل: کارت‌های نظرات به‌صورت اسکرول افقی (سوایپ بین نظرات)
+   هر کارت تقریباً تمام‌عرض است و لبه‌ای از کارت بعدی دیده می‌شود تا
+   اسکرول‌پذیر بودن قابل‌کشف باشد؛ بین کارت‌ها snap می‌شود. اسکرول‌بار
+   مخفی است و کارت‌ها هم‌قد می‌شوند (ظاهر یکدست). کارت‌ها تا لبهٔ واقعی
+   صفحه (full-bleed) می‌روند؛ پدینگ افقی با گاترِ master-wrapper-content
+   در هر بازهٔ عرضی تطبیق داده شده (≤640px → 12px و 641–768px → 20px).
+   ========================================================================= */
+
+@media (max-width: 640px) {
+  .product-review-list {
+    overflow: visible;
+  }
+
+  .review-scroller {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    margin-inline: -12px;
+    padding-block: 8px;
+    padding-inline: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .review-scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .review-scroller .product-review-item {
+    flex: 0 0 calc(100% - 56px);
+    min-width: 0;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .product-review-list {
+    overflow: visible;
+  }
+
+  .review-scroller {
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+    margin-inline: -20px;
+    padding-block: 8px;
+    padding-inline: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .review-scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .review-scroller .product-review-item {
+    flex: 0 0 calc(100% - 64px);
+    min-width: 0;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+}
+
