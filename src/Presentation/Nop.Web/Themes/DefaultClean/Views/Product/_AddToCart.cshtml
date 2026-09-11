@@ -127,9 +127,29 @@
                     if (window.innerWidth > 768) return;
                     var $panel = $('#product-details-form .add-to-cart-panel');
                     if (!$panel.length) return;
-                    var h = $panel.outerHeight();
-                    $panel.after('<div class="add-to-cart-placeholder" style="height:' + h + 'px"></div>');
+
+                    var $price = $('#product-details-form .overview .prices').first();
+
+                    function buildFixedPrice() {
+                        if (!$price.length) return null;
+                        var $clone = $price.clone(true);
+                        $clone.find('[id]').removeAttr('id');
+                        $clone.addClass('mobile-fixed-price');
+                        return $clone;
+                    }
+
+                    var $fixedPrice = buildFixedPrice();
+                    if ($fixedPrice) $panel.prepend($fixedPrice);
+
                     $panel.addClass('mobile-fixed-bar');
+
+                    $(document).on('product_attributes_changed product_quantity_changed', function () {
+                        var np = buildFixedPrice();
+                        if (!np) return;
+                        var $old = $panel.find('.mobile-fixed-price');
+                        if ($old.length) $old.replaceWith(np);
+                        else $panel.prepend(np);
+                    });
                 });
             </script>
         }
