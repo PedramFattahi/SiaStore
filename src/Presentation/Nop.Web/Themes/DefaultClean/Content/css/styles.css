@@ -15051,3 +15051,54 @@ table.order-list {
   }
 }
 
+/* =========================================================================
+   موبایل: تصویر محصول وقتی به لبهٔ بالای صفحه می‌رسد می‌چسبد (sticky)
+   و محتوای بعدی (مشخصات/توضیحات) از روی آن عبور می‌کند و آن را کامل
+   می‌پوشاند. همهٔ حاشیه‌ها/فاصله‌های شفاف داخل این محدوده صفر شده‌اند
+   تا پس از مخفی‌شدن، تصویر از بین مارجین‌های بخش‌ها دیده نشود.
+   ========================================================================= */
+
+@media (max-width: 768px) {
+  .product-details-page .gallery {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin-block-end: 0;
+  }
+
+  /* وقتی محتوای بعدی به لبهٔ بالا رسید، JS این کلاس را می‌گذارد تا
+     تصویر از چسبیدن آزاد شود و همراه محتوا اسکرول شود و برود بالا. */
+  .gallery-released {
+    position: static !important;
+    top: auto;
+  }
+
+  .product-essential > .overview,
+  .product-essential > .full-description {
+    position: relative;
+    z-index: 2;
+    background: var(--rd-bg);
+  }
+
+  .product-essential > .overview {
+    margin-block-end: 0;
+    padding-block-end: 20px;
+  }
+
+  .product-essential > .full-description {
+    margin-block-end: 0;
+    padding-block-end: 10px;
+  }
+
+  .product-details-page .product-essential {
+    margin-block-end: 0;
+    padding-block-end: 0;
+  }
+
+  /* فاصلهٔ از دست‌رفتهٔ پایین product-essential به اینجا منتقل می‌شود
+     (خارج از محدودهٔ چسبیدن است، پس خطری ندارد). */
+  .product-collateral {
+    padding-block-start: 20px;
+  }
+}
+

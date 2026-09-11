@@ -143,6 +143,26 @@
 
                     $panel.addClass('mobile-fixed-bar');
 
+                    var $gallery = $('#product-details-form .gallery').first();
+                    var $overview = $('#product-details-form .overview').first();
+                    var galleryReleased = false;
+
+                    function updateGalleryPin() {
+                        if (!$gallery.length || !$overview.length) return;
+                        var shouldRelease = $overview[0].getBoundingClientRect().top <= 0;
+                        if (shouldRelease && !galleryReleased) {
+                            galleryReleased = true;
+                            $gallery.addClass('gallery-released');
+                        }
+                        else if (!shouldRelease && galleryReleased) {
+                            galleryReleased = false;
+                            $gallery.removeClass('gallery-released');
+                        }
+                    }
+
+                    updateGalleryPin();
+                    $(window).on('scroll', updateGalleryPin);
+
                     $(document).on('product_attributes_changed product_quantity_changed', function () {
                         var np = buildFixedPrice();
                         if (!np) return;
