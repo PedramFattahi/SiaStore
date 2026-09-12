@@ -15073,19 +15073,18 @@ table.order-list {
     top: auto;
   }
 
-  .product-essential > .overview,
-  .product-essential > .full-description {
-    position: relative;
-    z-index: 2;
-    background: var(--rd-bg);
-  }
-
   .product-essential > .overview {
+    position: relative;
+    z-index: 3;
+    background: var(--rd-bg);
     margin: 0;
     padding-block-end: 20px;
   }
 
   .product-essential > .full-description {
+    position: relative;
+    z-index: 2;
+    background: var(--rd-bg);
     margin: 0;
     padding-block-end: 10px;
   }
