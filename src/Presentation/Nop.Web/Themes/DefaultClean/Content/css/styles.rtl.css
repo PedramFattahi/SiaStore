@@ -15009,7 +15009,7 @@ table.order-list {
   }
 
   .product-details-page {
-    padding-bottom: 70px;
+    padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-fixed-bar {
@@ -16175,6 +16175,17 @@ table.order-list {
 .related-products-grid .item-box .buttons,
 .also-purchased-products-grid .item-box .buttons {
   border-block-start: 1px solid var(--rd-stroke);
+}
+
+/* عنوان «Full Description» — همان زبان تیترهای review/related */
+.product-essential .full-description > .full-description-title {
+  margin: 0 0 14px;
+  padding-inline-start: 12px;
+  border-inline-start: 4px solid var(--accent-button-color);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--rd-text);
 }
 
 
