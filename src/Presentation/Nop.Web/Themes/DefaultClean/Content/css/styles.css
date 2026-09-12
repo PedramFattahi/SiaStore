@@ -16123,3 +16123,164 @@ table.order-list {
   color: var(--rd-text);
 }
 
+/* =========================================================================
+   مشخصات فنی و برچسب‌های محصول: کارت‌های تمیز با تیترِ نوار سبز
+   =========================================================================
+   مشخصات فنی به‌جای جدولِ قدیمیِ قاب‌دار، داخل یک کارت با ردیف‌های
+   باریک و گروه‌بندهای سبز؛ برچسب‌ها چیپ با شمارندهٔ گرد سبز — همان
+   زبان بصری کارت‌های review/related.
+   ========================================================================= */
+
+.product-specs-box,
+.product-tags-box {
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-stroke);
+  border-radius: var(--rd-radius);
+  padding: 20px;
+}
+
+.product-specs-box {
+  margin-block-end: 30px;
+}
+
+.product-specs-box .title,
+.product-tags-box .title {
+  margin: 0 0 16px;
+  padding-inline-start: 12px;
+  border-inline-start: 4px solid var(--accent-button-color);
+  border-block-end: none;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--rd-text);
+}
+
+/* ---------- جدول مشخصات ---------- */
+
+.product-specs-box .table-wrapper {
+  margin: 0;
+}
+
+.product-specs-box .data-table {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.product-specs-box .data-table thead,
+.product-specs-box .data-table thead th,
+.product-specs-box .data-table thead td {
+  background: transparent;
+  border: 0;
+}
+
+.product-specs-box .data-table td {
+  border: 0;
+  border-block-end: 1px solid var(--rd-stroke);
+  background: transparent;
+  color: var(--rd-text-dim);
+  padding: 12px 14px;
+  vertical-align: middle;
+}
+
+.product-specs-box .data-table td.spec-name {
+  width: 32%;
+  color: var(--rd-text-faint);
+  font-weight: 600;
+}
+
+.product-specs-box .data-table td.spec-value {
+  color: var(--rd-text);
+  font-weight: 500;
+}
+
+.product-specs-box .data-table td.spec-group-name {
+  border-block-end: 1px solid var(--rd-stroke);
+  background-color: var(--rd-surface-2) !important;
+  color: var(--rd-jade) !important;
+  font-size: 14px;
+  font-weight: 700;
+  padding-block: 10px;
+}
+
+.product-specs-box .data-table tbody tr:not(.spec-header):hover td {
+  background-color: var(--rd-surface-2);
+}
+
+.product-specs-box .data-table tbody tr:last-child td {
+  border-block-end: 0;
+}
+
+/* ---------- برچسب‌های محصول ---------- */
+
+.product-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+}
+
+.product-tags-list li.separator {
+  display: none;
+}
+
+.product-tags-list li.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.2;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--rd-surface-2);
+  border: 1px solid var(--rd-stroke);
+}
+
+.product-tags-list li.tag:hover {
+  border-color: var(--rd-jade);
+}
+
+.product-tags-list li.tag a {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--rd-text-dim);
+  line-height: inherit;
+}
+
+.product-tags-list li.tag a:hover,
+.product-tags-list li.tag a:focus {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--rd-jade);
+}
+
+.product-tags-list li.tag span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding-inline: 6px;
+  border-radius: 999px;
+  background: var(--rd-jade);
+  color: var(--rd-on-jade);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ---------- کارت‌ها در موبایل سبک‌تر ---------- */
+
+@media (max-width: 640px) {
+  .product-specs-box,
+  .product-tags-box {
+    padding: 14px;
+  }
+
+  .product-specs-box .data-table td {
+    padding: 10px 8px;
+  }
+}
+
